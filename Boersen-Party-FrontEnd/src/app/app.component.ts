@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {NgOptimizedImage} from '@angular/common';
 import { PriceOverviewComponent} from './price-overview/price-overview.component';
@@ -8,12 +8,19 @@ import { PriceOverviewComponent} from './price-overview/price-overview.component
   standalone: true,
   imports: [RouterOutlet, PriceOverviewComponent, NgOptimizedImage],
   template: `
-    <main>
-
-    </main>
+    <section>
+      <form>
+        <input type="text" placeholder="Filter by drink"/>
+        <button class="primary" type="button">Search</button>
+      </form>
+    </section>
+    <section class="results">
+      <priceOverview [priceOverview]="priceOverview"></priceOverview>/
+    </section>
   `,
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'Boersen-Party';
+  @Input() priceOverview!: PriceOverviewComponent;
 }

@@ -3,3 +3,7 @@
 @tailwind utilities;
 
 html {background-color: #0B1326}
+
+.text{
+  color: white;
+}
