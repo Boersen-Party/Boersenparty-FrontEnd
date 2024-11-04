@@ -1,26 +1,20 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {NgOptimizedImage} from '@angular/common';
-import { PriceOverviewComponent} from './price-overview/price-overview.component';
+import { PriceOverviewComponent } from './price-overview/price-overview.component'
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, PriceOverviewComponent, NgOptimizedImage],
+  imports: [RouterOutlet, PriceOverviewComponent, CommonModule],
   template: `
     <section>
-      <form>
-        <input type="text" placeholder="Filter by drink"/>
-        <button class="primary" type="button">Search</button>
-      </form>
-    </section>
-    <section class="results">
-      <priceOverview [priceOverview]="priceOverview"></priceOverview>/
+      <!-- Price Overview Component -->
+      <app-price-overview></app-price-overview>
     </section>
   `,
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'Boersen-Party';
-  @Input() priceOverview!: PriceOverviewComponent;
 }
