@@ -41,9 +41,7 @@
   background-color: #151D32; /* Background color */
   box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1); /* Optional shadow */
   display: flex; /* Use flexbox layout */
-  justify-content: space-between; /* Space out child elements */
   align-items: center; /* Center items vertically */
-
 }
 
 .price-container {
