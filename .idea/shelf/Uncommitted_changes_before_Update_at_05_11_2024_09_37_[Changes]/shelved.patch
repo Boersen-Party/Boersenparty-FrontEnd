@@ -1,0 +1,16 @@
+Index: Boersen-Party-FrontEnd/src/styles.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>@tailwind base;\r\n@tailwind components;\r\n@tailwind utilities;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Boersen-Party-FrontEnd/src/styles.css b/Boersen-Party-FrontEnd/src/styles.css
+--- a/Boersen-Party-FrontEnd/src/styles.css	(revision 0c337071396a5c98ae76a40a5b0b7122c6cb9658)
++++ b/Boersen-Party-FrontEnd/src/styles.css	(date 1730649641103)
+@@ -1,3 +1,5 @@
+ @tailwind base;
+ @tailwind components;
+ @tailwind utilities;
++
++html { background-color: #0B1326; }
