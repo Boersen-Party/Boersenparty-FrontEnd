@@ -1,6 +1,6 @@
 .button{
-  padding:  1.25rem;
-  margin-top: -2.5em;
+  grid-column: 25 / 50 ;
+  grid-row: 2 ;
 }
 
 .cssbuttons-io-button {
@@ -19,9 +19,11 @@
   overflow: hidden;
   position: relative;
   height: 2.8em;
-  margin-left: 10em;
   padding-right: 3.3em;
   cursor: pointer;
+  width: 100%;
+  text-align: center;
+
 }
 
 .cssbuttons-io-button .icon {

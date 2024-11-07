@@ -1,18 +1,19 @@
-<div class="price-overview-container">
-  <div class="title-box">
+<div class="title-box">
     <span class="title">Price Overview</span>
   </div>
-  <ul class="price-list">
-    <li *ngFor="let drink of prices" class="price-entry" [attr.data-id]="drink.id">
-      <div class="drink-box">
-        <span class="drink-name">{{ drink.name }}</span>
-        <div class="price-container"> <!-- New container for price and change -->
-          <span class="price">{{ drink.price | currency: 'EUR' }}</span>
-          <span [ngClass]="{'positive': drink.price_change > 0, 'negative': drink.price_change < 0}">
-            {{ drink.price_change }}%
-          </span>
-        </div>
+
+<ul class="price-list">
+  <li *ngFor="let drink of prices" class="price-entry" [attr.data-id]="drink.id">
+    <div class="drink-box">
+      <span class="drink-name">{{ drink.name }}</span>
+      <div class="price-container">
+        <span class="price">{{ drink.price | currency: 'EUR' }}</span>
+        <span [ngClass]="{'positive': drink.price_change > 0, 'negative': drink.price_change < 0}">
+          {{ drink.price_change }}%
+        </span>
       </div>
-    </li>
-  </ul>
-</div>
+    </div>
+  </li>
+</ul>
+
+

@@ -1,1 +1,9 @@
+.price-overiew-position{
+  grid-column: 1;
+  grid-row: 1;
+}
 
+.event-button-position{
+  grid-column: 3;
+  grid-row: 1;
+}
