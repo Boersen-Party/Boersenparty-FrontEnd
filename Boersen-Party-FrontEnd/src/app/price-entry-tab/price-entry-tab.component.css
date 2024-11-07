@@ -1,10 +1,6 @@
 .button{
-  grid-column: 3 / 7;
-  grid-row: 1;
-  justify-self: center; /* Center within the specified columns */
-  align-self: center;
-  border: 1px solid white;
-  margin-top: -4.5em;
+  padding:  1.25rem;
+  margin-top: -2.5em;
 }
 
 .cssbuttons-io-button {
@@ -23,7 +19,7 @@
   overflow: hidden;
   position: relative;
   height: 2.8em;
-
+  margin-left: 10em;
   padding-right: 3.3em;
   cursor: pointer;
 }
