@@ -4,7 +4,7 @@
 
 .title-box {
   max-width: 400vw;
-  max-height: 50px;
+  max-height: 80px;
   width: 30%;
   border: 1px solid #151D32; /* Border for the box */
   border-radius: 0.3125rem; /* 5px equivalent */ /* Rounded corners */
@@ -33,7 +33,7 @@
 
 .drink-box {
   max-width: 400vw;
-  max-height: 50px;
+  max-height: 80px;
   width: 30%;
   border: 1px solid #151D32; /* Border for the box */
   border-radius: 0.3125rem; /* 5px equivalent */ /* Rounded corners */

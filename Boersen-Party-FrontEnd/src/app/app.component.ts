@@ -19,8 +19,8 @@ import {PriceEntryTabComponent} from './price-entry-tab/price-entry-tab.componen
       <app-price-entry-tab></app-price-entry-tab>
     </section>
 
-    <section>
-      // <app-event-trigger-window></app-event-trigger-window>
+    <section class="event-button">
+      <app-event-trigger-window></app-event-trigger-window>
     </section>
 
   `,
