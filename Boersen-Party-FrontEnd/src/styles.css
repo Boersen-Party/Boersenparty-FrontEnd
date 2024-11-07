@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  background-color: #0b1326;
+}
+
+html {
+  background-color: #0b1326;
+}
+
+.text {
+  color: white;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: repeat(20, 3fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}

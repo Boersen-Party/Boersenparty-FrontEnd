@@ -1,0 +1,84 @@
+.price-overview-container {
+  grid-column: 1 / 9;
+  grid-row: 1;
+  padding:  1.25rem; /* 20px equivalent */ /* Optional padding for the container */
+  border: 1px solid white
+}
+
+.title-box {
+  grid-column: 1 / 2;
+  grid-row: 1;
+  border: 1px solid #151D32; /* Border for the box */
+  border-radius: 0.3125rem; /* 5px equivalent */ /* Rounded corners */
+  padding: 0.9375rem; /* 15px equivalent */ /* Inner padding */
+  background-color: #151D32; /* Background color */
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1); /* Optional shadow */
+  text-align: center; /* Center the text within the box */
+  margin-bottom: 1.25rem; /* Optional spacing below the title */
+}
+
+.title{
+  font-size: 1.5vw; /* Scales with 5% of the viewport width */
+  font-weight: bold; /* Make the title bold */
+  color: white;
+  font-family: "Inter", sans-serif;
+}
+
+.price-list {
+  grid-column: 1;
+  grid-row: 2 / 9;
+  list-style: none; /* Remove bullet points */
+  padding: 0; /* Remove default padding*/
+}
+
+.price-entry {
+  margin-bottom: 0.9375rem; /* 15px equivalent */ /* Spacing between boxes*/
+}
+
+.drink-box {
+  grid-column: 1;
+  grid-row: 2 / 3;
+  border: 1px solid #151D32; /* Border for the box */
+  border-radius: 0.3125rem; /* 5px equivalent */
+  padding: 0.9375rem; /* 15px equivalent */ /* Inner padding */
+  background-color: #151D32; /* Background color */
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1); /* Optional shadow */
+  display: flex; /* Use flexbox layout */
+  align-items: center; /* Center items vertically */
+  }
+
+.price-container {
+  display: flex; /* Use flexbox layout for price and change */
+  flex-direction: column; /* Stack items vertically */
+}
+
+.drink-name {
+  font-size: 1vw; /* Adjust this value as needed */
+ color: white;
+  font-family: "Inter", sans-serif;
+  font-weight: bold; /* Bold drink name */
+  margin-right: auto; /* Pushes the drink name to the left */
+}
+
+.price {
+  font-size: 1vw; /* Adjust this value as needed */
+  text-align: right;
+  color: white;
+  font-family: "Inter", sans-serif;
+  display: block; /* Display price on a new line */
+  margin-top: 0.3125rem; /* 5px equivalent */ /* Spacing above price */
+}
+
+.positive {
+  font-size: 0.75vw; /* Adjust this value as needed */
+  text-align: right;
+  font-family: "Inter", sans-serif;
+  color: #60C3B8; /* Green for positive changes */
+}
+
+.negative {
+  font-size: 0.75vw; /* Adjust this value as needed */
+  text-align: right;
+  font-family: "Inter", sans-serif;
+  color: #CC4E6C; /* Red for negative changes */
+}
