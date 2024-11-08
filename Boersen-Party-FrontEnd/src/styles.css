@@ -14,6 +14,16 @@ html {
   color: white;
 }
 
+.second-grid{
+  grid-column: 2/4;
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: minmax(100px, auto);
+  gap: 1em; /* Optional: add spacing between items */
+  border: 1px solid red;
+}
+
 .main-grid {
   margin-left: 1.5em;
   margin-right: 1.5em;
@@ -23,5 +33,5 @@ html {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: minmax(100px, auto);
   gap: 1em; /* Optional: add spacing between items */
-
+  border: 1px solid blue;
 }
