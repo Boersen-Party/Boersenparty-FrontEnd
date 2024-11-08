@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  background-color: #0b1326;
+}
+
+html {
+  background-color: #0b1326;
+}
+
+.text {
+  color: white;
+}
+
+.main-grid {
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: minmax(100px, auto);
+  gap: 1em; /* Optional: add spacing between items */
+
+}
