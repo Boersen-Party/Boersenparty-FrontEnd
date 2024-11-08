@@ -10,19 +10,29 @@ import {PriceEntryTabComponent} from './price-entry-tab/price-entry-tab.componen
   standalone: true,
   imports: [RouterOutlet, PriceOverviewComponent, CommonModule, PriceEntryTabComponent, EventTriggerWindowComponent],
   template: `
-    <section>
-      <!-- Price Overview Component -->
-      <app-price-overview></app-price-overview>
-    </section>
+    <div class= "main-grid">
+      <!--Grid for Price Overview Element-->
+      <div class="price-overiew-position">
 
-    <section>
-      <app-price-entry-tab></app-price-entry-tab>
-    </section>
+        <section>
+          <app-price-overview></app-price-overview>
+        </section>
 
-    <section class="event-button">
-      <app-event-trigger-window></app-event-trigger-window>
-    </section>
+        <section>
+          <app-price-entry-tab></app-price-entry-tab>
+        </section>
+      </div>
+      <!-- End of Grid-->
 
+      <!--Grid for Event Trigger-->
+      <div class="event-button-position">
+        <section>
+          <app-event-trigger-window></app-event-trigger-window>
+        </section>
+      </div>
+      <!-- End of Grid-->
+
+    </div>
   `,
   styleUrls: ['./app.component.css']
 })
