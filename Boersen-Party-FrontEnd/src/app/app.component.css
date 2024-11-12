@@ -4,10 +4,6 @@
 }
 
 .event-button-position{
-<<<<<<< HEAD
-  grid-column: 3;
-  grid-row: 1;
-=======
   grid-column: 2;
   grid-row: 1;
   border:1px solid green
@@ -31,5 +27,4 @@
   grid-row: 2;
   border: 1px solid green;
   color: white;
->>>>>>> Dominik
 }

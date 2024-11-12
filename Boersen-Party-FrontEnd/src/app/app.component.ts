@@ -15,30 +15,17 @@ import {PriceEntryTabComponent} from './price-entry-tab/price-entry-tab.componen
       <div class="price-overiew-position">
 
         <section>
-<<<<<<< HEAD
-          <app-price-overview></app-price-overview>
-        </section>
-
-        <section>
-          <app-price-entry-tab></app-price-entry-tab>
-=======
           <app-price-overview/>
         </section>
 
         <section>
           <app-price-entry-tab/>
->>>>>>> Dominik
         </section>
       </div>
       <!-- End of Grid-->
 
       <!--Grid for Event Trigger-->
-<<<<<<< HEAD
-      <div class="event-button-position">
-        <section>
-          <app-event-trigger-window></app-event-trigger-window>
-        </section>
-=======
+
       <div class="second-grid">
         <div class="event-button-position">
           <section>
@@ -58,7 +45,6 @@ import {PriceEntryTabComponent} from './price-entry-tab/price-entry-tab.componen
           <h1>General Statistic Space 3</h1>
         </div>
 
->>>>>>> Dominik
       </div>
       <!-- End of Grid-->
 

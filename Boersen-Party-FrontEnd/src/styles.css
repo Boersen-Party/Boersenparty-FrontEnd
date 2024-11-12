@@ -14,8 +14,6 @@ html {
   color: white;
 }
 
-<<<<<<< HEAD
-=======
 .second-grid{
   grid-column: 2/4;
   grid-row: 1;
@@ -26,7 +24,6 @@ html {
   border: 1px solid red;
 }
 
->>>>>>> Dominik
 .main-grid {
   margin-left: 1.5em;
   margin-right: 1.5em;
@@ -36,9 +33,7 @@ html {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: minmax(100px, auto);
   gap: 1em; /* Optional: add spacing between items */
-<<<<<<< HEAD
 
-=======
   border: 1px solid blue;
->>>>>>> Dominik
+
 }
