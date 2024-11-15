@@ -4,11 +4,12 @@ import { PriceOverviewComponent } from './price-overview/price-overview.componen
 import { CommonModule } from '@angular/common';
 import {EventTriggerWindowComponent} from './event-trigger-window/event-trigger-window.component';
 import {PriceEntryTabComponent} from './price-entry-tab/price-entry-tab.component';
+import {GeneralStatisticsComponent} from './general-statistics/general-statistics.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, PriceOverviewComponent, CommonModule, PriceEntryTabComponent, EventTriggerWindowComponent],
+  imports: [RouterOutlet, PriceOverviewComponent, CommonModule, PriceEntryTabComponent, EventTriggerWindowComponent, GeneralStatisticsComponent],
   template: `
     <div class= "main-grid">
       <!--Grid for Price Overview Element-->
@@ -34,7 +35,9 @@ import {PriceEntryTabComponent} from './price-entry-tab/price-entry-tab.componen
         </div>
 
         <div class="general-statistic-1">
-          <h1>General Statistic Space 1</h1>
+          <section>
+            <app-general-statistics/>
+          </section>
         </div>
 
         <div class="general-statistic-2">
