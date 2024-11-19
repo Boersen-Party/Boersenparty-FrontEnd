@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-<<<<<<< HEAD
+
+//hab hier nichts angefasst aber es war noch das HEAD>>>>>>>> etc. von merge conflict
+// kann sein es macht miese
+
 
 @Component({
   selector: 'app-general-statistics',
@@ -10,7 +13,6 @@ import { Component } from '@angular/core';
 })
 export class GeneralStatisticsComponent {
 
-=======
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { Chart, registerables } from 'chart.js';
@@ -50,5 +52,5 @@ export class AppComponent {
   ngOnInit() {
     this.totalUsers = new Chart('totalUsers', this.createTotalUsersChart());
   }
->>>>>>> Dominik
+
 }

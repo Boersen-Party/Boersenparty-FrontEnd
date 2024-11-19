@@ -4,11 +4,12 @@ import { PriceOverviewComponent } from './price-overview/price-overview.componen
 import { CommonModule } from '@angular/common';
 import {EventTriggerWindowComponent} from './event-trigger-window/event-trigger-window.component';
 import {PriceEntryTabComponent} from './price-entry-tab/price-entry-tab.component';
+import { CreatePartyButtonClickWindowComponent } from "./create-party-button-click-window/create-party-button-click-window.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, PriceOverviewComponent, CommonModule, PriceEntryTabComponent, EventTriggerWindowComponent],
+  imports: [RouterOutlet, PriceOverviewComponent, CommonModule, PriceEntryTabComponent, EventTriggerWindowComponent, CreatePartyButtonClickWindowComponent],
   template: `
     <div class= "main-grid">
       <!--Grid for Price Overview Element-->

@@ -1,0 +1,40 @@
+
+
+@if(showPartyDataInputWindow){
+
+<div class="w-full flex flex-col space-y-6 bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 p-6 rounded-xl shadow-lg relative">
+ 
+    <button class="absolute top-2 right-4 text-white text-3xl" (click)="showInputWindow()">
+        &times;
+      </button>
+
+  <div class="w-full flex flex-col space-y-4">
+    
+    <label for="partyName" class="text-lg font-medium text-white">Geben Sie Ihrer Party einen Namen</label>
+    <input id="partyName" type="text" class="rounded-lg p-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Partyname" />
+
+    <label for="startDate" class="text-lg font-medium text-white">Wählen Sie das Start Datum Ihrer Party</label>
+    <input id="startDate" type="date" [value]="startDatePlaceholder" class="rounded-lg p-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400 calendar-input"/>
+
+    <label for="endDate" class="text-lg font-medium text-white">Wählen Sie das End Datum Ihrer Party</label>
+    <input id="endDate" type="date" [value]="endDatePlaceholder" class="rounded-lg p-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400 calendar-input" />
+ 
+</div>
+
+  <button class="inline-block rounded-full p-2">
+    <span class="block rounded-lg bg-green-600 px-10 py-4 text-center font-semibold text-white shadow-md hover:bg-green-700 transition-all">
+      Bestätigen
+    </span>
+</button>
+
+</div>
+}
+
+<button class="inline-block rounded p-[2px] focus:outline-none focus:ring active:text-opacity-75" (click)="showInputWindow()">
+    <span class="block rounded-sm bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 px-8 py-3 text-sm font-medium text-white">
+      Börsen Party anlegen 🥳🎉📈
+    </span>
+  </button>
+
+  <!-- Quelle Button: https://www.hyperui.dev/components/marketing/buttons -->
+  
