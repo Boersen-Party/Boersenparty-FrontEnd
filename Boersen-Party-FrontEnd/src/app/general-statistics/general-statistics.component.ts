@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import {BaseChartDirective} from 'ng2-charts';
 import Chart from 'chart.js/auto';
 
-
 @Component({
   selector: 'app-general-statistics',
   standalone: true,
@@ -11,7 +10,9 @@ import Chart from 'chart.js/auto';
   styleUrl: './general-statistics.component.css'
 })
 export class GeneralStatisticsComponent {
-  public chart: any;
+  public chart: any = [];
+
+  constructor() {}
 
   ngOnInit(): void {
     this.createChart();
