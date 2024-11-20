@@ -1,40 +1,9 @@
-
-
-@if(showPartyDataInputWindow){
-
-<div class="w-full flex flex-col space-y-6 bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 p-6 rounded-xl shadow-lg relative">
- 
-    <button class="absolute top-2 right-4 text-white text-3xl" (click)="showInputWindow()">
-        &times;
-      </button>
-
-  <div class="w-full flex flex-col space-y-4">
-    
-    <label for="partyName" class="text-lg font-medium text-white">Geben Sie Ihrer Party einen Namen</label>
-    <input id="partyName" type="text" class="rounded-lg p-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Partyname" />
-
-    <label for="startDate" class="text-lg font-medium text-white">Wählen Sie das Start Datum Ihrer Party</label>
-    <input id="startDate" type="date" [value]="startDatePlaceholder" class="rounded-lg p-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400 calendar-input"/>
-
-    <label for="endDate" class="text-lg font-medium text-white">Wählen Sie das End Datum Ihrer Party</label>
-    <input id="endDate" type="date" [value]="endDatePlaceholder" class="rounded-lg p-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-400 calendar-input" />
- 
+<div class="rounded-box bg-box">
+  <div class="flex flex-col gap-2 p-8">
+    <p class="text-center text-3xl text-gray-300 mb-4">Register</p>
+    <input class="bg-box w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-700 focus:ring-offset-2 focus:ring-offset-gray-800" placeholder="Email">
+    <input class="bg-box w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-700 focus:ring-offset-2 focus:ring-offset-gray-800" placeholder="Password">
+    <input class="bg-box w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-700 focus:ring-offset-2 focus:ring-offset-gray-800" placeholder="Confirm password">
+    <button class="inline-block cursor-pointer rounded-md bg-gray-700 px-4 py-3.5 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-700 focus-visible:ring-offset-2 active:scale-95">Register</button>
+  </div>
 </div>
-
-  <button class="inline-block rounded-full p-2">
-    <span class="block rounded-lg bg-green-600 px-10 py-4 text-center font-semibold text-white shadow-md hover:bg-green-700 transition-all">
-      Bestätigen
-    </span>
-</button>
-
-</div>
-}
-
-<button class="inline-block rounded p-[2px] focus:outline-none focus:ring active:text-opacity-75" (click)="showInputWindow()">
-    <span class="block rounded-sm bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 px-8 py-3 text-sm font-medium text-white">
-      Börsen Party anlegen 🥳🎉📈
-    </span>
-  </button>
-
-  <!-- Quelle Button: https://www.hyperui.dev/components/marketing/buttons -->
-  

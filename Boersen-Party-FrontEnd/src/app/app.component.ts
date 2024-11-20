@@ -35,7 +35,7 @@ import { CreatePartyButtonClickWindowComponent } from "./create-party-button-cli
         </div>
 
         <div class="general-statistic-1">
-          <h1>General Statistic Space 1</h1>
+          <app-create-party-button-click-window/>
         </div>
 
         <div class="general-statistic-2">
