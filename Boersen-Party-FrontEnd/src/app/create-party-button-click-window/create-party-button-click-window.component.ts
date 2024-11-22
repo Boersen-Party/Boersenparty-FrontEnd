@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-party-button-click-window.component.css']
 })
 export class CreatePartyButtonClickWindowComponent implements OnInit {
-  showPartyDataInputWindow: boolean = false;
 
   startDatePlaceholder: string = '';
   endDatePlaceholder: string = '';
@@ -28,9 +27,5 @@ export class CreatePartyButtonClickWindowComponent implements OnInit {
 
     this.startDatePlaceholder = todayFormatted;
     this.endDatePlaceholder = twoDaysLaterFormatted;
-  }
-
-  showInputWindow() {
-    this.showPartyDataInputWindow = !this.showPartyDataInputWindow;
   }
 }
