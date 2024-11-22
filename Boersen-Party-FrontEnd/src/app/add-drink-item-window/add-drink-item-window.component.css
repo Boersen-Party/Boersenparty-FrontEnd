@@ -1,15 +1,6 @@
 .add-drink{
   background: #151D32;
   border-radius: 0.3125rem;
-
-  height: 500px;
-  width: 700px;
-
   transition: width 2s;
-
-  border: 1px solid white;
-}
-
-#add-drink_id{
-  transition-timing-function: ease;
+  margin-top: 1.25rem;
 }
