@@ -21,3 +21,4 @@ describe('EventTriggerWindowComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

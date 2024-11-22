@@ -9,4 +9,7 @@ import { Component } from '@angular/core';
 })
 export class EventTriggerWindowComponent {
 
+  triggerEvent() {
+    console.log("test Trigger");
+  }
 }

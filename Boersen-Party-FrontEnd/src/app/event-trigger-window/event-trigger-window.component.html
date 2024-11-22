@@ -1,12 +1,30 @@
-
-  <div class="button-box">
-    <span class="inline-flex -space-x-px overflow-hidden rounded-md border bg-white shadow-sm">
+<div class="flex items-center justify-center min-h-screen bg-[#1a1c2c]">
+  <!-- Kasten -->
+  <div class="bg-[#262837] border border-gray-500 rounded-lg shadow-lg p-6 w-96">
+    <!-- Überschrift -->
+    <h2 class="text-white text-lg font-semibold text-center mb-4">
+      Eventtrigger ausloesen
+    </h2>
+    <!-- Button -->
+    <div class="flex justify-center mb-4">
       <button
-        class="inline-block px-10 py-8 text-sm font-medium text-red-700 hover:bg-gray-50 focus:relative">
-        Trigger
+        class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-400"
+        (click)="triggerEvent()"
+      >
+        Button
       </button>
-  </span>
+    </div>
+    <!-- Diagramm -->
+    <div class="bg-gray-300 rounded-md p-4">
+      <svg class="w-full h-24">
+        <!-- Dummy-Diagramm -->
+        <polyline
+          fill="none"
+          stroke="blue"
+          stroke-width="2"
+          points="0,30 10,25 20,30 30,15 40,20 50,25 60,10 70,20 80,30 90,20 100,25"
+        ></polyline>
+      </svg>
+    </div>
   </div>
-
-
-
+</div>
