@@ -26,7 +26,6 @@ import {AddDrinkItemWindowComponent} from './add-drink-item-window/add-drink-ite
       <!-- End of Grid-->
 
       <!--Grid for Event Trigger-->
-
       <div class="second-grid">
         <div class="event-button-position">
           <section>
