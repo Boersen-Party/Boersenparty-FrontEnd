@@ -19,4 +19,8 @@ export class AddDrinkItemWindowComponent {
 
   }
 
+  onClick() {
+    console.log("Button clicked!");
+  }
+
 }
