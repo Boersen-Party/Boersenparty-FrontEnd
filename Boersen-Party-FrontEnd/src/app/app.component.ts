@@ -6,6 +6,8 @@ import {EventTriggerWindowComponent} from './event-trigger-window/event-trigger-
 import {PriceEntryTabComponent} from './price-entry-tab/price-entry-tab.component';
 import { CreatePartyButtonClickWindowComponent } from "./create-party-button-click-window/create-party-button-click-window.component";
 
+
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -53,6 +55,6 @@ import { CreatePartyButtonClickWindowComponent } from "./create-party-button-cli
   `,
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent{
   title = 'Boersen-Party';
 }
