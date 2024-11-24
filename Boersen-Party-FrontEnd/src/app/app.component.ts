@@ -8,10 +8,13 @@ import { CreatePartyButtonClickWindowComponent } from "./create-party-button-cli
 
 
 
+import {AddDrinkItemWindowComponent} from './add-drink-item-window/add-drink-item-window.component';
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, PriceOverviewComponent, CommonModule, PriceEntryTabComponent, EventTriggerWindowComponent, CreatePartyButtonClickWindowComponent],
+  imports: [RouterOutlet, PriceOverviewComponent, CommonModule, PriceEntryTabComponent, EventTriggerWindowComponent, CreatePartyButtonClickWindowComponent, AddDrinkItemWindowComponent],
+
   template: `
     <div class= "main-grid">
       <!--Grid for Price Overview Element-->
@@ -28,7 +31,6 @@ import { CreatePartyButtonClickWindowComponent } from "./create-party-button-cli
       <!-- End of Grid-->
 
       <!--Grid for Event Trigger-->
-
       <div class="second-grid">
         <div class="event-button-position">
           <section>
