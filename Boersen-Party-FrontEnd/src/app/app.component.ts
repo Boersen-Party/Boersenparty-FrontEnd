@@ -4,13 +4,17 @@ import { PriceOverviewComponent } from './price-overview/price-overview.componen
 import { CommonModule } from '@angular/common';
 import {EventTriggerWindowComponent} from './event-trigger-window/event-trigger-window.component';
 import {PriceEntryTabComponent} from './price-entry-tab/price-entry-tab.component';
+import { CreatePartyButtonClickWindowComponent } from "./create-party-button-click-window/create-party-button-click-window.component";
+
+
 
 import {AddDrinkItemWindowComponent} from './add-drink-item-window/add-drink-item-window.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, PriceOverviewComponent, CommonModule, PriceEntryTabComponent, EventTriggerWindowComponent, AddDrinkItemWindowComponent],
+  imports: [RouterOutlet, PriceOverviewComponent, CommonModule, PriceEntryTabComponent, EventTriggerWindowComponent, CreatePartyButtonClickWindowComponent, AddDrinkItemWindowComponent],
+
   template: `
     <div class= "main-grid">
       <!--Grid for Price Overview Element-->
@@ -35,7 +39,7 @@ import {AddDrinkItemWindowComponent} from './add-drink-item-window/add-drink-ite
         </div>
 
         <div class="general-statistic-1">
-          <h1>General Statistic Space 1</h1>
+          <app-create-party-button-click-window/>
         </div>
 
         <div class="general-statistic-2">
@@ -53,6 +57,6 @@ import {AddDrinkItemWindowComponent} from './add-drink-item-window/add-drink-ite
   `,
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent{
   title = 'Boersen-Party';
 }
