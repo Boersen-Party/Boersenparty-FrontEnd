@@ -4,14 +4,14 @@ import { PriceOverviewComponent } from './price-overview/price-overview.componen
 import { CommonModule } from '@angular/common';
 import {EventTriggerWindowComponent} from './event-trigger-window/event-trigger-window.component';
 import {PriceEntryTabComponent} from './price-entry-tab/price-entry-tab.component';
+import {GeneralStatisticsComponent} from './general-statistics/general-statistics.component';
 import { CreatePartyButtonClickWindowComponent } from "./create-party-button-click-window/create-party-button-click-window.component";
 import {AddDrinkItemWindowComponent} from './add-drink-item-window/add-drink-item-window.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, PriceOverviewComponent, CommonModule, PriceEntryTabComponent, EventTriggerWindowComponent, CreatePartyButtonClickWindowComponent, AddDrinkItemWindowComponent],
-
+  imports: [RouterOutlet, PriceOverviewComponent, CommonModule, PriceEntryTabComponent, EventTriggerWindowComponent, GeneralStatisticsComponent, CreatePartyButtonClickWindowComponent, AddDrinkItemWindowComponent],
   template: `
     <div class= "main-grid">
       <!--Grid for Price Overview Element-->
@@ -28,6 +28,7 @@ import {AddDrinkItemWindowComponent} from './add-drink-item-window/add-drink-ite
       <!-- End of Grid-->
 
       <!--Grid for Event Trigger-->
+
       <div class="second-grid">
         <div class="event-button-position">
           <section>
@@ -44,7 +45,9 @@ import {AddDrinkItemWindowComponent} from './add-drink-item-window/add-drink-ite
         </div>
 
         <div class="general-statistic-3">
-          <h1>General Statistic Space 3</h1>
+          <section>
+            <app-general-statistics/>
+          </section>
         </div>
 
       </div>
