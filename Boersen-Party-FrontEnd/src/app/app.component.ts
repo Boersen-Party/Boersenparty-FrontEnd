@@ -5,11 +5,13 @@ import { CommonModule } from '@angular/common';
 import {EventTriggerWindowComponent} from './event-trigger-window/event-trigger-window.component';
 import {PriceEntryTabComponent} from './price-entry-tab/price-entry-tab.component';
 import {GeneralStatisticsComponent} from './general-statistics/general-statistics.component';
+import { CreatePartyButtonClickWindowComponent } from "./create-party-button-click-window/create-party-button-click-window.component";
+import {AddDrinkItemWindowComponent} from './add-drink-item-window/add-drink-item-window.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, PriceOverviewComponent, CommonModule, PriceEntryTabComponent, EventTriggerWindowComponent, GeneralStatisticsComponent],
+  imports: [RouterOutlet, PriceOverviewComponent, CommonModule, PriceEntryTabComponent, EventTriggerWindowComponent, GeneralStatisticsComponent, CreatePartyButtonClickWindowComponent, AddDrinkItemWindowComponent],
   template: `
     <div class= "main-grid">
       <!--Grid for Price Overview Element-->
@@ -35,9 +37,7 @@ import {GeneralStatisticsComponent} from './general-statistics/general-statistic
         </div>
 
         <div class="general-statistic-1">
-          <section>
-            <app-general-statistics/>
-          </section>
+          <app-create-party-button-click-window/>
         </div>
 
         <div class="general-statistic-2">
@@ -45,7 +45,9 @@ import {GeneralStatisticsComponent} from './general-statistics/general-statistic
         </div>
 
         <div class="general-statistic-3">
-          <h1>General Statistic Space 3</h1>
+          <section>
+            <app-general-statistics/>
+          </section>
         </div>
 
       </div>
@@ -55,6 +57,6 @@ import {GeneralStatisticsComponent} from './general-statistics/general-statistic
   `,
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent{
   title = 'Boersen-Party';
 }

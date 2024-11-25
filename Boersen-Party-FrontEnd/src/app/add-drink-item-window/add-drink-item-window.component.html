@@ -1,33 +1,33 @@
-<div class="w-120 h-120 bg-purple-600 rounded-lg shadow-lg p-4 flex flex-col items-center justify-between fixed bottom-4 right-5">
-    
-    <button class="absolute top-2 right-4 text-white text-3xl" (click)="hideWindow()">
-        &times;
-      </button>
+<div class="add-drink relative">
 
-    <div class="text-white text-xl font-semibold mb-6">
-      Add a Drink
-    </div>
-  
-    
-    <div class="w-full flex flex-col space-y-4">
-      <input type="text" class="rounded text-blue-500 p-2" placeholder="Drink Name" />
-      <input type="text" class="rounded text-blue-500 p-2" placeholder="Base Price" />
-      <input type="text" class="rounded text-blue-500 p-2" placeholder="Quantity" />
-      <input type="text" class="rounded text-blue-500 p-2" placeholder="Description" />
-    </div>
+  <button class="button absolute right-5 top-2" (click)="hideWindow()">
+    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#ffffff"><path d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z"/></svg>
+  </button>
 
-    <div class="mt-6 flex justify-center w-full">
-        <div class="flex w-96 bg-green-300 shadow rounded-lg py-4 px-16">
-          <p class="m-auto text-xl font-semibold leading-7 text-center text-gray-800">Add Drink</p>
-          <div class="ml-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </div>
-        </div>
+  <div class="add-drink bg-box flex flex-col gap-3 p-8">
+
+    <p class="text-center text-3xl text-gray-300 mb-4 font-semibold">Add Drink</p>
+
+    <label for="drinkName" class="text-lg font-medium">Geben Sie dem Getränk einen Namen</label>
+    <input id="drinkName" class="bg-white w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-offset-2" placeholder="Drink Name">
+
+    <label for="basePrice" class="text-lg font-medium">Geben Sie dem Getränk einen Preis</label>
+    <input type="number" min="0" id="basePrice" class="bg-white w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-offset-2" placeholder="Preis">
+
+    <label for="quantity" class="text-lg font-medium">Geben Sie dem Getränk eine Quantity</label>
+    <input type="number" min="0" id="quantity" class="bg-white w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-offset-2" placeholder="Quantity">
+
+    <label for="description" class="text-lg font-medium">Geben Sie dem Getränk eine Beschreibung</label>
+    <input id="description" class="bg-white w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-offset-2" placeholder="Beschreibung">
+
+    <button class="text-left h-14 shadow-xl relative text-xl font-medium group" (click)="onClick()">
+
+      <div class="bg-white rounded-xl h-10 w-10 grid place-items-center absolute right-0 top-1.5 group-hover:w-full z-10 duration-500">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
       </div>
-    
-      <!-- Quelle für button: https://www.creative-tim.com/twcomponents/component/material-buttons -->
-       
+
+      <p class="translate-x-4">Add Drink</p>
+    </button>
+
   </div>
-  
+</div>

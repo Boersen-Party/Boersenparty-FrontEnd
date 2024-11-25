@@ -1,8 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common'
 
-
-
 @Component({
   selector: 'app-add-drink-item-window',
   standalone: true,
@@ -10,6 +8,7 @@ import { CommonModule } from '@angular/common'
   templateUrl: './add-drink-item-window.component.html',
   styleUrls: ['./add-drink-item-window.component.css']
 })
+
 export class AddDrinkItemWindowComponent {
   @Output() close = new EventEmitter<void>();
 
@@ -17,9 +16,11 @@ export class AddDrinkItemWindowComponent {
   hideWindow() {
     console.log("Closing AddDrinkWindow");
     this.close.emit();
-    
+
+  }
+
+  onClick() {
+    console.log("Button clicked!");
   }
 
 }
-
-
