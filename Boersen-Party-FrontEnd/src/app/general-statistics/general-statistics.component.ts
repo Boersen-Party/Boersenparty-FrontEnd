@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { Chart, registerables } from 'chart.js';
-Chart.register(...registerables);
 import {BaseChartDirective} from 'ng2-charts';
 import Chart from 'chart.js/auto';
 
