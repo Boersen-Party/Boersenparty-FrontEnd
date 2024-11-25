@@ -1,0 +1,31 @@
+.price-overview-position{
+  grid-column: 1/4;
+  grid-row: 3;
+}
+
+.statistic-box{
+  grid-column: 2/51;
+  grid-row: 1;
+  border: 1px solid green;
+  color: white;
+}
+
+.favorite-box{
+  grid-column: 1/25;
+  grid-row: 2;
+  border: 1px solid green;
+  color: white;
+}
+.type-box{
+  grid-column: 25/51;
+  grid-row: 2;
+  border: 1px solid green;
+  color: white;
+}
+
+.night-mode-box{
+  grid-column: 1;
+  grid-row: 1;
+  border: 1px solid green;
+  color: white;
+}
