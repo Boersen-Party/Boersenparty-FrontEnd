@@ -1,31 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { PartyService, Party } from '../services/party.service';
+import { FormsModule } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-create-party-button-click-window',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './create-party-button-click-window.component.html',
   styleUrls: ['./create-party-button-click-window.component.css']
 })
-export class CreatePartyButtonClickWindowComponent implements OnInit {
+export class CreatePartyButtonClickWindowComponent {
 
-  startDatePlaceholder: string = '';
-  endDatePlaceholder: string = '';
+  constructor(private partyService: PartyService) {}
 
-  ngOnInit(): void {
-    this.setDatePlaceholders();
-  }
+  partyname : string = '';
+  start_date: string = '';
+  end_date: string = '';
 
-  setDatePlaceholders() {
-    const today = new Date();
-    const twoDaysLater = new Date(today);
-    twoDaysLater.setDate(today.getDate() + 2);
+  onSubmit() {
+    const party: Party = {
+      name: this.partyname,
+      start_date: this.start_date,
+      end_date: this.end_date,
+    };
+  
+    this.partyService.createParty(party).subscribe({
+      next: (response) => {
+        console.log('Party created successfully:', response);
+      },
+      error: (error) => {
+        console.error('Error creating party:', error);
+      },
+      complete: () => {
+        console.log('Request completed!');
+      },
+    });
 
-    // Format the date to yyyy-mm-dd format
-    const todayFormatted = today.toISOString().split('T')[0];
-    const twoDaysLaterFormatted = twoDaysLater.toISOString().split('T')[0];
+}
 
-    this.startDatePlaceholder = todayFormatted;
-    this.endDatePlaceholder = twoDaysLaterFormatted;
-  }
 }
