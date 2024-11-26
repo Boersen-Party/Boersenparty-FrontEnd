@@ -4,11 +4,10 @@ import { RouterOutlet } from '@angular/router';
 import Chart from 'chart.js/auto';
 
 @Component({
-  selector: 'app-general-statistics',
-  standalone: true,
-  imports: [],
-  templateUrl: './general-statistics.component.html',
-  styleUrl: './general-statistics.component.css'
+    selector: 'app-general-statistics',
+    imports: [],
+    templateUrl: './general-statistics.component.html',
+    styleUrl: './general-statistics.component.css'
 })
 export class GeneralStatisticsComponent {
   public chart: any = [];

@@ -2,11 +2,10 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common'
 
 @Component({
-  selector: 'app-add-drink-item-window',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './add-drink-item-window.component.html',
-  styleUrls: ['./add-drink-item-window.component.css']
+    selector: 'app-add-drink-item-window',
+    imports: [CommonModule],
+    templateUrl: './add-drink-item-window.component.html',
+    styleUrls: ['./add-drink-item-window.component.css']
 })
 
 export class AddDrinkItemWindowComponent {

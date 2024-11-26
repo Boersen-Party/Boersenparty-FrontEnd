@@ -5,11 +5,10 @@ import { FormsModule } from '@angular/forms';
 
 
 @Component({
-  selector: 'app-create-party-button-click-window',
-  standalone: true,
-  imports: [FormsModule],
-  templateUrl: './create-party-button-click-window.component.html',
-  styleUrls: ['./create-party-button-click-window.component.css']
+    selector: 'app-create-party-button-click-window',
+    imports: [FormsModule],
+    templateUrl: './create-party-button-click-window.component.html',
+    styleUrls: ['./create-party-button-click-window.component.css']
 })
 export class CreatePartyButtonClickWindowComponent {
 
