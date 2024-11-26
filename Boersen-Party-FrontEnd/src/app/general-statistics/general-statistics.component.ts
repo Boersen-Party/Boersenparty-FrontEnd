@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import {BaseChartDirective} from 'ng2-charts';
 import Chart from 'chart.js/auto';
 
 @Component({
   selector: 'app-general-statistics',
   standalone: true,
-  imports: [BaseChartDirective],
+  imports: [],
   templateUrl: './general-statistics.component.html',
   styleUrl: './general-statistics.component.css'
 })
