@@ -44,7 +44,11 @@ ngOnInit(): void {
 }
 
 setPlaceholders() {
+
   const today = new Date(); 
+  //local timezone is 1h behind Germany
+  // extra 5 minutes for the user because start_date cannot be in the future
+  today.setMinutes(today.getMinutes() - today.getTimezoneOffset() + 5);
   const dayLater = new Date(today);
   dayLater.setDate(today.getDate() + 1);
   // Format the dates to `yyyy-MM-ddTHH:mm` for `datetime-local`
