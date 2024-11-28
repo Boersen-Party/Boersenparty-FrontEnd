@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import {AddDrinkItemWindowComponent} from '../add-drink-item-window/add-drink-item-window.component';
 
 @Component({
-    selector: 'app-price-entry-tab',
-    imports: [AddDrinkItemWindowComponent],
-    templateUrl: './price-entry-tab.component.html',
-    styleUrl: './price-entry-tab.component.css'
+  standalone: true,
+  selector: 'app-price-entry-tab',
+  imports: [AddDrinkItemWindowComponent],
+  templateUrl: './price-entry-tab.component.html',
+  styleUrl: './price-entry-tab.component.css'
 })
 export class PriceEntryTabComponent {
 

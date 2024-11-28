@@ -9,9 +9,10 @@ import { CreatePartyButtonClickWindowComponent } from "./create-party-button-cli
 import {AddDrinkItemWindowComponent} from './add-drink-item-window/add-drink-item-window.component';
 
 @Component({
-    selector: 'app-root',
-    imports: [RouterOutlet, PriceOverviewComponent, CommonModule, PriceEntryTabComponent, EventTriggerWindowComponent, GeneralStatisticsComponent, CreatePartyButtonClickWindowComponent, AddDrinkItemWindowComponent],
-    template: `
+  standalone: true,
+  selector: 'app-root',
+  imports: [RouterOutlet, PriceOverviewComponent, CommonModule, PriceEntryTabComponent, EventTriggerWindowComponent, GeneralStatisticsComponent, CreatePartyButtonClickWindowComponent, AddDrinkItemWindowComponent],
+  template: `
     <div class= "main-grid">
       <!--Grid for Price Overview Element-->
       <div class="price-overiew-position">
@@ -54,7 +55,7 @@ import {AddDrinkItemWindowComponent} from './add-drink-item-window/add-drink-ite
 
     </div>
   `,
-    styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent{
   title = 'Boersen-Party';
