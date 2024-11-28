@@ -25,11 +25,33 @@ export class CreatePartyButtonClickWindowComponent implements OnInit{
       start_date: this.start_date,
       end_date: this.end_date,
     };
+    
+
+  const validationResult = this.validatePartyDetails(party);
   
+  if (validationResult !== true) {
+    console.log(validationResult);
+    return;
+  }
+
     this.partyService.createParty(party);
 
 }
+validatePartyDetails(party: Party): string | boolean {
+  if (!party.name || party.start_date.length !== 16 || party.end_date.length !== 16) {
+    return "Please fill out all details and ensure dates are in YYYY-MM-DDTHH:mm format!";
+  }
 
+  const currentDate = new Date();
+  const startDate = new Date(party.start_date);
+  const endDate = new Date(party.end_date);
+
+  if (startDate <= currentDate || endDate <= currentDate || endDate <= startDate) {
+    return "Start and end dates must be in the future, with the end date after the start date!";
+  }
+
+  return true;
+}
 
  /*
 
