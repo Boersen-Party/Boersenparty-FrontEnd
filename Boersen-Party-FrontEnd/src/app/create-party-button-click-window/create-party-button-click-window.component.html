@@ -1,0 +1,18 @@
+<div class="rounded-box bg-box flex flex-col gap-2 p-8">
+
+  <p class="text-center text-3xl text-gray-300 mb-4">Create Party</p>
+  <label for="partyName" class="text-lg font-medium">Geben Sie der Party einen Namen</label>
+  <input id="partyName" [(ngModel)]="partyname" class="bg-white w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-offset-2" placeholder="Partyname">
+
+  <label for="startDate" class="text-lg font-medium">Start Datum</label>
+
+  <input id="startDate" [(ngModel)]="start_date" type="datetime-local" class="bg-white w-full rounded-lg border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-offset-2">
+
+  <label for="endDate" class="text-lg font-medium">End Datum</label>
+  <input id="endDate" [(ngModel)]="end_date" type="datetime-local" class="bg-white w-full rounded-lg border px-4 py-3 focus:outline-none focus:ring-2 focus:ring-offset-2">
+
+
+  <button
+  (click)="onSubmit()"
+   class="inline-block cursor-pointer rounded-md bg-gray-700 px-4 py-3.5 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-95">Create</button>
+</div>
