@@ -21,7 +21,6 @@
     "@angular/platform-server": "^19.0.0",
     "@angular/router": "^19.0.0",
     "@angular/ssr": "^19.0.2",
-    "@swimlane/ngx-charts": "^21.0.0",
     "chart.js": "^4.4.6",
     "express": "^4.18.2",
     "ng2-charts": "^6.0.1",
