@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { PartyService, Party } from '../services/party.service';
+import { PartyServiceService}  from '../services/party-service.service';
 import { FormsModule } from '@angular/forms';
+import { Party } from '../_model/party';
 
 
 
@@ -12,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class CreatePartyButtonClickWindowComponent {
 
-  constructor(private partyService: PartyService) {}
+  constructor(public partyService: PartyServiceService) {}
 
   partyname : string = '';
   start_date: string = '';
@@ -25,17 +26,7 @@ export class CreatePartyButtonClickWindowComponent {
       end_date: this.end_date,
     };
   
-    this.partyService.createParty(party).subscribe({
-      next: (response) => {
-        console.log('Party created successfully:', response);
-      },
-      error: (error) => {
-        console.error('Error creating party:', error);
-      },
-      complete: () => {
-        console.log('Request completed!');
-      },
-    });
+    this.partyService.createParty(party);
 
 }
 
