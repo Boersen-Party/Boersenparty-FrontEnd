@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PartyService, Party } from '../services/party.service';
+import { PartyService, Party } from '../../services/party.service';
 import { FormsModule } from '@angular/forms';
 
 
