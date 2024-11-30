@@ -1,30 +1,63 @@
-<div class="flex items-center justify-center min-h-screen bg-[#1a1c2c]">
+<div class="flex items-center justify-center max-h-full bg-[#394598] p-4">
   <!-- Kasten -->
-  <div class="bg-[#262837] border border-gray-500 rounded-lg shadow-lg p-6 w-96">
+  <div class="bg-[#262837] border border-gray-500 rounded-lg shadow-lg p-6 w-96 relative"> <!-- Set relative positioning on the parent div -->
     <!-- Überschrift -->
-    <h2 class="text-white text-lg font-semibold text-center mb-4">
-      Eventtrigger ausloesen
-    </h2>
+    <h1 class="text-white text-3xl font-semibold text-center mb-5">
+      Events
+    </h1>
+    
+    <div class="flex items-center bg-[#191b29] px-4 py-2 rounded-md mb-4">
+      <h3 class="text-white font-semibold text-left mr-2">
+        Aktive events: <span class="ml-8">0</span>
+      </h3>
+      <span class="text-white text-xl ml-auto">ℹ️</span>
+    </div>
+    
     <!-- Button -->
     <div class="flex justify-center mb-4">
       <button
-        class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-400"
-        (click)="triggerEvent()"
-      >
-        Button
-      </button>
+      class="bg-gradient-to-r from-red-600 via-purple-500 to-green-500 text-white px-4 py-2 rounded-md hover:from-red-700 hover:to-green-600 focus:outline-none focus:ring focus:ring-red-400"
+      (click)="toggleCreateEventWindow()"
+    >
+      Event anlegen
+    </button>
     </div>
-    <!-- Diagramm -->
-    <div class="bg-gray-300 rounded-md p-4">
-      <svg class="w-full h-24">
-        <!-- Dummy-Diagramm -->
-        <polyline
-          fill="none"
-          stroke="blue"
-          stroke-width="2"
-          points="0,30 10,25 20,30 30,15 40,20 50,25 60,10 70,20 80,30 90,20 100,25"
-        ></polyline>
-      </svg>
-    </div>
+    
+    @if(isSetEventWindowOpen){
+      <div class=" inset-x-0  bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-[#262837] border border-gray-500 rounded-lg shadow-lg p-6 w-96">
+          <h2 class="text-white text-2xl font-semibold text-center mb-4">Event Details</h2>
+
+          <form>
+            <div class="mb-4">
+              <label class="text-white block">Event Typ</label>
+              <select class="w-full px-3 py-2 rounded-md bg-[#1a1c2c] text-white">
+                <option value="boersencrash">Börsencrash</option>
+                <option value="happy_hour">Happy Hour</option>
+              </select>
+            </div>
+
+            <div class="mb-4">
+              <label class="text-white block">Event von</label>
+              <input type="datetime-local" class="w-full px-3 py-2 rounded-md bg-[#1a1c2c] text-white" />
+            </div>
+
+            <div class="mb-4">
+              <label class="text-white block">Event bis</label>
+              <input type="datetime-local" class="w-full px-3 py-2 rounded-md bg-[#1a1c2c] text-white" />
+            </div>
+
+            <div class="flex justify-between">
+              <button type="button" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none" (click)="toggleCreateEventWindow()">
+                Cancel
+              </button>
+              <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 focus:outline-none">
+                Create Event
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    }
   </div>
 </div>
