@@ -6,6 +6,7 @@ module.exports = {
     colors: {
       'box': '#151D32',
       'white': '#ffffff',
+      'blue': '#159AF5'
     },
     extend: {
       boxShadow:{
