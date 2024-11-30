@@ -8,9 +8,9 @@ import { baseURL } from '../_config/config';
 })
 export class PartyServiceService {
 
-  constructor() { 
-    console.log("PartyServiceConstructor called"); 
-    
+  constructor() {
+    console.log("PartyServiceConstructor called");
+
     effect(() => {
       console.log("parties updated:", this.parties());
     });
@@ -30,7 +30,7 @@ export class PartyServiceService {
         //add party
         this.parties.update((parties) => [...parties, createdParty]);
       })
-      .catch((error) => {
+      .catch((error: any) => {
         console.error('Error adding party:', error);
       });
   }
