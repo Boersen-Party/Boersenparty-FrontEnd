@@ -7,13 +7,12 @@
 /bazel-out
 
 # Node
-node_modules
 /node_modules
 npm-debug.log
 yarn-error.log
 
 # IDEs and editors
-.idea
+.idea/
 .project
 .classpath
 .c9/
@@ -22,7 +21,6 @@ yarn-error.log
 *.sublime-workspace
 
 # Visual Studio Code
-.vscode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -42,3 +40,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+node_modules
+.idea

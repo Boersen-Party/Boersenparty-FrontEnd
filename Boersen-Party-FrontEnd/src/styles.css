@@ -4,10 +4,7 @@
 
 html {
   background-color: #0b1326;
-}
-
-html {
-  background-color: #0b1326;
+  font-family: "Inter", sans-serif;
 }
 
 .text {
@@ -33,5 +30,6 @@ html {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: minmax(100px, auto);
   gap: 1em; /* Optional: add spacing between items */
+
   border: 1px solid blue;
 }
