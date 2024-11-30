@@ -8,8 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './event-trigger-window.component.css'
 })
 export class EventTriggerWindowComponent {
+  isSetEventWindowOpen = false;
 
-  triggerEvent() {
-    console.log("test Trigger");
-  }
+  toggleCreateEventWindow() {
+    this.isSetEventWindowOpen = !this.isSetEventWindowOpen;}
+
 }
