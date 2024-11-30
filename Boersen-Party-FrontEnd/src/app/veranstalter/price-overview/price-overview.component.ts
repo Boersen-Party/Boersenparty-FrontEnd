@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common'; // Import CommonModule
 import { PriceOverview } from './priceoverview';
 
 @Component({
-    selector: 'app-price-overview', // Since it's standalone
-    imports: [CommonModule], // Add CommonModule here
-    templateUrl: './price-overview.component.html',
-    styleUrls: ['./price-overview.component.css']
+  standalone: true,
+  selector: 'app-price-overview', // Since it's standalone
+  imports: [CommonModule], // Add CommonModule here
+  templateUrl: './price-overview.component.html',
+  styleUrls: ['./price-overview.component.css']
 })
 export class PriceOverviewComponent {
   @Input() prices: PriceOverview[] = [
