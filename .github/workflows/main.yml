@@ -16,10 +16,6 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@master
 
-      - name: move into "Boersen-Party-FrontEnd"
-        run: |
-          cd Boersen-Party-FrontEnd   
-
       - name: Prepare repository name
         run: |
           echo IMAGE_REPOSITORY=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
@@ -31,8 +27,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./Boersen-Party-FrontEnd/
           push: true
           tags: |
-            ${{ env.IMAGE_REPOSITORY }}:latest
-            ${{ env.IMAGE_REPOSITORY }}:${{ env.BRANCH_NAME }}
+            ghcr.io/${{ env.IMAGE_REPOSITORY }}:latest
+            ghcr.io/${{ env.IMAGE_REPOSITORY }}:${{ env.BRANCH_NAME }}
