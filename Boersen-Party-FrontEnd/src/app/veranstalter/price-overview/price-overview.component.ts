@@ -9,6 +9,7 @@ import { PriceOverview } from './priceoverview';
   templateUrl: './price-overview.component.html',
   styleUrls: ['./price-overview.component.css']
 })
+
 export class PriceOverviewComponent {
   @Input() prices: PriceOverview[] = [
     { id: 1, name: 'Jägermeister', price: 2.7, price_change: 35 },

@@ -1,5 +1,4 @@
 export interface PriceOverview {
-
   id: number;
   name: string;
   price: number;

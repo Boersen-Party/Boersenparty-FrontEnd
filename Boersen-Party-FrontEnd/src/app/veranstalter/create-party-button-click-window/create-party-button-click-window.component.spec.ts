@@ -10,7 +10,7 @@ describe('CreatePartyButtonClickWindowComponent', () => {
     await TestBed.configureTestingModule({
       imports: [CreatePartyButtonClickWindowComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(CreatePartyButtonClickWindowComponent);
     component = fixture.componentInstance;

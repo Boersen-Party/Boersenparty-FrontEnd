@@ -8,6 +8,7 @@ import { CreatePartyButtonClickWindowComponent } from './create-party-button-cli
 
 @Component({
   selector: 'app-veranstalter',
+  standalone: true,
   imports: [PriceOverviewComponent, CommonModule, PriceEntryTabComponent, EventTriggerWindowComponent, GeneralStatisticsComponent, CreatePartyButtonClickWindowComponent],
   template: `
     <div class= "main-grid">
@@ -34,11 +35,11 @@ import { CreatePartyButtonClickWindowComponent } from './create-party-button-cli
         </div>
 
         <div class="general-statistic-1">
-          <app-create-party-button-click-window/>
+          <h1>General Statistic Space 4</h1>
         </div>
 
         <div class="general-statistic-2">
-          <h1>General Statistic Space 2</h1>
+          <app-create-party-button-click-window/>
         </div>
 
         <div class="general-statistic-3">
