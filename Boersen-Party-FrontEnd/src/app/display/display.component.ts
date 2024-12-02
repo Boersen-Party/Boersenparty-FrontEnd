@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { PartyHeaderComponent } from './party-header/party-header.component';
+import { SwipeableStatsgridComponent } from './swipeable-statsgrid/swipeable-statsgrid.component';
 
 @Component({
   selector: 'app-display',
-  imports: [PartyHeaderComponent],
+  imports: [PartyHeaderComponent, SwipeableStatsgridComponent],
   templateUrl: './display.component.html',
   styleUrl: './display.component.css'
 })
