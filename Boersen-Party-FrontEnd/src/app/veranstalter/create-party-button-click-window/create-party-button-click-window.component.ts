@@ -17,6 +17,7 @@ export class CreatePartyButtonClickWindowComponent implements OnInit{
 
   constructor(private partyService: PartyServiceService) {
     effect(() => {
+      console.log("effect called in CreatePartyButtonClickWIndow")
       this.parties = this.partyService.parties();
     });
   }
