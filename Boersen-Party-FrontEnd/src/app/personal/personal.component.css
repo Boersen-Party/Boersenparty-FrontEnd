@@ -6,7 +6,9 @@
 .zwischenSumme{
   grid-column: 1;
   grid-row: 1;
-  border:1px solid green
+
+
+  border:1px solid green;
 }
 
 .grid-2{
