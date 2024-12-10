@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { Party } from '../_model/party';
-import axios from "axios";
+//import axios from "axios";
 import { baseURL } from '../_config/config';
 import { Subject, Subscription, takeUntil, timer } from 'rxjs';
 
@@ -61,7 +61,7 @@ export class PartyServiceService {
   
   
 
-
+/*
   createParty(newParty: Party) {
     console.log('addParty called, URL is: ' + baseURL);
     console.log(newParty);
@@ -78,4 +78,5 @@ export class PartyServiceService {
         console.error('Error adding party:', error);
       });
   }
+      */
 }

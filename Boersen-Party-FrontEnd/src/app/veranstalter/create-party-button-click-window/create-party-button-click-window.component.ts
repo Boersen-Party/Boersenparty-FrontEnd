@@ -50,7 +50,7 @@ export class CreatePartyButtonClickWindowComponent implements OnInit{
       return;
     }
 
-    this.partyService.createParty(party);
+    //this.partyService.createParty(party);
 
   }
   validatePartyDetails(party: Party): string | boolean {
