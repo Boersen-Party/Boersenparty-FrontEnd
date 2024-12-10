@@ -14,11 +14,14 @@ export class CreatePartyButtonClickWindowComponent implements OnInit{
 
   parties: Party[] = [];
 
-
-  constructor(private partyService: PartyServiceService) {
+ //private partyService: PartyServiceService
+  constructor() {
+    /*
     effect(() => {
+      console.log("effect called in CreatePartyButtonClickWIndow")
       this.parties = this.partyService.parties();
     });
+    */
   }
 
   ngOnInit(): void {
@@ -47,7 +50,7 @@ export class CreatePartyButtonClickWindowComponent implements OnInit{
       return;
     }
 
-    this.partyService.createParty(party);
+    //this.partyService.createParty(party);
 
   }
   validatePartyDetails(party: Party): string | boolean {
