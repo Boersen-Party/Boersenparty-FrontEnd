@@ -5,10 +5,11 @@ import { EventsTabComponent } from "../events-tab/events-tab.component";
 
 @Component({
   selector: 'app-swipeable-statsgrid',
+  standalone: true,
   imports: [TrendingItemComponent, MonitorStatsComponent, EventsTabComponent],
   templateUrl: './swipeable-statsgrid.component.html',
   styleUrl: './swipeable-statsgrid.component.css',
-  encapsulation: ViewEncapsulation.None
+  
 })
 export class SwipeableStatsgridComponent {
 }
