@@ -4,6 +4,7 @@ import {SubTotalComponent} from './sub-total/sub-total.component';
 import {PayButtonComponent} from './pay-button/pay-button.component';
 
 @Component({
+  standalone: true,
   selector: 'app-personal',
   standalone: true,
   imports: [PriceOverviewComponent, SubTotalComponent, PayButtonComponent],
