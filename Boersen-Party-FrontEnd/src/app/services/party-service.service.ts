@@ -25,7 +25,8 @@ export class PartyServiceService {
   
   fetchParties() {
     console.log("fetchParties() called");
-  
+    
+    /*
     axios.get(baseURL)
       .then(response => {
         console.log(".then accessed!!, response =");
@@ -54,6 +55,8 @@ export class PartyServiceService {
   
         // Optional: Add more error handling logic
       });
+
+      */
   }
   
   
