@@ -1,32 +1,32 @@
-<div class="add-drink relative">
+<div class="fixed inset-0 flex items-center justify-start bg-opacity-50 z-50">
 
-  <button class="button absolute right-5 top-2" (click)="hideWindow()">
-    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#ffffff"><path d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z"/></svg>
-  </button>
+  <div class="add-drink relative flex flex-col gap-2 p-4 rounded-lg shadow-lg max-w-xs w-full ml-10">
 
-  <div class="add-drink bg-box flex flex-col gap-3 p-8">
+    <button class="button absolute right-2 top-1" (click)="hideWindow()">
+      <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="#ffffff">
+        <path d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
+      </svg>
+    </button>
 
-    <p class="text-center text-3xl text-gray-300 mb-4 font-semibold">Add Drink</p>
+    <p class="text-center text-xl text-gray-300 mb-2 font-semibold">Add Drink</p>
 
-    <label for="drinkName" class="text-lg font-medium">Geben Sie dem Getränk einen Namen</label>
-    <input id="drinkName" class="bg-white w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-offset-2" placeholder="Drink Name">
+    <label for="drinkName" class="text-sm font-medium">Getränkenamen</label>
+    <input id="drinkName" class="input-field p-1 text-sm" placeholder="Drink Name">
 
-    <label for="basePrice" class="text-lg font-medium">Geben Sie dem Getränk einen Preis</label>
-    <input type="number" min="0" id="basePrice" class="bg-white w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-offset-2" placeholder="Preis">
+    <label for="basePrice" class="text-sm font-medium">Preis</label>
+    <input type="number" min="0" id="basePrice" class="input-field p-1 text-sm" placeholder="Preis">
 
-    <label for="quantity" class="text-lg font-medium">Geben Sie dem Getränk eine Quantity</label>
-    <input type="number" min="0" id="quantity" class="bg-white w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-offset-2" placeholder="Quantity">
+    <label for="quantity" class="text-sm font-medium">Menge</label>
+    <input type="number" min="0" id="quantity" class="input-field p-1 text-sm" placeholder="Menge">
 
-    <label for="description" class="text-lg font-medium">Geben Sie dem Getränk eine Beschreibung</label>
-    <input id="description" class="bg-white w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-offset-2" placeholder="Beschreibung">
+    <label for="description" class="text-sm font-medium">Beschreibung</label>
+    <input id="description" class="input-field p-1 text-sm" placeholder="Beschreibung">
 
-    <button class="text-left h-14 shadow-xl relative text-xl font-medium group" (click)="onClick()">
-
-      <div class="bg-white rounded-xl h-10 w-10 grid place-items-center absolute right-0 top-1.5 group-hover:w-full z-10 duration-500">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
-      </div>
-
-      <p class="translate-x-4">Add Drink</p>
+    <button class="add-button flex items-center justify-center py-1 px-3 mt-3" (click)="onClick()">
+      <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="#000000">
+        <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+      </svg>
+      <p class="text-sm font-medium ml-2">Add Drink</p>
     </button>
 
   </div>
