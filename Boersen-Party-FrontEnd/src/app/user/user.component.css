@@ -6,16 +6,23 @@
   gap: 1em; /* Optional: add spacing between items */
 }
 
-/*-------Start of Price overview -------*/
-
-.price-overiew-position{
-  grid-row: 3;
-}
-
-/*-------End of Price overview -------*/
-
 /*-------Start of General Statistic -------*/
 
 .general-statistic-user{
   grid-row: 2;
 }
+
+/*-------End of General Statistic -------*/
+/*-------Start of Favorite Item -------*/
+.favorite-item{
+  grid-row: 3
+}
+/*-------End of Favorite Item -------*/
+/*-------Start of Price overview -------*/
+
+.price-overiew-position{
+  grid-row: 4;
+}
+
+/*-------End of Price overview -------*/
+
