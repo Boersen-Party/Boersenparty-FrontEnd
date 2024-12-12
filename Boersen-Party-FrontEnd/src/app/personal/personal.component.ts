@@ -8,7 +8,6 @@ import {ReservationListComponent} from './reservation-list/reservation-list.comp
 @Component({
   standalone: true,
   selector: 'app-personal',
-  standalone: true,
   imports: [PriceOverviewComponent, SubTotalComponent, PayButtonComponent, EventButtonComponent, ReservationListComponent],
   templateUrl: './personal.component.html',
   styleUrl: './personal.component.css'
