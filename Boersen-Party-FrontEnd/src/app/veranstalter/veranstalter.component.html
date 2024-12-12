@@ -1,7 +1,41 @@
-<router-outlet />
-<app-price-overview/>
-<app-event-trigger-window/>
-<app-price-entry-tab/>
-<app-add-drink-item-window/>
-<app-create-party-button-click-window/>
-<app-general-statistics/>
+<div class= "main-grid">
+  <!--Grid for Price Overview Element-->
+  <div class="price-overiew-position">
+
+    <section>
+      <app-price-overview/>
+    </section>
+
+    <section>
+      <app-price-entry-tab/>
+    </section>
+  </div>
+  <!-- End of Grid-->
+
+  <!--Grid for Event Trigger-->
+
+  <div class="second-grid">
+    <div class="event-button-position">
+      <section>
+        <app-event-trigger-window/>
+      </section>
+    </div>
+
+    <div class="general-statistic-1">
+      <h1>General Statistic Space 4</h1>
+    </div>
+
+    <div class="general-statistic-2">
+      <app-create-party-button-click-window/>
+    </div>
+
+    <div class="general-statistic-3">
+      <section>
+        <app-general-statistics/>
+      </section>
+    </div>
+
+  </div>
+  <!-- End of Grid-->
+
+</div>
