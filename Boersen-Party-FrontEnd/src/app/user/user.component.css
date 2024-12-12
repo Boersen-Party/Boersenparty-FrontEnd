@@ -1,1 +1,21 @@
+.user-grid{
+  margin: 1em;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: minmax(5px, auto);
+  gap: 1em; /* Optional: add spacing between items */
+}
 
+/*-------Start of Price overview -------*/
+
+.price-overiew-position{
+  grid-row: 3;
+}
+
+/*-------End of Price overview -------*/
+
+/*-------Start of General Statistic -------*/
+
+.general-statistic-user{
+  grid-row: 2;
+}
