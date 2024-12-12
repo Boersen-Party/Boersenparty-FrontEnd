@@ -6,6 +6,7 @@ import {EventButtonComponent} from './event-button/event-button.component';
 import {ReservationListComponent} from './reservation-list/reservation-list.component';
 
 @Component({
+  standalone: true,
   selector: 'app-personal',
   standalone: true,
   imports: [PriceOverviewComponent, SubTotalComponent, PayButtonComponent, EventButtonComponent, ReservationListComponent],
