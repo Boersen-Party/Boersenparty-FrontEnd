@@ -2,11 +2,11 @@ import { ApplicationConfig, APP_INITIALIZER, importProvidersFrom } from '@angula
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser'; // add provideAnimations
+import { BrowserModule,provideAnimations } from '@angular/platform-browser'; // add provideAnimations
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { KeycloakAngularModule } from 'keycloak-angular';
-// import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; // Konflikte mit Angular 18
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; // Konflikte mit Angular 18
 
 import { routes } from './app.routes';
 
@@ -22,9 +22,9 @@ export const appConfig: ApplicationConfig = {
       HttpClientModule,
       MatSnackBarModule,
       KeycloakAngularModule,
-      // NgbModule
+      NgbModule
     ),
-    // provideAnimations(),
+    provideAnimations(),
     {
       provide: APP_INITIALIZER,
       useFactory: initializeKeycloak,
