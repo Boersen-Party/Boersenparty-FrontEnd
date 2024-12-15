@@ -1,5 +1,5 @@
 import { Component, effect, OnInit } from '@angular/core';
-import { PartyServiceService } from '../../services/party-service.service';
+import { PartyServiceService } from '../../_services/party-service.service';
 import { Party } from '../../_model/party';
 
 @Component({
