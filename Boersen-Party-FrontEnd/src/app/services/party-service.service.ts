@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { Party } from '../_model/party';
-//import axios from "axios";
+import axios from "axios";
 import { baseURL } from '../_config/config';
 import { Subject, Subscription, takeUntil, timer } from 'rxjs';
 
@@ -9,7 +9,7 @@ import { Subject, Subscription, takeUntil, timer } from 'rxjs';
 })
 
 export class PartyServiceService {
-  timer = timer(0, 30000)
+  timer = timer(0, 3000)
   parties = signal<Party[]>([]);
 
 
@@ -26,7 +26,7 @@ export class PartyServiceService {
   fetchParties() {
     console.log("fetchParties() called");
     
-    /*
+    
     axios.get(baseURL)
       .then(response => {
         console.log(".then accessed!!, response =");
@@ -56,12 +56,12 @@ export class PartyServiceService {
         // Optional: Add more error handling logic
       });
 
-      */
+      
   }
   
   
 
-/*
+
   createParty(newParty: Party) {
     console.log('addParty called, URL is: ' + baseURL);
     console.log(newParty);
@@ -78,5 +78,5 @@ export class PartyServiceService {
         console.error('Error adding party:', error);
       });
   }
-      */
+      
 }
