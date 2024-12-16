@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PriceOverviewUserComponent } from './price-overview-user.component';
+import { DrinkPriceOverviewUserComponent } from './drink-price-overview-user.component';
 
 describe('PriceOverviewComponent', () => {
-  let component: PriceOverviewUserComponent;
-  let fixture: ComponentFixture<PriceOverviewUserComponent>;
+  let component: DrinkPriceOverviewUserComponent;
+  let fixture: ComponentFixture<DrinkPriceOverviewUserComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PriceOverviewUserComponent]
+      imports: [DrinkPriceOverviewUserComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PriceOverviewUserComponent);
+    fixture = TestBed.createComponent(DrinkPriceOverviewUserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

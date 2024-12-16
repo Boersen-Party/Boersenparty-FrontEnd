@@ -4,13 +4,13 @@ import { PriceOverview } from './priceoverview';
 
 @Component({
   standalone: true,
-  selector: 'app-price-overview-user',
+  selector: 'app-drink-price-overview-user',
   imports: [CommonModule],
-  templateUrl: './price-overview-user.component.html',
-  styleUrls: ['./price-overview-user.component.css']
+  templateUrl: './drink-price-overview-user.component.html',
+  styleUrls: ['./drink-price-overview-user.component.css']
 })
 
-export class PriceOverviewUserComponent {
+export class DrinkPriceOverviewUserComponent {
   @Input() prices: PriceOverview[] = [
     { id: 1, name: 'Jägermeister', price: 2.7, price_change: 35 },
     { id: 2, name: 'Caipirinha', price: 9.9, price_change: -35 },
