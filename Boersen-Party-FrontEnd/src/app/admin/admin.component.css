@@ -1,9 +1,9 @@
 .admin-grid {
-  margin: 1.5em;
+  margin: 5em;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: minmax(10px, auto);
-  gap: 1em; /* Optional: add spacing between items */
+  gap: 10em; /* Optional: add spacing between items */
 
   border: 1px solid blue;
 }
@@ -12,26 +12,26 @@
   grid-column: 1;
   grid-row: 1;
   border: 1px solid red;
-  height: 50px;
+  height: 20px;
 }
 
 .part2 {
   grid-column: 2;
   grid-row: 1;
   border: 1px solid red;
-  height: 50px;
+  height: 20px;
 }
 
 .part3 {
   grid-column: 1;
   grid-row: 2;
   border: 1px solid red;
-  height: 50px;
+  height: 20px;
 }
 
 .part4 {
   grid-column: 2;
   grid-row: 2;
   border: 1px solid red;
-  height: 50px;
+  height: 20px;
 }
