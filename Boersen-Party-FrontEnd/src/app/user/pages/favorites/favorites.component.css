@@ -1,0 +1,35 @@
+.favorite-grid{
+  margin: 1em;
+  margin-bottom: 15%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: minmax(5px, auto);
+  align-items: center;
+  text-align: center;
+}
+
+.favorite-h1-position{
+  grid-row: 1;
+  color: white;
+  font-size: 2em;
+  text-decoration: underline;
+  margin-bottom: 0.25em;
+}
+
+.trending-h2-position{
+  grid-row: 2;
+  text-align: left;
+  color: white;
+  font-size: 1.25em;
+  margin-top: 1em;
+  margin-bottom: 0.25em;
+}
+
+.all-h2-position{
+  grid-row: 3;
+  text-align: left;
+  color: white;
+  font-size: 1.25em;
+  margin-top: 1em;
+  margin-bottom: 0.25em;
+}
