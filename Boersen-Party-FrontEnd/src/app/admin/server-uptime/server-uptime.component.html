@@ -1,5 +1,24 @@
-<div class="part4">
-  <div class="title-box">
-    <span class="title">Server Uptime</span>
+<div class="background">
+  <div class="part4">
+   <div class="title-box">
+     <span class="title">Server Uptime</span>
+   </div>
+  </div>
+
+  <!-- Availability Widget -->
+  <div class="availability-container">
+    <h3>Availability: <span class="percentage">{{ availabilityPercentage }} %</span></h3>
+    <div class="progress-bar">
+      <!-- Verfügbarkeit -->
+      <div
+        class="bar available"
+        [style.width.%]="availabilityPercentage">
+      </div>
+      <!-- Ausfall -->
+      <div
+        class="bar unavailable"
+        [style.width.%]="unavailablePercentage">
+      </div>
+    </div>
   </div>
 </div>

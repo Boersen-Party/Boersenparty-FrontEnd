@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './server-uptime.component.css'
 })
 export class ServerUptimeComponent {
-
+  availabilityPercentage: number = 83; // Beispielwert für die Verfügbarkeit
+  unavailablePercentage: number = 100 - this.availabilityPercentage; // Ausfall-Anteil berechnen
 }
