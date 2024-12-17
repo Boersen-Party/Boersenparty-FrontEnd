@@ -29,6 +29,8 @@
 }
 
 canvas {
-  max-width: 100%;
-  height: auto;
+  margin-top: 1rem;
+  width: 100%; /* Vollständige Breite */
+  height: 15rem; /* Höhe des Graphen */
+  max-height: 14rem;
 }

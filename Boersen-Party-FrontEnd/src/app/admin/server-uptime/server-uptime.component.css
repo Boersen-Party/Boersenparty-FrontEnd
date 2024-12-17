@@ -44,6 +44,8 @@
   border-radius: 5px;
   overflow: hidden;
   margin-top: 0.5rem;
+  justify-content: center; /* Zentriert horizontal */
+  align-items: center; /* Zentriert vertikal */
 }
 
 .bar {

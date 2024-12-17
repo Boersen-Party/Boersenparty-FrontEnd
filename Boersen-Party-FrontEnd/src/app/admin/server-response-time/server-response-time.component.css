@@ -17,6 +17,8 @@
 }
 
 canvas {
+  margin-top: 1rem;
   width: 100%; /* Vollständige Breite */
   height: 15rem; /* Höhe des Graphen */
+  max-height: 15rem;
 }
