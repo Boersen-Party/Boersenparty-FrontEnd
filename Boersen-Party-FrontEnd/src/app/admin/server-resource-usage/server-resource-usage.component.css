@@ -13,4 +13,22 @@
   font-weight: bold; /* Make the title bold */
   color: white;
   font-family: "Inter", sans-serif;
+  margin-bottom: 1rem;
+}
+
+.charts-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.chart-box {
+  width: 45%; /* Anpassung für zwei Diagramme */
+  position: relative;
+}
+
+canvas {
+  max-width: 100%;
+  height: auto;
 }
