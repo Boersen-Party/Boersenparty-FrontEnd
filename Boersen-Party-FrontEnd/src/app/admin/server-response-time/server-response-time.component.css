@@ -13,10 +13,10 @@
   font-weight: bold; /* Make the title bold */
   color: white;
   font-family: "Inter", sans-serif;
+  margin-bottom: 1rem;
 }
 
-.graph-image {
-  margin-top: 1rem; /* Space between the title and image */
-  max-width: 100%; /* Makes the image responsive */
-  height: auto; /* Maintain aspect ratio */
+canvas {
+  width: 100%; /* Vollständige Breite */
+  height: 15rem; /* Höhe des Graphen */
 }
