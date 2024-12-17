@@ -17,25 +17,25 @@
       <!-- Left -->
       <div class="w-1/2 space-y-2">
         <label for="drinkName" class="text-sm font-medium">Produktname</label>
-        <input id="drinkName" class="input-field p-1 text-sm" placeholder="Produktname">
+        <input id="drinkName" class="input-field p-1 text-sm" placeholder="Produktname" [(ngModel)]="pname">
 
         <label for="basePrice" class="text-sm font-medium">Grundpreis</label>
-        <input type="number" min="0" id="basePrice" class="input-field p-1 text-sm" placeholder="Grundpreis">
+        <input type="number" min="0" id="basePrice" class="input-field p-1 text-sm" placeholder="Grundpreis" [(ngModel)]="basePrice" (ngModelChange)="calculateMinMaxPrices()">
 
         <label for="maxPrice" class="text-sm font-medium">Max-Preis</label>
-        <input type="number" min="0" class="input-field p-1 text-sm" placeholder="Max-Preis">
+        <input type="number" min="0" id="maxPrice" class="input-field p-1 text-sm" placeholder="Max-Preis" [(ngModel)]="maxPrice">
 
         <label for="minPrice" class="text-sm font-medium">Minimal-Preis</label>
-        <input type="number" min="0" class="input-field p-1 text-sm" placeholder="Minimal-Preis">
+        <input type="number" min="0" id="minPrice" class="input-field p-1 text-sm" placeholder="Minimal-Preis" [(ngModel)]="minPrice">
       </div>
 
       <!-- Right -->
       <div class="w-1/2 space-y-2">
         <label for="quantity" class="text-sm font-medium">Menge</label>
-        <input type="number" min="0" id="quantity" class="input-field p-1 text-sm" placeholder="Menge">
+        <input type="number" min="0" id="quantity" class="input-field p-1 text-sm" placeholder="Menge" [(ngModel)]="quantity">
 
         <label for="producttype" class="text-sm font-medium">Produkt-typ</label>
-        <select id="producttype" class="input-field p-1 text-sm">
+        <select id="producttype" class="input-field p-1 text-sm" [(ngModel)]="productType">
           <option value="alkoholfrei">alkoholfrei</option>
           <option value="mit Alkohol">mit Alkohol</option>
           <option value="Snack">Snack</option>
@@ -43,14 +43,14 @@
         
 
         <label for="description" class="text-sm font-medium">Beschreibung</label>
-        <input id="description" class="input-field p-1 text-sm" placeholder="Beschreibung (optional)">
+        <input id="description" class="input-field p-1 text-sm" placeholder="Beschreibung (optional)" [(ngModel)]="description">
          
 
         <label for="productimage" class="text-sm font-medium" (click)="toggleImageSelector()">Bild</label>
-        <img src="https://static.vecteezy.com/system/resources/thumbnails/014/440/983/small/image-icon-design-in-blue-circle-png.png" (click)="toggleImageSelector()" alt="Image Selector Icon" class="image-selector-icon w-12 h-12">
+        <img [src]="selectedImageUrl" (click)="toggleImageSelector()" alt="Image Selector Icon" class="image-selector-icon w-12 h-12" [(ngModel)]="selectedImageUrl">
 
         @if(isImageSelectorInputClicked){
-          <app-product-image-selector/>
+          <app-product-image-selector (imageSelected)="selectedImageUrl = $event"/>
         }
 
         
@@ -60,7 +60,7 @@
 
     </div>
 
-    <button class="add-button flex items-center justify-center py-1 px-3 mt-3" (click)="onClick()">
+    <button class="add-button flex items-center justify-center py-1 px-3 mt-3" (click)="submitProductItem()">
       <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="#000000">
         <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
       </svg>

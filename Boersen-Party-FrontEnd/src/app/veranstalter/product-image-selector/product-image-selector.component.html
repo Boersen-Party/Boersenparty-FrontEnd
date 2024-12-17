@@ -1,14 +1,13 @@
+@if(isImageSelectorVisible){
 <div 
   class="absolute inset-0 bg-box rounded-lg m-4 p-6 flex flex-col gap-4 overflow-y-auto shadow-xl z-50">
 
-  <!-- Exit Button -->
   <button 
     class="absolute top-4 right-8 text-white text-2xl font-bold cursor-pointer" 
     (click)="closeImageSelector()">
     &times;
   </button>
 
-  <!-- Title -->
   <h2 class="text-base font-bold text-white mb-4">Bild für das Produkt auswählen:</h2>
 
   <!-- Image Grid -->
@@ -23,7 +22,6 @@
     }
   </div>
 
-  <!-- Bild auswählen Button -->
   @if (selectedImage) {
     <button 
       class="mt-4 px-6 py-2 bg-box text-white text-sm font-bold rounded-lg hover:bg-blue-700 transition-colors"
@@ -32,4 +30,6 @@
     </button>
   }
 </div>
+
+}
 

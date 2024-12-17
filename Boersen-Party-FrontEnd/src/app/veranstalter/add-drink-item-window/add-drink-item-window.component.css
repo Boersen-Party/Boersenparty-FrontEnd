@@ -8,7 +8,6 @@
   animation: pulse 1.5s ease-in-out infinite; 
 }
 
-/* Animation for border */
 @keyframes pulse {
   0% {
     border-color: #9c35a4;
@@ -16,7 +15,7 @@
   }
   50% {
     border-color: #ff61a6; 
-    transform: scale(1.05); 
+    transform: scale(1.01); 
   }
   100% {
     border-color: #9c35a4;

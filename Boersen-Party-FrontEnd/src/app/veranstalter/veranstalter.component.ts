@@ -1,5 +1,4 @@
 import { ChangeDetectorRef, Component, computed } from '@angular/core';
-import { PriceOverviewComponent} from './price-overview/price-overview.component';
 import { CommonModule } from '@angular/common';
 import { EventTriggerWindowComponent } from './event-trigger-window/event-trigger-window.component';
 import { PriceEntryTabComponent } from './price-entry-tab/price-entry-tab.component';
@@ -11,7 +10,7 @@ import { PartyServiceService } from '../_services/party-service.service';
 @Component({
   selector: 'app-veranstalter',
   standalone: true,
-  imports: [PriceOverviewComponent, CommonModule, PriceEntryTabComponent, EventTriggerWindowComponent, GeneralStatisticsComponent, CreatePartyButtonClickWindowComponent, CreatedPartyTabComponent],
+  imports: [ CommonModule, PriceEntryTabComponent, EventTriggerWindowComponent, GeneralStatisticsComponent, CreatePartyButtonClickWindowComponent, CreatedPartyTabComponent],
   templateUrl: `./veranstalter.component.html`,
   styleUrl: './veranstalter.component.css'
 })

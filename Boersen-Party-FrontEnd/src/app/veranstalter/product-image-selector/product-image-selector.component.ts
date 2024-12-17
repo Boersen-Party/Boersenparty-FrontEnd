@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   standalone:true,
@@ -9,15 +9,10 @@ import { Component } from '@angular/core';
   styleUrl: './product-image-selector.component.css'
 })
 export class ProductImageSelectorComponent {
-
-
-  confirmImageSelection() {
-    console.log("lmao");
-  
-}
+  @Output() imageSelected = new EventEmitter<string>();
 
   selectedImage: string = '';
-  isPopupVisible: boolean = true;
+  isImageSelectorVisible: boolean = true;
 
   imageUrls: string[] = [
     'https://cdn-icons-png.flaticon.com/512/1178/1178890.png',
@@ -29,11 +24,16 @@ export class ProductImageSelectorComponent {
 
   selectImage(imageUrl: string): void {
     this.selectedImage = imageUrl;
-    this.isPopupVisible = false;
   }
 
-  closeImageSelector(): void {
-    this.isPopupVisible = !this.isPopupVisible;
-  }
+  
+  confirmImageSelection() {
+    this.imageSelected.emit(this.selectedImage);
+    this.closeImageSelector();
+}
+
+closeImageSelector(): void {
+  this.isImageSelectorVisible = !this.isImageSelectorVisible;
+}
 
 }
