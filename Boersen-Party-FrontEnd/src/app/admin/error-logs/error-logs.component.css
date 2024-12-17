@@ -1,3 +1,8 @@
+.background {
+  background-color: #151D32; /* Background color */
+  height: 20rem;
+}
+
 .title-box {
   border: 1px solid #151D32; /* Border for the box */
   border-radius: 0.3125rem; /* 5px equivalent */ /* Rounded corners */
@@ -5,7 +10,7 @@
   background-color: #151D32; /* Background color */
   box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1); /* Optional shadow */
   text-align: center; /* Center the text within the box */
-  height: 20rem;
+  height: auto;
 }
 
 .title{
@@ -13,4 +18,29 @@
   font-weight: bold; /* Make the title bold */
   color: white;
   font-family: "Inter", sans-serif;
+  margin-bottom: 1rem;
+}
+
+.button-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.button {
+  background-color: #0095FF;
+  color: white;
+  font-size: 1.2rem;
+  font-family: "Inter", sans-serif;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #007ACC;
 }
