@@ -1,0 +1,37 @@
+.favorite-h1-position{
+  grid-row: 1;
+  color: white;
+  font-size: 2em;
+  text-decoration: underline;
+  margin-bottom: 0.25em;
+  display: flex;
+  justify-content: center;
+}
+
+.trending-h2-position{
+  grid-row: 2;
+  text-align: left;
+  margin-left: 10px;
+  color: white;
+  font-size: 1.25em;
+  margin-top: 1em;
+  margin-bottom: 0.25em;
+}
+
+.all-h2-position{
+  grid-row: 3;
+  text-align: left;
+  margin-left: 10px;
+  color: white;
+  font-size: 1.25em;
+  margin-top: 1em;
+  margin-bottom: 0.25em;
+}
+
+.x-scroller{
+  overflow-x: scroll;
+  overflow-y: hidden;
+  width: 95%;
+  margin-left: 2.5%;
+  white-space: nowrap;
+}
