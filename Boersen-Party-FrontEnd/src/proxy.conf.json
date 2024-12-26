@@ -1,0 +1,11 @@
+{
+  "/api": {
+    "target": "https://api.dev.stock-party.live/",
+    "secure": false,
+    "logLevel": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}

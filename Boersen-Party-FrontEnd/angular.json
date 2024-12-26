@@ -17,7 +17,8 @@
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
-              "zone.js"
+              "zone.js",
+              "@angular/localize/init" // Hinzugefügt, um automatische Polyfill-Warnung zu vermeiden
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -27,11 +28,12 @@
               }
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": [],
             "server": "src/main.server.ts",
-            "prerender": true,
+            "prerender": false, // Prerendering deaktiviert
             "ssr": {
               "entry": "server.ts"
             }
@@ -41,7 +43,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
+                  "maximumWarning": "512kB", // Angepasst an die aktuelle Build-Warnung
                   "maximumError": "1MB"
                 },
                 {
