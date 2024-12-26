@@ -1,0 +1,111 @@
+.favorite-item-grid{
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: minmax(5px, auto);
+  gap: 1em; /* Optional: add spacing between items */
+  /*border: 1px solid green;*/
+}
+
+.trending-item-1{
+  grid-column: 1;
+  height: 12rem;
+  width: 7rem;
+  border: 1px solid #151D32;
+  border-radius: 0.3125rem;
+  padding: 0.9375rem;
+  background-color: #151D32;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.trending-item-2{
+  grid-column: 2;
+  height: 12rem;
+  width: 7rem;
+  border: 1px solid #151D32;
+  border-radius: 0.3125rem;
+  padding: 0.9375rem;
+  background-color: #151D32;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.trending-item-3{
+  grid-column: 3;
+  height: 12rem;
+  width: 7rem;
+  border: 1px solid #151D32;
+  border-radius: 0.3125rem;
+  padding: 0.9375rem;
+  background-color: #151D32;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.trending-item-4{
+  grid-column: 4;
+  height: 12rem;
+  width: 7rem;
+  border: 1px solid #151D32;
+  border-radius: 0.3125rem;
+  padding: 0.9375rem;
+  background-color: #151D32;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.trending-item-5{
+  grid-column: 5;
+  height: 12rem;
+  width: 7rem;
+  border: 1px solid #151D32;
+  border-radius: 0.3125rem;
+  padding: 0.9375rem;
+  background-color: #151D32;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.trending-item-6{
+  grid-column: 6;
+  height: 12rem;
+  width: 7rem;
+  border: 1px solid #151D32;
+  border-radius: 0.3125rem;
+  padding: 0.9375rem;
+  background-color: #151D32;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.trending-item-7{
+  grid-column: 7;
+  height: 12rem;
+  width: 7rem;
+  border: 1px solid #151D32;
+  border-radius: 0.3125rem;
+  padding: 0.9375rem;
+  background-color: #151D32;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.trending-item-8{
+  grid-column: 8;
+  height: 12rem;
+  width: 7rem;
+  border: 1px solid #151D32;
+  border-radius: 0.3125rem;
+  padding: 0.9375rem;
+  background-color: #151D32;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}

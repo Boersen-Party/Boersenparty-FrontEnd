@@ -26,7 +26,7 @@
     "@ng-bootstrap/ng-bootstrap": "^17.0.1",
     "axios": "^1.7.8",
     "bootstrap": "^5.3.3",
-    "chart.js": "^4.4.6",
+    "chart.js": "^4.4.7",
     "express": "^4.18.2",
     "keycloak-angular": "^16.1.0",
     "keycloak-js": "^26.0.7",
