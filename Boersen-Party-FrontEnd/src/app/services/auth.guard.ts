@@ -21,9 +21,11 @@ export class AuthGuard extends KeycloakAuthGuard {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ) {
+    const redirectUri = typeof window !== 'undefined' ? window.location.origin + state.url : '';
+
     if (!this.authenticated) {
       await this.keycloak.login({
-        redirectUri: window.location.origin + state.url,
+        redirectUri,
       });
     }
 
