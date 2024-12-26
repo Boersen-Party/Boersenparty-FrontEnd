@@ -7,6 +7,7 @@ import { DisplayComponent } from './display/display.component';
 //import { FavoritesComponent } from './user/pages/favorites/favorites.component';
 //import { MenuComponent } from './user/pages/menu/menu.component';
 import { AuthGuard } from './services/auth.guard';
+import {AccessDeniedComponent} from './access-denied/access-denied.component';
 
 export const routes: Routes = [
   { path: '', title: 'Stock-Party', component: LandingPageComponent  },
@@ -22,4 +23,5 @@ export const routes: Routes = [
   },
   { path: 'personal', title: 'Stock-Party', component: PersonalComponent}, // add canActivate: [AuthGuard], data: { roles: ['personal'] }},
   { path: 'display', title: 'Stock-Party', component: DisplayComponent},
+  { path: 'access-denied', component : AccessDeniedComponent}
 ];
