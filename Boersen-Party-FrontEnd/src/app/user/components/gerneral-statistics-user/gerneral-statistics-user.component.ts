@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import Chart from 'chart.js/auto';
 
 @Component({
+  selector: 'app-gerneral-statistics-user',
   standalone: true,
-  selector: 'app-general-statistics',
   imports: [],
-  templateUrl: './general-statistics.component.html',
-  styleUrl: './general-statistics.component.css'
+  templateUrl: './gerneral-statistics-user.component.html',
+  styleUrl: './gerneral-statistics-user.component.css'
 })
-export class GeneralStatisticsComponent {
+export class GerneralStatisticsUserComponent {
   public chart: any = [];
 
   constructor() {}
@@ -23,19 +23,16 @@ export class GeneralStatisticsComponent {
       type: 'bar', //this denotes tha type of chart (scatter = bar&line)
 
       data: {// values on X-Axis
-        labels: ['2022-05-10', '2022-05-11', '2022-05-12','2022-05-13',
-          '2022-05-14', '2022-05-15', '2022-05-16','2022-05-17', ],
+        labels: ['19:00', '19:30', '20:00','20:30', '21:00', '21:30', '22:00','22:30', ],
         datasets: [
           {
             label: "Sales",
-            data: ['467','576', '572', '79', '92',
-              '574', '573', '576'],
+            data: ['5','15', '45', '50', '35', '30', '55', '60'],
             backgroundColor: 'blue'
           },
           {
-            label: "Profit",
-            data: ['542', '542', '536', '327', '17',
-              '0.00', '538', '541'],
+            label: "Price",
+            data: ['2,7', '5', '5', '5', '5', '5', '5', '5'],
             backgroundColor: '#60C3B8'
           }
         ]
