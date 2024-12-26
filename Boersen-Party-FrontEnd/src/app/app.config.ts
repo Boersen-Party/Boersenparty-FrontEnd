@@ -14,6 +14,8 @@ import { CommonService } from './services/common.service';
 // Routes
 import { routes } from './app.routes';
 
+console.log('Routes:', routes);
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(withFetch()), // HTTP client

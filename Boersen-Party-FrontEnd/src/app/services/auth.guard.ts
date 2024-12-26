@@ -20,29 +20,38 @@ export class AuthGuard extends KeycloakAuthGuard {
   public async isAccessAllowed(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ) {
+  ): Promise<boolean> {
+    // Check if the user is authenticated
     if (!this.authenticated) {
-      await this.keycloak.login({
-        redirectUri: window.location.origin + state.url,
-      });
+      const redirectUri =
+        typeof window !== 'undefined'
+          ? window.location.origin + state.url
+          : '';
+
+      await this.keycloak.login({ redirectUri });
     }
 
-    // Get the roles required from the route.
+    // Extract required roles from route data
     const requiredRoles = route.data['roles'];
 
-    // Allow the user to proceed if no additional roles are required to access the route.
-    if (!(requiredRoles instanceof Array) || requiredRoles.length === 0) {
+    // Allow access if no roles are required
+    if (!requiredRoles || !(requiredRoles instanceof Array) || requiredRoles.length === 0) {
       return true;
     }
 
-    // Allow the user to proceed if all the required roles are present.
-    if (requiredRoles.every((role) => this.roles.includes(role))) {
+    // Debugging: Log current roles and required roles
+    console.log('Authenticated:', this.authenticated);
+    console.log('User Roles:', this.roles);
+    console.log('Required Roles:', requiredRoles);
+
+    // Check if the user has at least one of the required roles
+    const hasRequiredRole = requiredRoles.some((role) => this.roles.includes(role));
+    if (hasRequiredRole) {
       return true;
-    } else {
-      // redirect to error page if the user doesn't have the nessecairy  role to access
-      // we will define this routes in a bit
-      this.router.navigate(['access-denied']);
-      return false;
     }
+
+    // Redirect to "access-denied" page if user lacks roles
+    this.router.navigate(['access-denied']);
+    return false;
   }
 }
