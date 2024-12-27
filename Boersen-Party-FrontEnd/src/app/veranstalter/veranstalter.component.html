@@ -3,7 +3,7 @@
   <div class="price-overiew-position">
 
     <section>
-      <app-price-overview/>
+
     </section>
 
     <section>
@@ -22,11 +22,18 @@
     </div>
 
     <div class="general-statistic-1">
-      <p>Space</p>
+      <!--  -->
     </div>
 
     <div class="general-statistic-2">
-      <app-create-party-button-click-window/>
+
+  @if(partiesAlreadyPresent()){
+    <app-created-party-tab/>
+  }
+  @else{
+    <app-create-party-button-click-window/>
+  }
+
     </div>
 
     <div class="general-statistic-3">

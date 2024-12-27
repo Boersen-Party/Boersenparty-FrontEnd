@@ -36,16 +36,12 @@
                 <option value="happy_hour">Happy Hour</option>
               </select>
             </div>
-
+            
             <div class="mb-4">
-              <label class="text-white block">Event von</label>
-              <input type="time" class="w-full px-3 py-2 rounded-box bg-white" />
+              <label class="text-white block">Eventdauer in Minuten</label>
+              <input type="time" step="60" class="w-full px-3 py-2 rounded-box bg-white" />
             </div>
-
-            <div class="mb-4">
-              <label class="text-white block">Event bis</label>
-              <input type="time" class="w-full px-3 py-2 rounded-box bg-white" />
-            </div>
+            
 
             <div class="flex justify-between">
               <button type="button" class="text-sm font-semibold uppercase text-white px-4 py-2 rounded-md focus:outline-none" (click)="toggleCreateEventWindow()">

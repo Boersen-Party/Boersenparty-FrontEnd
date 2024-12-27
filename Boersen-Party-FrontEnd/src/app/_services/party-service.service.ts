@@ -9,16 +9,18 @@ import { Subject, Subscription, takeUntil, timer } from 'rxjs';
 })
 
 export class PartyServiceService {
-  timer = timer(0, 30000)
+  timer = timer(0, 3000)
   parties = signal<Party[]>([]);
 
 
   
   constructor() {
+    /*
     this.timer.subscribe(_ => {
       console.log("timer subscribed.. fetching parties now..");
       this.fetchParties();
     })
+      */
   }
   
 
@@ -55,15 +57,18 @@ export class PartyServiceService {
   
         // Optional: Add more error handling logic
       });
-
       */
+
+      
   }
   
   
 
-/*
+
   createParty(newParty: Party) {
+    
     console.log('addParty called, URL is: ' + baseURL);
+    /*
     console.log(newParty);
     axios
       .post(baseURL, newParty)
@@ -78,5 +83,6 @@ export class PartyServiceService {
         console.error('Error adding party:', error);
       });
   }
-      */
+     */ 
+}
 }
