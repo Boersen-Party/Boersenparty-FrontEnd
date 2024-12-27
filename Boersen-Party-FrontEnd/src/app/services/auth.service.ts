@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { KeycloakService } from 'keycloak-angular';
 
@@ -39,7 +40,10 @@ export class AuthService {
     return this.keycloak.getToken();
   }
 
-  public addTokenToHeader(){
-    this.keycloak.addTokenToHeader();
+  public async addTokenToHeader(): Promise<{ [header: string]: string }> {
+    const token = await this.keycloak.getToken();
+    return {
+      Authorization: `Bearer ${token}`,
+    };
   }
 }

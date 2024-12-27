@@ -10,6 +10,8 @@ export class CommonService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
+  
+  
   getAdminData(){
 
     var url = environment.baseUrl + '/api/v1/admin'

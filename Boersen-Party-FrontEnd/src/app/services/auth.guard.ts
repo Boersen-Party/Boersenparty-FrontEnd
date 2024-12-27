@@ -23,10 +23,7 @@ export class AuthGuard extends KeycloakAuthGuard {
   ): Promise<boolean> {
     // Check if the user is authenticated
     if (!this.authenticated) {
-      const redirectUri =
-        typeof window !== 'undefined'
-          ? window.location.origin + state.url
-          : '';
+      const redirectUri = typeof window !== 'undefined'? window.location.origin + state.url : '';
 
       await this.keycloak.login({ redirectUri });
     }
