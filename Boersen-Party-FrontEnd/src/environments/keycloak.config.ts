@@ -1,7 +1,7 @@
 import {KeycloakConfig} from 'keycloak-js';
 
 const keycloakConfig: KeycloakConfig = {
-  url: 'https://idp.stock-party.live/admin/stock-party/console/',
+  url: 'https://idp.stock-party.live',
   realm: 'stock-party',
   clientId: 'frontend-client-dev',
 };
