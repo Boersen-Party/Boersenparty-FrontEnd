@@ -23,10 +23,7 @@ html {
 }
 
 .main-grid {
-  margin-left: 1.5em;
-  margin-right: 1.5em;
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
+  margin: 1.5em;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: minmax(100px, auto);
