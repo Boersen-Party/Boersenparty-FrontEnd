@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { Party } from '../_model/party';
-import axios from "axios";
+//import axios from "axios";
 import { baseURL } from '../_config/config';
 import { timer } from 'rxjs';
 import { AuthService } from './auth.service';
@@ -16,14 +16,15 @@ export class PartyServiceService {
 
   
 
-
-  
+constructor(){}
+  /*
   constructor(private authService: AuthService) {
     this.timer.subscribe(_ => {
       console.log("timer subscribed.. fetching parties now..");
       this.fetchParties();
     })
   }
+    
 
   async getHostedBy() {
     try {
@@ -106,6 +107,9 @@ export class PartyServiceService {
       console.error('Error resolving token or creating party:', error);
     }
   }
+ */
+
 
 }
+ 
   
