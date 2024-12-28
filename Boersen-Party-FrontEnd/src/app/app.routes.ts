@@ -6,6 +6,7 @@ import {PersonalComponent} from './personal/personal.component';
 import {DisplayComponent} from './display/display.component';
 import {FavoritesComponent} from './user/pages/favorites/favorites.component';
 import {MenuComponent} from './user/pages/menu/menu.component';
+import {AdminUserComponent} from './admin-user/admin-user.component';
 
 export const routes: Routes = [
   { path: '', title: 'Stock-Party', component: LandingPageComponent  },
@@ -21,4 +22,6 @@ export const routes: Routes = [
   },
   { path: 'personal', title: 'Stock-Party', component: PersonalComponent},
   { path: 'display', title: 'Stock-Party', component: DisplayComponent},
+  { path: 'admin-user', title: 'Stock-Party', component: AdminUserComponent},
+
 ];
