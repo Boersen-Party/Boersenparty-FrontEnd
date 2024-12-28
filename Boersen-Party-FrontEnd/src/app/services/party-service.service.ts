@@ -14,7 +14,7 @@ export class PartyServiceService {
   timer = timer(0, 30000)
   parties = signal<Party[]>([]);
 
-  
+
 
 constructor(){}
   /*
@@ -24,7 +24,7 @@ constructor(){}
       this.fetchParties();
     })
   }
-    
+
 
   async getHostedBy() {
     try {
@@ -35,27 +35,27 @@ constructor(){}
       return null;
     }
   }
-  
-  
 
-  
+
+
+
   async fetchParties() {
     console.log("fetchParties() called but its doing nothing atm");
     const headers = await this.authService.addTokenToHeader();
-    
 
- 
+
+
     axios.get(baseURL, {
       headers:headers,
     })
       .then(response => {
         console.log(".then accessed!!, response =");
         console.log(response);
-  
+
         const fetchedParties = response.data;
         console.log("fetched parties is:");
         console.log(fetchedParties);
-  
+
         try {
           // Wrap the potentially problematic code in a try-catch
           this.parties.set(fetchedParties);
@@ -69,35 +69,35 @@ constructor(){}
       })
       .catch(error => {
         console.error("Error fetching data:", error);
-  
+
         // Handle network or Axios-specific errors
         this.parties.set([]); // Set an empty array to indicate an error
-  
+
         // Optional: Add more error handling logic
       });
 
-      
+
   }
-  
-  
+
+
 
 
   async createParty(newParty: Party) {
     //console.log('addParty called, URL is: ' + baseURL);
     //console.log('New party:', newParty);
-  
+
     try {
       const headers = await this.authService.addTokenToHeader();
       console.log('Headers with token:', headers);
-  
+
       axios
         .post(baseURL, newParty, {
           headers: headers, // application/json
-        }) 
+        })
         .then((response) => {
           const createdParty = response.data;
           console.log('Party created:', createdParty);
-  
+
           this.parties.update((parties) => [...parties, createdParty]);
         })
         .catch((error: any) => {
@@ -111,5 +111,5 @@ constructor(){}
 
 
 }
- 
-  
+
+
