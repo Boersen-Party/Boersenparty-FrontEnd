@@ -1,0 +1,49 @@
+.menu-grid{
+  margin: 1em;
+  margin-bottom: 15%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: minmax(5px, auto);
+  align-items: center;
+  text-align: center;
+}
+/*-------Start of Price overview -------*/
+
+.drink-h1-position{
+  grid-row: 1;
+  color: white;
+  font-size: 2em;
+  text-decoration: underline;
+  margin-bottom: 0.25em;
+}
+
+/*-------End of Price overview -------*/
+/*-------Start of Price overview -------*/
+
+.drink_price-overiew-position{
+  grid-row: 2;
+  margin-bottom: 1em;
+}
+
+/*-------End of Price overview -------*/
+/*-------Start of Price overview -------*/
+
+.meal-h1-position{
+  grid-row: 3;
+  color: white;
+  font-size: 2em;
+  text-decoration: underline;
+  margin-bottom: 0.25em;
+}
+
+/*-------End of Price overview -------*/
+/*-------Start of Price overview -------*/
+
+.meal_price-overiew-position{
+  grid-row: 4;
+
+}
+
+/*-------End of Price overview -------*/
+
+
