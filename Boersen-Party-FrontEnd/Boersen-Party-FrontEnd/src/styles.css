@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  background-color: #0b1326;
+  font-family: "Inter", sans-serif;
+}
+
+.text {
+  color: white;
+}
+
+.second-grid{
+  grid-column: 2/4;
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: minmax(100px, max-content);
+  gap: 1em; /* Optional: add spacing between items */
+  border: 1px solid red;
+
+}
+
+.main-grid {
+  margin: 1.5em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: minmax(100px, auto);
+  gap: 1em; /* Optional: add spacing between items */
+
+  border: 1px solid blue;
+}

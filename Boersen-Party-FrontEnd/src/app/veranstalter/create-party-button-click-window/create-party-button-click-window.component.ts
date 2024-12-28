@@ -1,4 +1,4 @@
-import { Component, effect, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, effect, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {PartyServiceService} from '../../services/party-service.service';
 import {Party} from '../../_model/party';
@@ -14,17 +14,17 @@ export class CreatePartyButtonClickWindowComponent implements OnInit{
 
   parties: Party[] = [];
 
-
-
+  constructor (){}
+ /*
   constructor(private partyService: PartyServiceService) {
 
     effect(() => {
-      console.log("effect called in CreatePartyButtonClickWIndow")
       this.parties = this.partyService.parties();
-
+      console.log("effect called in CreatePartyButtonClickWIndow");
     });
 
   }
+    */
 
 
   ngOnInit(): void {
@@ -39,22 +39,29 @@ export class CreatePartyButtonClickWindowComponent implements OnInit{
 
 
   onSubmit() {
-    const party: Party = {
-      name: this.partyname,
-      start_date: this.start_date,
-      end_date: this.end_date,
-    };
+
+    console.log("on submit is called");
+    /*
+    this.partyService.getHostedBy().then((hostedBy) => {
+      const party: Party = {
+        name: this.partyname,
+        start_date: this.start_date,
+        end_date: this.end_date,
+        hosted_by: hostedBy || ''}
+        console.log("party is:", party);
+
+      const validationResult = this.validatePartyDetails(party);
+
+      if (validationResult !== true) {
+        console.log(validationResult);
+        return;
+      }
 
 
-    const validationResult = this.validatePartyDetails(party);
+      this.partyService.createParty(party);
+    });
 
-    if (validationResult !== true) {
-      console.log(validationResult);
-      return;
-    }
-
-    this.partyService.createParty(party);
-
+*/
   }
   validatePartyDetails(party: Party): string | boolean {
     if (!party.name || party.start_date.length !== 16 || party.end_date.length !== 16) {
