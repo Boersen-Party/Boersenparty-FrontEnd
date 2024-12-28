@@ -37,21 +37,26 @@ export class CreatePartyButtonClickWindowComponent implements OnInit{
 
 
   onSubmit() {
-    const party: Party = {
-      name: this.partyname,
-      start_date: this.start_date,
-      end_date: this.end_date,
-    };
+    
+    this.partyService.getHostedBy().then((hostedBy) => {
+      const party: Party = {
+        name: this.partyname,
+        start_date: this.start_date,
+        end_date: this.end_date,
+        hosted_by: hostedBy || ''}
+        console.log("party is:", party);
 
+      const validationResult = this.validatePartyDetails(party);
 
-    const validationResult = this.validatePartyDetails(party);
+      if (validationResult !== true) {
+        console.log(validationResult);
+        return;
+      }
+      
+      
+      this.partyService.createParty(party);
+    });   
 
-    if (validationResult !== true) {
-      console.log(validationResult);
-      return;
-    }
-
-    this.partyService.createParty(party);
 
   }
   validatePartyDetails(party: Party): string | boolean {

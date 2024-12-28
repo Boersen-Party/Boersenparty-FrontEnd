@@ -2,8 +2,9 @@ import { Injectable, signal } from '@angular/core';
 import { Party } from '../_model/party';
 import axios from "axios";
 import { baseURL } from '../_config/config';
-import { Subject, Subscription, takeUntil, timer } from 'rxjs';
+import { timer } from 'rxjs';
 import { AuthService } from './auth.service';
+import { KeycloakProfile } from 'keycloak-js';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,8 @@ export class PartyServiceService {
   timer = timer(0, 30000)
   parties = signal<Party[]>([]);
 
+  
+
 
   
   constructor(private authService: AuthService) {
@@ -21,14 +24,29 @@ export class PartyServiceService {
       this.fetchParties();
     })
   }
+
+  async getHostedBy() {
+    try {
+      const user: KeycloakProfile = await this.authService.loadUserProfile();
+      return user.username;
+    } catch (error) {
+      console.error('Error fetching Keycloak profile:', error);
+      return null;
+    }
+  }
+  
   
 
   
-  fetchParties() {
+  async fetchParties() {
     console.log("fetchParties() called but its doing nothing atm");
+    const headers = await this.authService.addTokenToHeader();
     
-    /*
-    axios.get(baseURL)
+
+ 
+    axios.get(baseURL, {
+      headers:headers,
+    })
       .then(response => {
         console.log(".then accessed!!, response =");
         console.log(response);
@@ -57,31 +75,28 @@ export class PartyServiceService {
         // Optional: Add more error handling logic
       });
 
-      */
+      
   }
   
   
 
 
   async createParty(newParty: Party) {
-    console.log('addParty called, URL is: ' + baseURL);
-    console.log('New party:', newParty);
+    //console.log('addParty called, URL is: ' + baseURL);
+    //console.log('New party:', newParty);
   
     try {
-      // Use the AuthService to add the token to headers
       const headers = await this.authService.addTokenToHeader();
       console.log('Headers with token:', headers);
   
-      // Make the POST request with headers
       axios
         .post(baseURL, newParty, {
-          headers: headers, // Convert headers to JSON for Axios
+          headers: headers, // application/json
         }) 
         .then((response) => {
           const createdParty = response.data;
           console.log('Party created:', createdParty);
   
-          // Add party to the list
           this.parties.update((parties) => [...parties, createdParty]);
         })
         .catch((error: any) => {

@@ -10,7 +10,7 @@ export class CommonService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  
+  // glaub das kann alles weg
   
   getAdminData(){
 
