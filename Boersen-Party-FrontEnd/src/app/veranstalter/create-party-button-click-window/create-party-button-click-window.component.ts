@@ -14,17 +14,19 @@ export class CreatePartyButtonClickWindowComponent implements OnInit{
 
   parties: Party[] = [];
 
-  constructor (){}
- /*
+ 
   constructor(private partyService: PartyServiceService) {
+
+    console.log("content of parties before effect:", this.parties);
 
     effect(() => {
       this.parties = this.partyService.parties();
       console.log("effect called in CreatePartyButtonClickWIndow");
     });
+    console.log("content of parties after effect:", this.parties);
 
   }
-    */
+    
 
 
   ngOnInit(): void {
@@ -41,7 +43,7 @@ export class CreatePartyButtonClickWindowComponent implements OnInit{
   onSubmit() {
 
     console.log("on submit is called");
-    /*
+    
     this.partyService.getHostedBy().then((hostedBy) => {
       const party: Party = {
         name: this.partyname,
@@ -61,7 +63,7 @@ export class CreatePartyButtonClickWindowComponent implements OnInit{
       this.partyService.createParty(party);
     });
 
-*/
+
   }
   validatePartyDetails(party: Party): string | boolean {
     if (!party.name || party.start_date.length !== 16 || party.end_date.length !== 16) {
