@@ -2,7 +2,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common'
 import { ProductImageSelectorComponent } from '../product-image-selector/product-image-selector.component';
 import { FormGroup, FormsModule } from '@angular/forms';
-import { FormService } from '../../_services/form.service';
+import { FormService } from '../../services/form.service';
 import { Product } from '../../_model/product';
 
 @Component({
@@ -26,8 +26,8 @@ export class AddDrinkItemWindowComponent {
   */
   @Output() ProductCreated = new EventEmitter<Product>();
   @Output() close = new EventEmitter<void>();
-  
-  
+
+
   //inputs
   pname: string = '';
   basePrice: number = 0;
@@ -36,7 +36,7 @@ export class AddDrinkItemWindowComponent {
   quantity: number = 0;
   productType: string = '';
   description: string = '';
-  
+
   //per default ist es ein png vom "File" Symbol
   //aber dann überschrieben von product-image-selector
   selectedImageUrl: string = 'https://static.vecteezy.com/system/resources/thumbnails/014/440/983/small/image-icon-design-in-blue-circle-png.png';
@@ -57,19 +57,19 @@ export class AddDrinkItemWindowComponent {
 
   toggleImageSelector() {
     console.log("toggling image selector now")
-    this.isImageSelectorInputClicked = !this.isImageSelectorInputClicked; 
+    this.isImageSelectorInputClicked = !this.isImageSelectorInputClicked;
   }
 
   handleImageSelection(selectedImage: string) {
     this.selectedImageUrl = selectedImage;
-    this.isImageSelectorInputClicked = false; 
+    this.isImageSelectorInputClicked = false;
   }
 
 
   submitProductItem() {
     // submit a drink entry
     console.log("Button clicked!");
-    
+
     const newProduct: Product = {
       name: this.pname,
       baseprice: this.basePrice,
@@ -79,19 +79,19 @@ export class AddDrinkItemWindowComponent {
       imageurl: this.selectedImageUrl,
       description: this.description,
     };
-  
+
     console.log("Submitted Product:", newProduct);
     this.ProductCreated.emit(newProduct);
     this.hideWindow();
-    
-    
-    // TO-DO: Validate inputs using form groups    
+
+
+    // TO-DO: Validate inputs using form groups
     /*
     if (this.productForm.valid) {
       const product: Product = this.productForm.value;
       console.log("full product object:", product);
-  
-      
+
+
     } else {
       console.error("Form is invalid, please fix errors before submitting.");
       const product: Product = this.productForm.value;

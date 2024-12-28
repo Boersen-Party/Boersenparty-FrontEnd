@@ -1,6 +1,6 @@
 import { Component, effect, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import {PartyServiceService} from '../../_services/party-service.service';
+import {PartyServiceService} from '../../services/party-service.service';
 import {Party} from '../../_model/party';
 
 @Component({
@@ -15,17 +15,17 @@ export class CreatePartyButtonClickWindowComponent implements OnInit{
   parties: Party[] = [];
 
 
- 
+
   constructor(private partyService: PartyServiceService) {
-    
+
     effect(() => {
       console.log("effect called in CreatePartyButtonClickWIndow")
       this.parties = this.partyService.parties();
 
     });
-    
+
   }
- 
+
 
   ngOnInit(): void {
     this.setPlaceholders();

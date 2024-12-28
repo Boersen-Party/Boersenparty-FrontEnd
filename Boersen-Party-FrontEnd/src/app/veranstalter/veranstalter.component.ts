@@ -5,7 +5,7 @@ import { PriceEntryTabComponent } from './price-entry-tab/price-entry-tab.compon
 import { GeneralStatisticsComponent } from './general-statistics/general-statistics.component';
 import { CreatePartyButtonClickWindowComponent } from './create-party-button-click-window/create-party-button-click-window.component';
 import { CreatedPartyTabComponent } from "./created-party-tab/created-party-tab.component";
-import { PartyServiceService } from '../_services/party-service.service';
+import { PartyServiceService } from '../services/party-service.service';
 
 @Component({
   selector: 'app-veranstalter',
