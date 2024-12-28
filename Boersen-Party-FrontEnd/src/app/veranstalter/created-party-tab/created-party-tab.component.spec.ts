@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AccessDeniedComponent } from './access-denied.component';
+import { CreatedPartyTabComponent } from './created-party-tab.component';
 
-describe('AccessDeniedComponent', () => {
-  let component: AccessDeniedComponent;
-  let fixture: ComponentFixture<AccessDeniedComponent>;
+describe('CreatedPartyTabComponent', () => {
+  let component: CreatedPartyTabComponent;
+  let fixture: ComponentFixture<CreatedPartyTabComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AccessDeniedComponent]
+      imports: [CreatedPartyTabComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AccessDeniedComponent);
+    fixture = TestBed.createComponent(CreatedPartyTabComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,4 +1,36 @@
-<div class="button">
+<div class="title-box">
+  <span class="title">Price Overview</span>
+</div>
+
+
+
+@for (product of products; track product.name) {
+  <div class="drink-box mb-2">
+
+    
+    <span class="drink-name">{{ product.name }}</span>
+
+    
+    
+    @if (product.imageurl) {
+      <div class="w-6 h-6 overflow-hidden mr-2">
+        <img [src]="product.imageurl" alt="{{ product.name }}" class="w-full h-full object-cover">
+      </div>
+    }
+
+    <div class="price-container">
+      <span class="price">{{ product.baseprice }} € </span>
+      
+      
+    </div>
+
+  </div>
+} 
+
+
+
+
+<div class="button mt-2">
   <button class="cssbuttons-io-button" (click)="onClick()">
     New Drink
     <div class="icon">
@@ -8,5 +40,5 @@
 </div>
 
 @if(showAddDrinkWindow) {
-  <app-add-drink-item-window (close)="closeWindow()"></app-add-drink-item-window>
+  <app-add-drink-item-window (ProductCreated)="RecieveProductFromInputWindow($event)" (close)="closeWindow()"></app-add-drink-item-window>
 }
