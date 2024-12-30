@@ -12,14 +12,14 @@
 
     
     
-    @if (product.imageurl) {
+    @if (product.imageURL) {
       <div class="w-6 h-6 overflow-hidden mr-2">
-        <img [src]="product.imageurl" alt="{{ product.name }}" class="w-full h-full object-cover">
+        <img [src]="product.imageURL" alt="{{ product.name }}" class="w-full h-full object-cover">
       </div>
     }
 
     <div class="price-container">
-      <span class="price">{{ product.baseprice }} € </span>
+      <span class="price">{{ product.price_base }} € </span>
       
       
     </div>

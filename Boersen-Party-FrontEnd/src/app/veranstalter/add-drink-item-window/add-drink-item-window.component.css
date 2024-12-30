@@ -15,7 +15,7 @@
   }
   50% {
     border-color: #ff61a6; 
-    transform: scale(1.01); 
+    transform: scale(1.001); 
   }
   100% {
     border-color: #9c35a4;

@@ -55,7 +55,6 @@ export class PartyServiceService {
         console.log(fetchedParties);
 
         try {
-          // Wrap the potentially problematic code in a try-catch
           this.parties.set(fetchedParties);
         } catch (error) {
           console.error("Error while setting parties:", error);
@@ -77,31 +76,50 @@ export class PartyServiceService {
 
 
   async createParty(newParty: Party) {
-    //console.log('addParty called, URL is: ' + baseURL);
-    //console.log('New party:', newParty);
-
     try {
-      const headers = await this.authService.addTokenToHeader();
-      console.log('Headers with token:', headers);
+      const validationResult = await this.validatePartyDetails(newParty);
 
+      if (validationResult !== true) {
+        console.error(validationResult);
+        return;
+      }
+
+      const headers = await this.authService.addTokenToHeader();
       axios
-        .post(baseURL, newParty, {
-          headers: headers, // application/json
-        })
+        .post(baseURL, newParty, { headers })
         .then((response) => {
           const createdParty = response.data;
-          console.log('Party created:', createdParty);
-
           this.parties.update((parties) => [...parties, createdParty]);
+          console.log('Party created:', createdParty);
         })
-        .catch((error: any) => {
+        .catch((error) => {
           console.error('Error adding party:', error);
         });
     } catch (error) {
       console.error('Error resolving token or creating party:', error);
     }
   }
+
  
+
+
+
+  validatePartyDetails(party: Party): string | boolean {
+    if (!party.name || party.start_date.length !== 16 || party.end_date.length !== 16) {
+      return "Please fill out all details and ensure dates are in YYYY-MM-DDTHH:mm format!";
+    }
+
+    const currentDate = new Date();
+    const startDate = new Date(party.start_date);
+    const endDate = new Date(party.end_date);
+
+    if (startDate <= currentDate || endDate <= currentDate || endDate <= startDate) {
+      return "Start and end dates must be in the future, with the end date after the start date!";
+    }
+
+    return true;
+  }
+
 }
 
 
