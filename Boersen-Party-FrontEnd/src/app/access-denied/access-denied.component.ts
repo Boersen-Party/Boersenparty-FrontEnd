@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './access-denied.component.css'
 })
 export class AccessDeniedComponent {
-
+  logout() {
+    // Logik für den Logout (z.B. lokale Daten löschen und auf die Login-Seite navigieren)
+    console.log('Logout ausgeführt');
+    // Beispiel für Navigation: window.location.href = '/login';
+  }
 }
