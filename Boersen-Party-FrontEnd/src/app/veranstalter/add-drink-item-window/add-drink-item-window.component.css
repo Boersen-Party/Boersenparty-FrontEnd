@@ -1,26 +1,10 @@
-
 .add-drink {
   background: #151D32;
   border-radius: 0.5rem;
-  border: 2px solid #9c35a4;
   color: white;
+  border: 1px solid #151D32;
   font-family: "Inter", sans-serif;
-  animation: pulse 1.5s ease-in-out infinite; 
-}
-
-@keyframes pulse {
-  0% {
-    border-color: #9c35a4;
-    transform: scale(1);
-  }
-  50% {
-    border-color: #ff61a6; 
-    transform: scale(1.01); 
-  }
-  100% {
-    border-color: #9c35a4;
-    transform: scale(1);
-  }
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
 }
 
 

@@ -109,7 +109,6 @@
   color: white;
   font-family: "Inter", sans-serif;
   display: block; /* Display price on a new line */
-  margin-top: 0.3125rem; /* 5px equivalent */ /* Spacing above price */
 }
 
 .positive {
@@ -126,3 +125,7 @@
   color: #CC4E6C; /* Red for negative changes */
 }
 
+.delete-me {
+  margin-right: 0.75rem;
+  display: flex;
+}
