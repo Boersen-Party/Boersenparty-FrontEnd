@@ -15,22 +15,17 @@ import { Product } from '../_model/product';
 })
 export class DisplayComponent {
     parties: Party[] = [];
-    products: Product[] = [];
+    //products: Product[] = [];
+    // später überlegen welches objekt das party header eig braucht? ganzes party[] übergeben?
     partyName: string = '';
 
   
 
-  constructor(private partyService: PartyServiceService, private productService: ProductService) {
+  constructor(private partyService: PartyServiceService) {
     effect(() => {
-      
       this.parties = this.partyService.parties();
       console.log("Updated parties in DisplayComponent:", this.parties);
-      this.partyName = this.parties[0].name;
-      this.products = this.productService.products();
-      console.log("Updated products in DisplayComponent:", this.products);
-      
-
-       
+      this.partyName = this.parties ? this.parties[0].name :  '<Keine aktive Party vorhanden>';
     });
 
   }

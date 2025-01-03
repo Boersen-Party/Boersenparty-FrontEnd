@@ -13,7 +13,7 @@ import { KeycloakProfile } from 'keycloak-js';
 export class PartyServiceService {
   timer = timer(0, 30000)
   parties = signal<Party[]>([]);
-  partyName = signal<string>('<Keine aktive Party gefunden>');
+  //partyName = signal<string>('<Keine aktive Party gefunden>');
 
   
   constructor(private authService: AuthService) {
@@ -54,7 +54,7 @@ export class PartyServiceService {
 
         try {
           this.parties.set(fetchedParties);
-          this.partyName.set(fetchedParties.length > 0 ? fetchedParties[0].name : '<Keine aktive Party gefunden>');
+          //this.partyName.set(fetchedParties.length > 0 ? fetchedParties[0].name : '<Keine aktive Party gefunden>');
 
         } catch (error) {
           console.error("Error while setting parties:", error);
