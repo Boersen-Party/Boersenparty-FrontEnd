@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Party } from '../../_model/party';
 
 @Component({
   standalone:true,
@@ -8,5 +9,8 @@ import { Component } from '@angular/core';
   styleUrl: './party-header.component.css'
 })
 export class PartyHeaderComponent {
+  @Input() parties: Party[] = [];
+  @Input() partyName: string = '';
+
 
 }

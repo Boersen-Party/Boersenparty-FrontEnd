@@ -31,6 +31,7 @@ export class ProductService {
 
 
 
+
   async fetchLatestPrices(productId: number) {
     try {
       const headers = await this.authService.addTokenToHeader();

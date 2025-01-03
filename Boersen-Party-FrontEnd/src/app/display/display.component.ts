@@ -16,15 +16,21 @@ import { Product } from '../_model/product';
 export class DisplayComponent {
     parties: Party[] = [];
     products: Product[] = [];
+    partyName: string = '';
 
   
 
   constructor(private partyService: PartyServiceService, private productService: ProductService) {
     effect(() => {
+      
       this.parties = this.partyService.parties();
       console.log("Updated parties in DisplayComponent:", this.parties);
+      this.partyName = this.parties[0].name;
       this.products = this.productService.products();
       console.log("Updated products in DisplayComponent:", this.products);
+      
+
+       
     });
 
   }

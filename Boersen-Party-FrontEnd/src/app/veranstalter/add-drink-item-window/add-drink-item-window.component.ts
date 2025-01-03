@@ -22,7 +22,7 @@ export class AddDrinkItemWindowComponent {
   constructor(private formService: FormService, private productService: ProductService) {
     //this.productForm = this.formService.createProductForm();
   }
-  productForm!: FormGroup;
+  //productForm!: FormGroup;
 
   
   @Output() ProductCreated = new EventEmitter<Product>();
