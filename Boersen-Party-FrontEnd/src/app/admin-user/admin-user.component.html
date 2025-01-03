@@ -1,1 +1,53 @@
-<p>admin-user works!</p>
+<div class="navbar">
+  <button [class.active]="activeView === 'users'" (click)="switchView('users')">Users</button>
+  <button [class.active]="activeView === 'sessions'" (click)="switchView('sessions')">Sessions</button>
+</div>
+
+<!-- Users View -->
+<div class="container" *ngIf="activeView === 'users'">
+  <div class="header">
+    <h2>Users</h2>
+    <div class="search-container">
+      <input type="search" placeholder="Search for a User" />
+      <span class="material-icons search-icon">search</span>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>User Role</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td><input type="checkbox" /></td>
+      <td>{{ user.name }}</td>
+      <td>
+          <span [ngClass]="getRoleClass(user.role)" class="user-role">
+            {{ user.role }}
+          </span>
+      </td>
+      <td class="actions">
+        <button (click)="editPermissions(user)">
+          <span class="material-icons">settings</span>
+          Edit Permissions
+        </button>
+        <button (click)="deleteUser(user)">
+          <span class="material-icons">delete</span>
+          Delete User
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Sessions View -->
+<div class="container" *ngIf="activeView === 'sessions'">
+  <h2>Sessions</h2>
+  <p>Session content will be displayed here.</p>
+</div>
