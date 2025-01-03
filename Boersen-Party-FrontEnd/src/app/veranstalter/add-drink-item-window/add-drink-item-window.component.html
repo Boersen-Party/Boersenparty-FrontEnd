@@ -40,10 +40,6 @@
           <option value="mit Alkohol">mit Alkohol</option>
           <option value="Snack">Snack</option>
         </select>
-        
-
-     
-         
 
         <label for="productimage" class="text-sm font-medium" (click)="toggleImageSelector()">Bild</label>
         <img [src]="selectedImageUrl" (click)="toggleImageSelector()" alt="Image Selector Icon" class="image-selector-icon w-12 h-12" [(ngModel)]="selectedImageUrl">
@@ -52,9 +48,6 @@
           <app-product-image-selector (imageSelected)="selectedImageUrl = $event"/>
         }
 
-        
-        
-      
       </div>
 
     </div>
