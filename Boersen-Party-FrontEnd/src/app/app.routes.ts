@@ -20,6 +20,6 @@ export const routes: Routes = [
     ]
   },
   { path: 'personal', title: 'Personal-Bereich', component: PersonalComponent, canActivate: [AuthGuard], data: { roles: ['personal'] } },
-  { path: 'display', title: 'Display', component: DisplayComponent },
+  { path: 'display', title: 'Display', component: DisplayComponent, canActivate: [AuthGuard], data: { roles: ['personal'] } },
   { path: 'access-denied', title: 'Access Denied', component: AccessDeniedComponent }
 ];
