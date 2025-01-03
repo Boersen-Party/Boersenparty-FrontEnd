@@ -21,6 +21,16 @@ export class AdminUserComponent {
     { name: 'Helene Fischer', role: 'Guest' }
   ];
 
+  // Example data for sessions
+  sessions = [
+    { sessionId: 23, hostId: 76, guestCount: 76 },
+    { sessionId: 13, hostId: 65, guestCount: 2 },
+    { sessionId: 11, hostId: 21, guestCount: 11 },
+    { sessionId: 223, hostId: 90, guestCount: 17 },
+    { sessionId: 177, hostId: 12, guestCount: 19 },
+    { sessionId: 292, hostId: 22, guestCount: 21 }
+  ];
+
   switchView(view: string): void {
     this.activeView = view;
   }
@@ -44,5 +54,15 @@ export class AdminUserComponent {
 
   deleteUser(user: any): void {
     console.log(`Delete user: ${user.name}`);
+  }
+
+  viewSessionDetails(session: any): void {
+    console.log(`Viewing details for session: ${session.sessionId}`);
+    alert(`Details for session ID ${session.sessionId}: Host ${session.hostId}, Guests ${session.guestCount}`);
+  }
+
+  deleteSession(session: any): void {
+    console.log(`Deleting session: ${session.sessionId}`);
+    this.sessions = this.sessions.filter(s => s.sessionId !== session.sessionId);
   }
 }

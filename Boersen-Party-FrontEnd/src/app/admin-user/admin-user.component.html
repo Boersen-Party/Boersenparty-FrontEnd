@@ -48,6 +48,39 @@
 
 <!-- Sessions View -->
 <div class="container" *ngIf="activeView === 'sessions'">
-  <h2>Sessions</h2>
-  <p>Session content will be displayed here.</p>
+  <div class="header">
+    <h2>Sessions</h2>
+    <div class="search-container">
+      <input type="search" placeholder="Search for a Session" />
+      <span class="material-icons search-icon">search</span>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Session-ID</th>
+      <th>Host-ID</th>
+      <th>Guest Count</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let session of sessions">
+      <td>{{ session.sessionId }}</td>
+      <td>{{ session.hostId }}</td>
+      <td>{{ session.guestCount }}</td>
+      <td class="actions">
+        <button (click)="viewSessionDetails(session)">
+          <span class="material-icons">search</span>
+          Show Details
+        </button>
+        <button (click)="deleteSession(session)">
+          <span class="material-icons">delete</span>
+          Delete Session
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 </div>
