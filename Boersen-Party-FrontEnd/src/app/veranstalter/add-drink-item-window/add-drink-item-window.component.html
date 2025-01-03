@@ -19,8 +19,8 @@
         <label for="drinkName" class="text-sm font-medium">Produktname</label>
         <input id="drinkName" class="input-field p-1 text-sm" placeholder="Produktname" [(ngModel)]="pname">
 
-        <label for="basePrice" class="text-sm font-medium">Grundpreis</label>
-        <input type="number" min="0" id="basePrice" class="input-field p-1 text-sm" placeholder="Grundpreis" [(ngModel)]="basePrice" (ngModelChange)="calculateDefaultMinMaxPrices()">
+        <label for="latestCalculatedPrice" class="text-sm font-medium">Grundpreis</label>
+        <input type="number" min="0" id="latestCalculatedPrice" class="input-field p-1 text-sm" placeholder="Grundpreis" [(ngModel)]="latestCalculatedPrice" (ngModelChange)="calculateDefaultMinMaxPrices()">
 
         <label for="maxPrice" class="text-sm font-medium">Max-Preis</label>
         <input type="number" min="0" id="maxPrice" class="input-field p-1 text-sm" placeholder="Max-Preis" [(ngModel)]="maxPrice">

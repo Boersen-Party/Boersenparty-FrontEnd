@@ -19,7 +19,7 @@
     }
 
     <div class="price-container">
-      <span class="price">{{ product.price_base }} € </span>
+      <span class="price">{{ product.latestCalculatedPrice }} € </span>
       
       
     </div>
@@ -28,7 +28,7 @@
 } 
 
 
-
+@if(!hideButton){
 
 <div class="button mt-2">
   <button class="cssbuttons-io-button" (click)="onClick()">
@@ -41,4 +41,8 @@
 
 @if(showAddDrinkWindow) {
   <app-add-drink-item-window (ProductCreated)="RecieveProductFromInputWindow($event)" (close)="closeWindow()"></app-add-drink-item-window>
+}
+
+
+
 }

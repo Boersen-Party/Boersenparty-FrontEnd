@@ -38,10 +38,7 @@ export class PartyServiceService {
 
 
   async fetchParties() {
-    console.log("fetchParties() called");
     const headers = await this.authService.addTokenToHeader();
-
-
 
     axios.get(baseURL, {
       headers:headers,
@@ -58,15 +55,10 @@ export class PartyServiceService {
           this.parties.set(fetchedParties);
         } catch (error) {
           console.error("Error while setting parties:", error);
-          console.error("Error while setting parties:", error);
-          console.error("Error while setting parties:", error);
-          console.error("Error while setting parties:!!!!!!!!!!!!!!!!!!", error);
-          //this.parties.set([]); // Fallback for an error in setting parties
         }
       })
       .catch(error => {
         console.error("Error fetching data:", error);
-
       });
 
 

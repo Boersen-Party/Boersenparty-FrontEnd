@@ -31,7 +31,7 @@ export class AddDrinkItemWindowComponent {
 
   //inputs
   pname: string = '';
-  basePrice: number = 0;
+  latestCalculatedPrice: number = 0; //at the start it works as base_price
   maxPrice: number = 0;
   minPrice: number = 0;
   quantity: number = 0;
@@ -44,8 +44,8 @@ export class AddDrinkItemWindowComponent {
   isImageSelectorInputClicked: boolean = false;
 
   calculateDefaultMinMaxPrices() {
-    this.minPrice = this.basePrice * 0.5;
-    this.maxPrice = this.basePrice * 2;
+    this.minPrice = this.latestCalculatedPrice * 0.5;
+    this.maxPrice = this.latestCalculatedPrice * 2;
   }
 
 
@@ -73,7 +73,7 @@ export class AddDrinkItemWindowComponent {
 
     const newProduct: Product = {
       name: this.pname,
-      price_base: this.basePrice,
+      latestCalculatedPrice: this.latestCalculatedPrice,
       price_min: this.minPrice,
       price_max: this.maxPrice,
       pQuantity: this.quantity,
@@ -86,6 +86,8 @@ export class AddDrinkItemWindowComponent {
     this.productService.createProduct(newProduct);
 
 
+
+    //maybe delete this later
     this.ProductCreated.emit(newProduct);
     this.hideWindow();
 

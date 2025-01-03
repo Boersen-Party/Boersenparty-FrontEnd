@@ -12,17 +12,14 @@ import { timer } from 'rxjs';
 })
 
 export class ProductService {
-  timer = timer(0, 3000);
+  timer = timer(0, 10000);
   products = signal<Product[]>([]);
+  prices = signal<Map<number, number>>(new Map()); // Maps product ID to its latest price
 
   constructor(private authService: AuthService, private partyService: PartyServiceService) {
-
-    //subscribe to products
-    this.timer.subscribe(_ => {
-      //console.log("timer subscribed.. fetching PRODUCTS now..");
+    this.timer.subscribe(() => {
       this.fetchProducts();
-    
-    })
+    });
   }
 
   get activePartyId(): Signal<number | null> {
@@ -32,6 +29,37 @@ export class ProductService {
     });
   }
 
+
+
+  async fetchLatestPrices(productId: number) {
+    try {
+      const headers = await this.authService.addTokenToHeader();
+  
+      const url = `http://localhost:8080/price-update/${productId}`;
+      console.log('Calling URL for fetchLatestPrices:', url);
+  
+      // Fetch the latest price for the specified product
+      const response = await axios.get(url, { headers });
+      const latestPrice = response.data; // Expecting a single number
+      console.log(`Fetched latest price for product ${productId}:`, latestPrice);
+  
+      // Update the `price_base` for the specific product
+      this.products.update((currentProducts) =>
+        currentProducts.map((product) =>
+          product.id === productId
+            ? { ...product, price_base: latestPrice } // Update the price_base
+            : product // Return unchanged product
+        )
+      );
+  
+      console.log('Updated products:', this.products());
+    } catch (error) {
+      console.error(`Error fetching latest price for product ${productId}:`, error);
+    }
+  }
+  
+
+
   async fetchProducts() {
     console.log("fetchProducts() called");
     const headers = await this.authService.addTokenToHeader();
@@ -39,39 +67,29 @@ export class ProductService {
 
     const partyId = this.activePartyId();
     if (partyId === null) {
-    console.error('Cannot fetch products: No active Party ID.');
+    console.warn('Cannot fetch products: No active Party ID.');
     return; 
   }
     let url = baseURL + '/' + partyId + '/products';
-    console.log("calling url for fetchproducts:", url);
 
     axios.get(url, {
       headers:headers,
     })
       .then(response => {
-        console.log("fetchProducts() response =");
-        console.log(response);
-
+        
         const fetchedProducts = response.data;
         console.log("fetched products is:");
         console.log(fetchedProducts);
-
         try {
           this.products.set(fetchedProducts);
         } catch (error) {
-          console.error("Error while setting parties:", error);
-          console.error("Error while setting parties:", error);
-          console.error("Error while setting parties:", error);
-          console.error("Error while setting parties:!!!!!!!!!!!!!!!!!!", error);
-          //this.parties.set([]); // Fallback for an error in setting parties
+          console.error("Error while setting parties:", error); 
         }
       })
       .catch(error => {
         console.error("Error fetching data:", error);
 
       });
-
-
   }
 
    
@@ -80,9 +98,6 @@ export class ProductService {
     
     try {
       const headers = await this.authService.addTokenToHeader();
-      //console.log('Headers with token:', headers);
-
-
       const partyId = this.activePartyId();
       if (partyId === null) {
       console.error('Cannot create product: No active Party ID.');
