@@ -55,12 +55,7 @@ export class ProductService {
 
   
 
-  get activePartyId(): Signal<number | null> {
-    return computed(() => {
-      const parties = this.partyService.parties();
-      return parties.length > 0 && parties[0]?.id !== undefined ? parties[0].id : null;
-    });
-  }
+  
 
 
   async fetchProducts() {
@@ -68,7 +63,7 @@ export class ProductService {
     const headers = await this.authService.addTokenToHeader();
 
 
-    const partyId = this.activePartyId();
+    const partyId = this.partyService.activePartyId();
     if (partyId === null) {
     console.warn('Cannot fetch products: No active Party ID.');
     return; 
@@ -101,7 +96,7 @@ export class ProductService {
     
     try {
       const headers = await this.authService.addTokenToHeader();
-      const partyId = this.activePartyId();
+      const partyId = this.partyService.activePartyId();
       if (partyId === null) {
       console.error('Cannot create product: No active Party ID.');
       return; 
@@ -132,7 +127,7 @@ export class ProductService {
 async deleteProduct(productId: number) {
   try {
     const headers = await this.authService.addTokenToHeader();
-    const partyId = this.activePartyId();
+    const partyId = this.partyService.activePartyId();
     if (partyId === null) {
       console.error('Cannot delete product: No active Party ID.');
       return;
@@ -160,7 +155,7 @@ async deleteProduct(productId: number) {
 async updateProduct(updatedProduct: Product) {
   try {
     const headers = await this.authService.addTokenToHeader();
-    const partyId = this.activePartyId();
+    const partyId = this.partyService.activePartyId();
     if (partyId === null) {
       console.error('Cannot update product: No active Party ID.');
       return;

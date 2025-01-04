@@ -1,19 +1,17 @@
 <div class="flex items-center justify-center max-h-full">
-  <!-- Kasten -->
-  <div class="bg-box border rounded-box shadow-box p-6 w-96 relative"> <!-- Set relative positioning on the parent div -->
-    <!-- Überschrift -->
+  <div class="bg-box border rounded-box shadow-box p-6 w-96 relative">
     <h1 class="text-white text-3xl font-medium text-center mb-5">
       Events
     </h1>
 
     <div class="flex items-center bg-white px-4 py-2 rounded-md mb-4">
       <h3 class="font-medium text-left mr-2">
-        Aktive events: <span class="ml-8">0</span>
+        Konfigurierte Events: <span class="ml-8">{{ events.length }}</span>
       </h3>
       <span class="text-xl ml-auto">ℹ️</span>
     </div>
 
-    <!-- Button -->
+    @if(!hideInputButton){
     <div class="flex justify-center mb-4">
       <button
         class="bg-gradient-to-r text-sm font-semibold uppercase text-white px-4 py-2 rounded-box focus:outline-none"
@@ -22,16 +20,17 @@
         Event anlegen
       </button>
     </div>
+  }
 
-    @if(isSetEventWindowOpen){
-      <div class=" inset-x-0  bg-opacity-50 flex items-center justify-center z-50">
+    @if(isSetEventWindowOpen) {
+      <div class="inset-x-0 bg-opacity-50 flex items-center justify-center z-50">
         <div class="bg-box border rounded-box shadow-box p-6 w-96">
           <h2 class="text-white text-2xl font-medium text-center mb-4">Event Details</h2>
 
-          <form>
+          <form (ngSubmit)="createEvent()">
             <div class="mb-4">
               <label class="text-white block">Event Typ</label>
-              <select class="w-full px-3 py-2 rounded-box bg-white">
+              <select [(ngModel)]="eventType" name="eventType" class="w-full px-3 py-2 rounded-box bg-white">
                 <option value="boersencrash">Börsencrash</option>
                 <option value="happy_hour">Happy Hour</option>
               </select>
@@ -39,16 +38,25 @@
             
             <div class="mb-4">
               <label class="text-white block">Eventdauer in Minuten</label>
-              <input type="time" step="60" class="w-full px-3 py-2 rounded-box bg-white" />
+              <input 
+                type="number" 
+                [(ngModel)]="eventDuration" 
+                name="eventDuration" 
+                class="w-full px-3 py-2 rounded-box bg-white" 
+                placeholder="Duration in minutes" />
             </div>
             
-
             <div class="flex justify-between">
-              <button type="button" class="text-sm font-semibold uppercase text-white px-4 py-2 rounded-md focus:outline-none" (click)="toggleCreateEventWindow()">
+              <button 
+                type="button" 
+                class="text-sm font-semibold uppercase text-white px-4 py-2 rounded-md focus:outline-none" 
+                (click)="toggleCreateEventWindow()">
                 Cancel
               </button>
-              <button type="submit" class="text-sm font-semibold uppercase text-white px-4 py-2 rounded-md hover:bg-green-600 focus:outline-none">
-                Create Event
+              <button 
+                type="submit" 
+                class="text-sm font-semibold uppercase text-white px-4 py-2 rounded-md hover:bg-green-600 focus:outline-none">
+                Bestätigen
               </button>
             </div>
           </form>

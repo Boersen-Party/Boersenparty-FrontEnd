@@ -2,7 +2,6 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { CommonModule } from '@angular/common'
 import { ProductImageSelectorComponent } from '../product-image-selector/product-image-selector.component';
 import { FormGroup, FormsModule } from '@angular/forms';
-import { FormService } from '../../services/form.service';
 import { Product } from '../../_model/product';
 import { ProductService } from '../../services/products.service';
 
@@ -21,7 +20,7 @@ export class AddDrinkItemWindowComponent {
   //für die input validierung
 
   
-  constructor(private formService: FormService, private productService: ProductService) {
+  constructor(private productService: ProductService) {
     //this.productForm = this.formService.createProductForm();
   }
   //productForm!: FormGroup;

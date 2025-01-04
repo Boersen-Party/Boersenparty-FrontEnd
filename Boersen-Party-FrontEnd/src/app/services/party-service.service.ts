@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, Signal, signal } from '@angular/core';
 import { Party } from '../_model/party';
 import axios from "axios";
 import { baseURL } from '../_config/config';
@@ -22,6 +22,13 @@ export class PartyServiceService {
       this.fetchParties();
     
     })
+  }
+
+  get activePartyId(): Signal<number | null> {
+    return computed(() => {
+      const parties = this.parties();
+      return parties.length > 0 && parties[0]?.id !== undefined ? parties[0].id : null;
+    });
   }
 
 

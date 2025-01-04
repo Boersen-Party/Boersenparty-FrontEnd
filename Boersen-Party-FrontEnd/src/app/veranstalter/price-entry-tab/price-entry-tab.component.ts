@@ -24,7 +24,7 @@ export class PriceEntryTabComponent {
   
       effect(() => {
         this.products = this.productService.products();
-        console.log("effect called in PriceEntryTabComponent!");
+        //console.log("effect called in PriceEntryTabComponent!");
       });
   
     }
