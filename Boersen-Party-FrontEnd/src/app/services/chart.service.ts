@@ -15,31 +15,46 @@ export class ChartService {
       maintainAspectRatio: false,
       plugins: {
         legend: {
-          display: false, 
+          display: false,
+        },
+        tooltip: {
+          enabled: true, 
+          callbacks: {
+            label: function (context) {
+              const price = context.raw as number;
+              return `Preis: ${price.toFixed(2)}`; 
+            },
+            title: function (context) {
+              const labelIndex = context[0].dataIndex;
+              return labels[labelIndex]; 
+            },
+          },
+          backgroundColor: 'rgba(0, 0, 0, 0.8)', 
+          titleColor: '#FFFFFF', 
+          bodyColor: '#FFFFFF', 
         },
       },
       scales: {
         x: {
           grid: {
-            display: false, 
+            display: false,
           },
           ticks: {
-            color: 'white',
+            color: '#BBBBBB',
           },
           title: {
             display: true,
             text: 'Zeit',
-            color: 'white',
+            color: '#FFFFFF',
           },
         },
         y: {
           grid: {
-            display: false, 
+            display: false,
           },
           ticks: {
-            color: 'white',
+            color: '#BBBBBB',
             callback: (value: any, index: number, ticks: any) => {
-              // Show only first and last value
               if (index === 0 || index === ticks.length - 1) {
                 return value;
               }
@@ -49,7 +64,7 @@ export class ChartService {
           title: {
             display: true,
             text: 'Preis',
-            color: 'white',
+            color: '#FFFFFF',
           },
         },
       },
@@ -67,6 +82,8 @@ export class ChartService {
             backgroundColor: 'rgba(255, 217, 0, 0.2)',
             borderWidth: 2,
             tension: 0.4,
+            pointRadius: 2, 
+            hoverRadius: 6, 
           },
         ],
       },

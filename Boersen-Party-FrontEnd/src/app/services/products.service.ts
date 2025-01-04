@@ -5,6 +5,7 @@ import { PartyServiceService } from './party-service.service';
 import { baseURL } from '../_config/config';
 import axios from 'axios';
 import { timer } from 'rxjs';
+import { CircularBuffer } from '../_datastructure/CircularBuffer';
 
 
 @Injectable({
@@ -12,15 +13,48 @@ import { timer } from 'rxjs';
 })
 
 export class ProductService {
-  timer = timer(0, 10000);
+  timer = timer(0, 3000);
   products = signal<Product[]>([]);
-  prices = signal<Map<number, number>>(new Map()); // Maps product ID to its latest price
+  prices = signal<Map<number, number>>(new Map()); //unused?
+  latestPriceBuffers = signal<Map<number, CircularBuffer<{ timestamp: string | undefined, price: number }>>>(new Map());
+
 
   constructor(private authService: AuthService, private partyService: PartyServiceService) {
     this.timer.subscribe(() => {
       this.fetchProducts();
+      this.updateLatestPriceBuffers();
     });
   }
+
+
+  updateLatestPriceBuffers(): void {
+    const currentBuffers = this.latestPriceBuffers();
+    const updatedBuffers = new Map(currentBuffers);
+
+    this.products().forEach(product => {
+      const productId = product.id;
+      const timestamp = product.PriceUpdatedAt;
+      const price = product.latestCalculatedPrice;
+
+      if (productId === undefined) {
+        console.warn("Product without ID detected. Skipping buffer update:", product);
+        return;
+      }
+
+      //buffer per Produkt
+      if (!updatedBuffers.has(productId)) {
+        updatedBuffers.set(productId, new CircularBuffer(10));
+      }
+
+      const buffer = updatedBuffers.get(productId)!;
+      buffer.add({ timestamp, price });
+    });
+
+    this.latestPriceBuffers.set(updatedBuffers);
+    console.log("Updated latestPriceBuffers in service:", updatedBuffers);
+  }
+
+  
 
   get activePartyId(): Signal<number | null> {
     return computed(() => {
@@ -28,37 +62,6 @@ export class ProductService {
       return parties.length > 0 && parties[0]?.id !== undefined ? parties[0].id : null;
     });
   }
-
-
-
-
-  async fetchLatestPrices(productId: number) {
-    try {
-      const headers = await this.authService.addTokenToHeader();
-  
-      const url = `http://localhost:8080/price-update/${productId}`;
-      console.log('Calling URL for fetchLatestPrices:', url);
-  
-      // Fetch the latest price for the specified product
-      const response = await axios.get(url, { headers });
-      const latestPrice = response.data; // Expecting a single number
-      console.log(`Fetched latest price for product ${productId}:`, latestPrice);
-  
-      // Update the `price_base` for the specific product
-      this.products.update((currentProducts) =>
-        currentProducts.map((product) =>
-          product.id === productId
-            ? { ...product, price_base: latestPrice } // Update the price_base
-            : product // Return unchanged product
-        )
-      );
-  
-      console.log('Updated products:', this.products());
-    } catch (error) {
-      console.error(`Error fetching latest price for product ${productId}:`, error);
-    }
-  }
-  
 
 
   async fetchProducts() {
@@ -126,5 +129,7 @@ export class ProductService {
       console.error('Error resolving token or creating product:', error);
     }
   }
+
+  
 
 }

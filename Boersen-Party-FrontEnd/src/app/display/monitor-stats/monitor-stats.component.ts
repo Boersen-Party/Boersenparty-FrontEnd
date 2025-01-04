@@ -21,34 +21,13 @@ export class MonitorStatsComponent {
       console.log("products before effect in SwipeableStatsGrid:", this.products);
       this.products = this.productService.products();
       console.log("Updated products in SwipeableStatsGrid:", this.products);
+      this.latestPriceBuffers = this.productService.latestPriceBuffers();      
+  });
+}
+  
 
-      this.products.forEach(product => {
-        const productId = product.id;
-        const timestamp = product.PriceUpdatedAt;
-        const price = product.latestCalculatedPrice;
-
-        if (productId === undefined) {
-          console.warn("Product without ID detected. Skipping buffer update:", product);
-          return;
-        }
-
-        if (!this.latestPriceBuffers.has(productId)) {
-          this.latestPriceBuffers.set(productId, new CircularBuffer(10));
-        }
-
-        const buffer = this.latestPriceBuffers.get(productId)!;
-        buffer.add({ timestamp, price });
-      });
-
-      console.log("latestPriceBuffers after effect in SwipeableStatsGrid:", this.latestPriceBuffers);
-    });
-  }
-
-  /**
-   * Extracts x (timestamps) and y (prices) arrays from the latestPriceBuffers map.
-   * @param productId The product ID for which to extract the data.
-   * @returns An object containing x (timestamps) and y (prices) arrays.
-   */
+  // extrahiert von der map die timestamp und price werte und packt sie
+  // in x- und y-arrays, die für die Chart.js benötigt werden
   getChartData(productId: number): { x: string[]; y: number[] } {
     if (productId === 0) {
       throw new Error("Invalid product ID: 0. This indicates a missing or uninitialized product ID for Chart Creation.");
@@ -59,7 +38,8 @@ export class MonitorStatsComponent {
       return { x: [], y: [] };
     }
     const data = buffer.toArray();
-    console.log("Data for product", productId, ":", data);
+    //potentially very large data
+    //console.log("Data for product", productId, ":", data);
     return {
       x: data.map(entry => entry.timestamp || "Unknown"),
       y: data.map(entry => entry.price)
