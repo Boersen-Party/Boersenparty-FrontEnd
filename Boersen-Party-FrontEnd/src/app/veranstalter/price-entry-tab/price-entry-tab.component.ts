@@ -12,6 +12,15 @@ import { ProductService } from '../../services/products.service';
 })
 
 export class PriceEntryTabComponent {
+  
+  
+  DeleteProduct(productId: number): void {
+    if (productId === 0) {
+      throw new Error("PriceEntryTab: Invalid product ID: 0. This indicates a missing or uninitialized product.");
+    }
+      this.productService.deleteProduct(productId); 
+      //maybe have to filter the product from the local list, idk
+  }
 
 
   @Input() hideButton: boolean = false;

@@ -15,7 +15,6 @@ import { CircularBuffer } from '../_datastructure/CircularBuffer';
 export class ProductService {
   timer = timer(0, 3000);
   products = signal<Product[]>([]);
-  prices = signal<Map<number, number>>(new Map()); //unused?
   latestPriceBuffers = signal<Map<number, CircularBuffer<{ timestamp: string | undefined, price: number }>>>(new Map());
 
 
@@ -129,6 +128,35 @@ export class ProductService {
       console.error('Error resolving token or creating product:', error);
     }
   }
+
+async deleteProduct(productId: number) {
+  try {
+    const headers = await this.authService.addTokenToHeader();
+    const partyId = this.activePartyId();
+    if (partyId === null) {
+      console.error('Cannot delete product: No active Party ID.');
+      return;
+    }
+
+    const url = `${baseURL}/${partyId}/products/${productId}`;
+    console.log("deleteProduct calls url:", url);
+
+    axios.delete(url, { headers: headers, withCredentials: true })
+      .then((response) => {
+        console.log('Response from backend:', response.data);
+
+        // do i need this?
+         // this.products.update((products) => products.filter(product => product.id !== productId));
+         
+      })
+      .catch((error: any) => {
+        console.error('Error deleting product:', error.response ? error.response.data : error);
+      });
+  } catch (error) {
+    console.error('Error resolving token or deleting product:', error);
+  }
+}
+
 
   
 
