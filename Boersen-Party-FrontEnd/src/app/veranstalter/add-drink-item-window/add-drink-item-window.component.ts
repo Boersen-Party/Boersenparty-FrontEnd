@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { CommonModule } from '@angular/common'
 import { ProductImageSelectorComponent } from '../product-image-selector/product-image-selector.component';
 import { FormGroup, FormsModule } from '@angular/forms';
@@ -15,6 +15,8 @@ import { ProductService } from '../../services/products.service';
 })
 
 export class AddDrinkItemWindowComponent {
+  @Input() hideLastCalculatedPriceInput: boolean = false;
+  @Input() product_id_for_put_request: number = 0; //wild
 
   //für die input validierung
 
@@ -25,7 +27,7 @@ export class AddDrinkItemWindowComponent {
   //productForm!: FormGroup;
 
   
-  @Output() ProductCreated = new EventEmitter<Product>();
+  //@Output() ProductCreated = new EventEmitter<Product>();
   @Output() close = new EventEmitter<void>();
 
 
@@ -66,47 +68,44 @@ export class AddDrinkItemWindowComponent {
     this.isImageSelectorInputClicked = false;
   }
 
-
+  //handles creating new product(POST) and updating a product (PUT)
   submitProductItem() {
-    // submit a drink entry
-    console.log("Button clicked!");
-
-    const newProduct: Product = {
-      name: this.pname,
-      latestCalculatedPrice: this.latestCalculatedPrice,
-      price_min: this.minPrice,
-      price_max: this.maxPrice,
-      pQuantity: this.quantity,
-      imageURL: this.selectedImageUrl,
-      productType: this.productType
-    };
-
-    console.log("Submitted Product:", newProduct);
-    console.log("making the request now...");
-    this.productService.createProduct(newProduct);
-
-
-
-    //maybe delete this later
-    this.ProductCreated.emit(newProduct);
-    this.hideWindow();
-
-
-    // TO-DO: Validate inputs using form groups
-    /*
-    if (this.productForm.valid) {
-      const product: Product = this.productForm.value;
-      console.log("full product object:", product);
-
-
-    } else {
-      console.error("Form is invalid, please fix errors before submitting.");
-      const product: Product = this.productForm.value;
-      console.log(product);
+    let product: Product;
+  
+    // If hideLastCalculatedPriceInput is true, it's an update (PUT request)
+    if (this.hideLastCalculatedPriceInput) {
+      const updatedProduct: Product = {
+        id: this.product_id_for_put_request,  
+        name: this.pname,
+        latestCalculatedPrice: this.latestCalculatedPrice, //you can send whatever price, the backend won't accept it
+        price_min: this.minPrice,
+        price_max: this.maxPrice,
+        pQuantity: this.quantity,
+        imageURL: this.selectedImageUrl,
+        productType: this.productType
+      };
+  
+      console.log("Updating Product:", updatedProduct);
+      this.productService.updateProduct(updatedProduct);  // Call the updateProduct method from the service
+    } 
+    
+    else {
+      // If hideLastCalculatedPriceInput is false, it's a new product (POST request)
+      const newProduct: Product = {
+        name: this.pname,
+        latestCalculatedPrice: this.latestCalculatedPrice,
+        price_min: this.minPrice,
+        price_max: this.maxPrice,
+        pQuantity: this.quantity,
+        imageURL: this.selectedImageUrl,
+        productType: this.productType
+      };
+  
+      console.log("Submitting New Product:", newProduct);
+      this.productService.createProduct(newProduct);  // Call the createProduct method from the service
     }
-      */
-
-
+  
+    this.hideWindow();  // Close the window after submitting
   }
 
 }

@@ -2,38 +2,22 @@
 
   <div class="add-drink relative flex flex-col gap-2 p-4 rounded-lg shadow-lg w-3/5 ml-10">
 
-    <!-- closing X button oben rechts-->
     <button class="button absolute right-2 top-1" (click)="hideWindow()">
       <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="#ffffff">
         <path d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
       </svg>
     </button>
 
-    <p class="text-center text-xl text-gray-300 mb-2 font-semibold">Add Drink</p>
+    @if(!hideLastCalculatedPriceInput){
+    <p class="text-center text-xl text-gray-300 mb-2 font-semibold">Add Product</p>
+    } @else { <p class="text-center text-xl text-gray-300 mb-2 font-semibold">Update Product</p> }
 
-    <!-- links /rechts inputs-->
     <div class="flex justify-between gap-4">
 
-      <!-- Left -->
       <div class="w-1/2 space-y-2">
         <label for="drinkName" class="text-sm font-medium">Produktname</label>
         <input id="drinkName" class="input-field p-1 text-sm" placeholder="Produktname" [(ngModel)]="pname">
-
-        <label for="latestCalculatedPrice" class="text-sm font-medium">Grundpreis</label>
-        <input type="number" min="0" id="latestCalculatedPrice" class="input-field p-1 text-sm" placeholder="Grundpreis" [(ngModel)]="latestCalculatedPrice" (ngModelChange)="calculateDefaultMinMaxPrices()">
-
-        <label for="maxPrice" class="text-sm font-medium">Max-Preis</label>
-        <input type="number" min="0" id="maxPrice" class="input-field p-1 text-sm" placeholder="Max-Preis" [(ngModel)]="maxPrice">
-
-        <label for="minPrice" class="text-sm font-medium">Minimal-Preis</label>
-        <input type="number" min="0" id="minPrice" class="input-field p-1 text-sm" placeholder="Minimal-Preis" [(ngModel)]="minPrice">
-      </div>
-
-      <!-- Right -->
-      <div class="w-1/2 space-y-2">
-        <label for="quantity" class="text-sm font-medium">Menge</label>
-        <input type="number" min="0" id="quantity" class="input-field p-1 text-sm" placeholder="Menge" [(ngModel)]="quantity">
-
+        
         <label for="producttype" class="text-sm font-medium">Produkt-typ</label>
         <select id="producttype" class="input-field p-1 text-sm" [(ngModel)]="productType">
           <option value="alkoholfrei">alkoholfrei</option>
@@ -44,11 +28,32 @@
         <label for="productimage" class="text-sm font-medium" (click)="toggleImageSelector()">Bild</label>
         <img [src]="selectedImageUrl" (click)="toggleImageSelector()" alt="Image Selector Icon" class="image-selector-icon w-12 h-12" [(ngModel)]="selectedImageUrl">
 
-        @if(isImageSelectorInputClicked){
-          <app-product-image-selector (imageSelected)="selectedImageUrl = $event"/>
-        }
+          </div>
+
+      @if(!hideLastCalculatedPriceInput){   
+      <div class="w-1/2 space-y-2">
+        <label for="quantity" class="text-sm font-medium">Menge</label>
+        <input type="number" min="0" id="quantity" class="input-field p-1 text-sm" placeholder="Menge" [(ngModel)]="quantity">
+
+        <label for="latestCalculatedPrice" class="text-sm font-medium">Grundpreis</label>
+        <input type="number" min="0" id="latestCalculatedPrice" class="input-field p-1 text-sm" placeholder="Grundpreis" [(ngModel)]="latestCalculatedPrice" (ngModelChange)="calculateDefaultMinMaxPrices()">
+       
+
+        <label for="maxPrice" class="text-sm font-medium">Max-Preis</label>
+        <input type="number" min="0" id="maxPrice" class="input-field p-1 text-sm" placeholder="Max-Preis" [(ngModel)]="maxPrice">
+
+        <label for="minPrice" class="text-sm font-medium">Minimal-Preis</label>
+        <input type="number" min="0" id="minPrice" class="input-field p-1 text-sm" placeholder="Minimal-Preis" [(ngModel)]="minPrice">
+   
+
+        
 
       </div>
+    }
+
+    @if(isImageSelectorInputClicked){
+      <app-product-image-selector (imageSelected)="selectedImageUrl = $event"/>
+    }
 
     </div>
 

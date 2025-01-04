@@ -157,6 +157,48 @@ async deleteProduct(productId: number) {
   }
 }
 
+async updateProduct(updatedProduct: Product) {
+  try {
+    const headers = await this.authService.addTokenToHeader();
+    const partyId = this.activePartyId();
+    if (partyId === null) {
+      console.error('Cannot update product: No active Party ID.');
+      return;
+    }
+
+    // Ensure product ID is present for update
+    if (!updatedProduct.id) {
+      console.error('Cannot update product: No product ID provided.');
+      return;
+    }
+
+    let url = `${baseURL}/${partyId}/products/${updatedProduct.id}`; // Update URL with product ID
+    console.log("updateProduct calls url:", url);
+
+    axios
+      .put(url, updatedProduct, {
+        headers: headers, // application/json
+      })
+      .then((response) => {
+        const updatedProductResponse = response.data;
+        console.log('Product updated:', updatedProductResponse);
+
+        // Update the products signal after the product is updated
+        this.products.update((products) => {
+          // Replace the old product with the updated product
+          return products.map(product => 
+            product.id === updatedProduct.id ? updatedProductResponse : product
+          );
+        });
+      })
+      .catch((error: any) => {
+        console.error('Error updating product:', error);
+      });
+  } catch (error) {
+    console.error('Error resolving token or updating product:', error);
+  }
+}
+
 
   
 

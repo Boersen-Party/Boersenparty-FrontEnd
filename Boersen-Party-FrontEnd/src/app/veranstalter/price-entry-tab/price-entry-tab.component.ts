@@ -12,21 +12,12 @@ import { ProductService } from '../../services/products.service';
 })
 
 export class PriceEntryTabComponent {
-  
-  
-  DeleteProduct(productId: number): void {
-    if (productId === 0) {
-      throw new Error("PriceEntryTab: Invalid product ID: 0. This indicates a missing or uninitialized product.");
-    }
-      this.productService.deleteProduct(productId); 
-      //maybe have to filter the product from the local list, idk
-  }
-
-
-  @Input() hideButton: boolean = false;
-  //this array will be populated by the input window
+  @Input() hideButton: boolean = false; // in personal view, the create product button is hidden
   products: Product[] = [];
-
+  showAddDrinkWindow: boolean = false;
+  showEditDrinkWindowForAdjustment: boolean = false;
+  selectedProductId: number = 0;
+  
 
    constructor(private productService: ProductService) {
   
@@ -37,13 +28,25 @@ export class PriceEntryTabComponent {
       });
   
     }
-  // kann ganz weg?
-  RecieveProductFromInputWindow(product: Product) {
-    console.log("Received Product:", product);
-    //this.products.push(product);
-  }
+  
+    DeleteProduct(productId: number): void {
+      if (productId === 0) {
+        throw new Error("PriceEntryTab: Invalid product ID: 0. This indicates a missing or uninitialized product.");
+      }
+        this.productService.deleteProduct(productId); 
+        //maybe have to filter the product from the local list, idk
+    }
+  
+  
+  onClickForAdjust(productId: number): void {
+    if (productId === 0) {
+      throw new Error("PriceEntryTab- onClickForAdjust: Invalid product ID: 0. This indicates a missing or uninitialized product.");
+    }
+    this.selectedProductId = productId;
+    this.showEditDrinkWindowForAdjustment = !this.showEditDrinkWindowForAdjustment;
 
-  showAddDrinkWindow: boolean = false;
+  }
+  
 
   onClick() {
     console.log("Button clicked!");
@@ -52,5 +55,6 @@ export class PriceEntryTabComponent {
 
   closeWindow() {
     this.showAddDrinkWindow = false;
+    this.showEditDrinkWindowForAdjustment = false;
   }
 }
