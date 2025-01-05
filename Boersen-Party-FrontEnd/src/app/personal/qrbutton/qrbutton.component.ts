@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-qrbutton',
@@ -9,4 +9,16 @@ import { Component } from '@angular/core';
 })
 export class QRButtonComponent {
 
+  @Input() accessQRCodeBase64?: string | null ; 
+  isQRImageShown: boolean = false;
+
+   showQRCodeImage() {
+    //console.log("qr code is: " + this.accessQRCodeBase64);
+    this.isQRImageShown = true;
+  }
+
+
+  closeQRCodeImage() {
+    this.isQRImageShown = false;
+  }
 }
