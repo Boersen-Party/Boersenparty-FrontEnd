@@ -23,7 +23,7 @@ export class EventService {
 
 
   async fetchEvents() {
-    console.log("fetchEvents() called");
+    //console.log("fetchEvents() called");
     const headers = await this.authService.addTokenToHeader();
 
     const partyId = this.partyService.activePartyId();
@@ -40,8 +40,8 @@ export class EventService {
     })
       .then(response => {
         const fetchedEvents = response.data;
-        console.log("fetched events are:");
-        console.log(fetchedEvents);
+        //console.log("fetched events are:");
+        //console.log(fetchedEvents);
         try {
           this.events.set(fetchedEvents);
         } catch (error) {

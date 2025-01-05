@@ -31,6 +31,21 @@ export class PartyServiceService {
     });
   }
 
+  async getQRCodeBase64(): Promise<string> {
+    try {
+      const headers = await this.authService.addTokenToHeader();
+      const activePartyId = this.activePartyId();
+      const url = `${baseURL}/${activePartyId}/qrcodes`;
+      console.log("calling url:", url);
+      const response = await axios.get(url, { headers });
+      console.log("response.data FOR QR CODE  is:", response.data);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching QR code:', error);
+      throw error;
+    }
+  }
+
 
   async getHostedBy() {
     try {
@@ -93,6 +108,9 @@ export class PartyServiceService {
           const createdParty = response.data;
           this.parties.update((parties) => [...parties, createdParty]);
           console.log('Party created:', createdParty);
+          console.log('Party created:', createdParty);
+          console.log('Party created:', createdParty);
+          console.log('Party created:', createdParty);
         })
         .catch((error) => {
           console.error('Error adding party:', error);
@@ -121,6 +139,8 @@ export class PartyServiceService {
 
     return true;
   }
+
+
 
 }
 

@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, effect } from '@angular/core';
 import {PriceOverviewComponent} from './price-overview/price-overview.component';
 import {SubTotalComponent} from './sub-total/sub-total.component';
 import {EventButtonComponent} from './event-button/event-button.component';
 import {ReservationListComponent} from './reservation-list/reservation-list.component';
 import { QRButtonComponent } from './qrbutton/qrbutton.component';
+import { PartyServiceService } from '../services/party-service.service';
+import { Party } from '../_model/party';
 
 @Component({
   standalone: true,
@@ -13,5 +15,14 @@ import { QRButtonComponent } from './qrbutton/qrbutton.component';
   styleUrl: './personal.component.css'
 })
 export class PersonalComponent {
+  parties: Party[] = [];
+
+
+  constructor(private partyService: PartyServiceService) {
+    effect(() => {
+      this.parties = this.partyService.parties();
+      console.log("Updated parties in PersonalComponent:", this.parties);
+    });
+}
 
 }

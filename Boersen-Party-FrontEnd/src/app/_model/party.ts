@@ -5,6 +5,5 @@ export interface Party {
     end_date: string;
     hosted_by: string | null | undefined;
     access_code?: string | null | undefined;  
-    accessQRCodeImage?: string | null | undefined; // in base64
 
   }

@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { PartyServiceService } from '../../services/party-service.service';
 
 @Component({
   selector: 'app-qrbutton',
@@ -7,13 +8,31 @@ import { Component, Input } from '@angular/core';
   templateUrl: './qrbutton.component.html',
   styleUrl: './qrbutton.component.css'
 })
-export class QRButtonComponent {
-
-  @Input() accessQRCodeBase64?: string | null ; 
+export class QRButtonComponent implements OnInit {
+  QRCodeBase64?: string | null;
   isQRImageShown: boolean = false;
 
+  constructor(private partyService: PartyServiceService){  }
+
+  ngOnInit() {
+    setTimeout(() => {
+      if (this.partyService.activePartyId()) {
+        this.loadQRCode();
+      } else {
+        console.log("activePartyId is still not available");
+      }
+    }, 1000);
+  }
+
+   async loadQRCode() {
+    try {
+      this.QRCodeBase64 = await this.partyService.getQRCodeBase64();
+    } catch (error) {
+      console.error('Error loading QR code:', error);
+    }
+  }
+
    showQRCodeImage() {
-    //console.log("qr code is: " + this.accessQRCodeBase64);
     this.isQRImageShown = true;
   }
 

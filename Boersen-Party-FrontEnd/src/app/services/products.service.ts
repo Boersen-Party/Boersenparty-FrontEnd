@@ -59,7 +59,7 @@ export class ProductService {
 
 
   async fetchProducts() {
-    console.log("fetchProducts() called");
+    //console.log("fetchProducts() called");
     const headers = await this.authService.addTokenToHeader();
 
 
@@ -76,8 +76,8 @@ export class ProductService {
       .then(response => {
         
         const fetchedProducts = response.data;
-        console.log("fetched products is:");
-        console.log(fetchedProducts);
+        //console.log("fetched products is:");
+        //console.log(fetchedProducts);
         try {
           this.products.set(fetchedProducts);
         } catch (error) {
