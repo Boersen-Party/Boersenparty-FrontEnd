@@ -9,6 +9,7 @@
         Konfigurierte Events: <span class="ml-8">{{ events.length }}</span>
       </h3>
       <span class="text-xl ml-auto">ℹ️</span>
+    
     </div>
 
     @if(!hideInputButton){
@@ -31,8 +32,8 @@
             <div class="mb-4">
               <label class="text-white block">Event Typ</label>
               <select [(ngModel)]="eventType" name="eventType" class="w-full px-3 py-2 rounded-box bg-white">
-                <option value="boersencrash">Börsencrash</option>
-                <option value="happy_hour">Happy Hour</option>
+                <option value="Boersencrash">Börsencrash</option>
+                <option value="Happy Hour">Happy Hour</option>
               </select>
             </div>
             

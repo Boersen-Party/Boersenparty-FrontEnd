@@ -11,6 +11,7 @@ import axios from 'axios';
   providedIn: 'root'
 })
 export class EventService {
+  
   timer = timer(0, 5000);
   events = signal<PartyEvent[]>([]);
    
@@ -82,4 +83,30 @@ export class EventService {
     }
   }
 
+  async triggerEvent(eventId: number) {
+    try {
+      const headers = await this.authService.addTokenToHeader();
+      const partyId = this.partyService.activePartyId();
+  
+      if (partyId === null) {
+        console.error('Cannot trigger event: No active Party ID.');
+        return;
+      }
+  
+      const url = `${baseURL}/${partyId}/events/${eventId}`;
+      console.log("Triggering event with URL:", url);
+  
+      axios.put(url, {}, { headers })
+        .then(response => {
+          console.log("Event triggered successfully:", response.data);
+          // Optionally, you can refresh the events list here if needed
+          //this.fetchEvents();
+        })
+        .catch(error => {
+          console.error("Error triggering event:", error);
+        });
+    } catch (error) {
+      console.error("Error in triggerEvent method:", error);
+    }
+  }
 }
