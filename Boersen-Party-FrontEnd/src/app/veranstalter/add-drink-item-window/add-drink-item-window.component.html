@@ -65,4 +65,5 @@
     </button>
 
   </div>
+  <app-invalid-popup *ngIf="showPopup" [message]="popupMessage" (closePopup)="closePopup()"></app-invalid-popup>
 </div>
