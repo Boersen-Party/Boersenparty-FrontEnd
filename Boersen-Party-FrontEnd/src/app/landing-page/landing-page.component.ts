@@ -22,15 +22,15 @@ export class LandingPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Check if the partyUuid cookie exists
 
-    if (this.partyService.getPartyUuid()) {
+    if (this.partyService.getPartyGuestUuid()) {
       console.log('Cookie found, redirecting...');
       this.router.navigate(['/user/home']); 
     } else {
       this.route.queryParams.subscribe(params => {
         if (params['code']) {
           this.accessCode = params['code'];
+          //this.joinParty();
         }
       });
     }

@@ -4,11 +4,12 @@ import {GerneralStatisticsUserComponent} from './components/gerneral-statistics-
 import {ToolbarComponent} from './components/toolbar/toolbar.component';
 import {RouterOutlet} from '@angular/router';
 import {FavoriteItemHomeComponent} from './components/favorite-item/favorite-item-home/favorite-item-home.component';
+import { PriceOverviewComponent } from "../personal/price-overview/price-overview.component";
 
 @Component({
   standalone: true,
   selector: 'app-user',
-  imports: [DrinkPriceOverviewUserComponent, GerneralStatisticsUserComponent, FavoriteItemHomeComponent, ToolbarComponent, RouterOutlet],
+  imports: [DrinkPriceOverviewUserComponent, GerneralStatisticsUserComponent, FavoriteItemHomeComponent, ToolbarComponent, RouterOutlet, PriceOverviewComponent],
   templateUrl: `./user.component.html`,
   styleUrls: ['./user.component.css']
 })

@@ -36,16 +36,16 @@ export class PartyServiceService {
 
 
 
-  getPartyUuid(): string | undefined {
-    return Cookies.get('partyUuid');  
+  getPartyGuestUuid(): string | undefined {
+    return Cookies.get('partyGuestUuid');  
   }
 
-  setPartyUuid(uuid: string): void {
-    Cookies.set('partyUuid', uuid, { expires: 7 });  
+  setPartyGuestUuid(uuid: string): void {
+    Cookies.set('PartyGuestUuid', uuid, { expires: 7 });  
   }
 
   async joinParty(accessCode: string) {
-    let uuid = this.getPartyUuid();
+    let uuid = this.getPartyGuestUuid();
 
     if (!uuid) {
       console.log('UUID not found, sending request to create one...');
@@ -59,7 +59,7 @@ export class PartyServiceService {
         if (joinedUser.uuid) {
           uuid = joinedUser.uuid;
           if (uuid) {
-            this.setPartyUuid(uuid);
+            this.setPartyGuestUuid(uuid);
           }
         }
 
