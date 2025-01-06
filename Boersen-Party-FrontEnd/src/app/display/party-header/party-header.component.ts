@@ -9,6 +9,5 @@ import { Party } from '../../_model/party';
   styleUrl: './party-header.component.css'
 })
 export class PartyHeaderComponent {
-  @Input() parties: Party[] = [];
   @Input() partyName: string | null = null;
 }

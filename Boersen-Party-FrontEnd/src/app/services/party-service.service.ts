@@ -5,6 +5,9 @@ import { baseURL } from '../_config/config';
 import { timer } from 'rxjs';
 import { AuthService } from './auth.service';
 import { KeycloakProfile } from 'keycloak-js';
+import { Router } from '@angular/router';
+import Cookies from 'js-cookie';
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +19,7 @@ export class PartyServiceService {
   //partyName = signal<string>('<Keine aktive Party gefunden>');
 
   
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
     this.timer.subscribe(_ => {
       console.log("timer subscribed.. fetching parties now..");
       this.fetchParties();
@@ -29,6 +32,47 @@ export class PartyServiceService {
       const parties = this.parties();
       return parties.length > 0 && parties[0]?.id !== undefined ? parties[0].id : null;
     });
+  }
+
+
+
+  getPartyUuid(): string | undefined {
+    return Cookies.get('partyUuid');  
+  }
+
+  setPartyUuid(uuid: string): void {
+    Cookies.set('partyUuid', uuid, { expires: 7 });  
+  }
+
+  async joinParty(accessCode: string) {
+    let uuid = this.getPartyUuid();
+
+    if (!uuid) {
+      console.log('UUID not found, sending request to create one...');
+
+      try {
+        const url = `${baseURL}/rooms`;
+        const response = await axios.post(url, { accessCode });
+
+        const joinedUser = response.data;
+
+        if (joinedUser.uuid) {
+          uuid = joinedUser.uuid;
+          if (uuid) {
+            this.setPartyUuid(uuid);
+          }
+        }
+
+        console.log('Successfully joined the party:', joinedUser);
+
+        this.router.navigate(['/user/home']); 
+      } catch (error) {
+        console.error('Error joining the party:', error);
+      }
+    } else {
+      console.log('UUID already exists, redirecting directly...');
+      this.router.navigate(['/user/home']);  
+    }
   }
 
   async getQRCodeBase64(): Promise<string> {
