@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PartyServiceService } from '../services/party-service.service';
 
 @Component({
   standalone: true,
@@ -8,5 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './landing-page.component.css'
 })
 export class LandingPageComponent {
+
+  constructor(private partyService : PartyServiceService){}
 
 }
