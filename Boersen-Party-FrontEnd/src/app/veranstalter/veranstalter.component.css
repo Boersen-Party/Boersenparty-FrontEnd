@@ -9,21 +9,21 @@
   border:1px solid green
 }
 
-.general-statistic-1{
+.logout-btn{
   grid-column: 2;
   grid-row: 2;
   border: 1px solid green;
   color: white;
 }
 
-.general-statistic-2{
+.create-party{
   grid-column: 1;
   grid-row: 1;
   border: 1px solid green;
   color: white;
 }
 
-.general-statistic-3{
+.general-statistics{
   grid-column: 1;
   grid-row: 2;
   border: 1px solid green;

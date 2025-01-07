@@ -7,7 +7,6 @@
   box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
 }
 
-
 .button {
   border: none;
   background: transparent;
@@ -43,6 +42,7 @@
   height: 3.5rem;
   padding: 0 1rem;
   background: white;
+  color: black;
   border-radius: 0.5rem;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -51,7 +51,7 @@
 
 .add-button:hover {
   background: #4f46e5;
-  color: white;
+  color: #000000;
 }
 
 .icon-wrapper {

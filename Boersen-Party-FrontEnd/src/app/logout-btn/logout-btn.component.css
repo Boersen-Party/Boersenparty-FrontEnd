@@ -1,0 +1,22 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: white;
+  position: absolute;
+  cursor: pointer;
+  right: 1.5rem;
+}
+
+.sign svg {
+  width: 17px;
+}
+
+.sign svg path {
+  fill: #000000;
+}
