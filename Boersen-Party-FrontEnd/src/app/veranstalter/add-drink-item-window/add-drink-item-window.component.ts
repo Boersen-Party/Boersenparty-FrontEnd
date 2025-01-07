@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common'
 import { ProductImageSelectorComponent } from '../product-image-selector/product-image-selector.component';
 import { FormGroup, FormsModule } from '@angular/forms';
 import { Product } from '../../_model/product';
+import {InvalidPopupComponent} from '../invalid-popup/invalid-popup.component';
 import { ProductService } from '../../services/products.service';
 
 @Component({
   standalone: true,
   selector: 'app-add-drink-item-window',
-  imports: [CommonModule, ProductImageSelectorComponent, FormsModule],
+  imports: [CommonModule, ProductImageSelectorComponent, FormsModule, InvalidPopupComponent],
   templateUrl: './add-drink-item-window.component.html',
   styleUrls: ['./add-drink-item-window.component.css']
 })
@@ -44,9 +45,12 @@ export class AddDrinkItemWindowComponent {
   selectedImageUrl: string = 'https://static.vecteezy.com/system/resources/thumbnails/014/440/983/small/image-icon-design-in-blue-circle-png.png';
   isImageSelectorInputClicked: boolean = false;
 
-  calculateDefaultMinMaxPrices() {
-    this.minPrice = this.latestCalculatedPrice * 0.5;
-    this.maxPrice = this.latestCalculatedPrice * 2;
+  popupMessage: string = ''; // Added for validation messages
+  showPopup: boolean = false; // Added to track popup visibility
+
+  calculateMinMaxPrices() {
+    this.minPrice = this.basePrice * 0.5;
+    this.maxPrice = this.basePrice * 2;
   }
 
 
@@ -65,6 +69,20 @@ export class AddDrinkItemWindowComponent {
   handleImageSelection(selectedImage: string) {
     this.selectedImageUrl = selectedImage;
     this.isImageSelectorInputClicked = false;
+  }
+  
+  validateInputs(): boolean {
+    let message = '';
+    if (!this.pname.trim()) message += 'Product name is required. \n';
+    if (this.basePrice <= 0) message += 'Base price must be greater than 0. \n';
+    if (this.quantity <= 0) message += 'Quantity must be greater than 0. \n';
+
+    if (message) {
+      this.popupMessage = message;
+      this.showPopup = true;
+      return false;
+    }
+    return true;
   }
 
   //handles creating new product(POST) and updating a product (PUT)
