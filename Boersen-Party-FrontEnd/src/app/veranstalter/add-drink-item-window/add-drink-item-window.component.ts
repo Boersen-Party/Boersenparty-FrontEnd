@@ -1,10 +1,10 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { CommonModule } from '@angular/common'
 import { ProductImageSelectorComponent } from '../product-image-selector/product-image-selector.component';
 import { FormGroup, FormsModule } from '@angular/forms';
-import { FormService } from '../../services/form.service';
 import { Product } from '../../_model/product';
 import {InvalidPopupComponent} from '../invalid-popup/invalid-popup.component';
+import { ProductService } from '../../services/products.service';
 
 @Component({
   standalone: true,
@@ -15,28 +15,30 @@ import {InvalidPopupComponent} from '../invalid-popup/invalid-popup.component';
 })
 
 export class AddDrinkItemWindowComponent {
+  @Input() hideLastCalculatedPriceInput: boolean = false;
+  @Input() product_id_for_put_request: number = 0; //wild
 
   //für die input validierung
 
-  /*
-  constructor(private formService: FormService) {
-    this.productForm = this.formService.createProductForm();
-  }
-  productForm!: FormGroup;
 
-  */
-  @Output() ProductCreated = new EventEmitter<Product>();
+  constructor(private productService: ProductService) {
+    //this.productForm = this.formService.createProductForm();
+  }
+  //productForm!: FormGroup;
+
+
+  //@Output() ProductCreated = new EventEmitter<Product>();
   @Output() close = new EventEmitter<void>();
 
 
   //inputs
   pname: string = '';
-  basePrice: number = 0;
+  latestCalculatedPrice: number = 0; //at the start it works as base_price
   maxPrice: number = 0;
   minPrice: number = 0;
   quantity: number = 0;
   productType: string = '';
-  description: string = '';
+  //description: string = '';
 
   //per default ist es ein png vom "File" Symbol
   //aber dann überschrieben von product-image-selector
@@ -68,7 +70,7 @@ export class AddDrinkItemWindowComponent {
     this.selectedImageUrl = selectedImage;
     this.isImageSelectorInputClicked = false;
   }
-
+  
   validateInputs(): boolean {
     let message = '';
     if (!this.pname.trim()) message += 'Product name is required. \n';
@@ -83,30 +85,44 @@ export class AddDrinkItemWindowComponent {
     return true;
   }
 
+  //handles creating new product(POST) and updating a product (PUT)
   submitProductItem() {
-    // submit a drink entry
-    console.log("Button clicked!");
+    let product: Product;
 
-    if (!this.validateInputs()) return; // Show popup and stop if inputs are invalid
+    // If hideLastCalculatedPriceInput is true, it's an update (PUT request)
+    if (this.hideLastCalculatedPriceInput) {
+      const updatedProduct: Product = {
+        id: this.product_id_for_put_request,
+        name: this.pname,
+        latestCalculatedPrice: this.latestCalculatedPrice, //you can send whatever price, the backend won't accept it
+        price_min: this.minPrice,
+        price_max: this.maxPrice,
+        pQuantity: this.quantity,
+        imageURL: this.selectedImageUrl,
+        productType: this.productType
+      };
 
-    const newProduct: Product = {
-      name: this.pname,
-      baseprice: this.basePrice,
-      minprice: this.minPrice,
-      maxprice: this.maxPrice,
-      quantity: this.quantity,
-      imageurl: this.selectedImageUrl,
-      description: this.description,
-    };
+      console.log("Updating Product:", updatedProduct);
+      this.productService.updateProduct(updatedProduct);  // Call the updateProduct method from the service
+    }
 
-    console.log("Submitted Product:", newProduct);
-    this.ProductCreated.emit(newProduct);
-    this.hideWindow();
-  }
+    else {
+      // If hideLastCalculatedPriceInput is false, it's a new product (POST request)
+      const newProduct: Product = {
+        name: this.pname,
+        latestCalculatedPrice: this.latestCalculatedPrice,
+        price_min: this.minPrice,
+        price_max: this.maxPrice,
+        pQuantity: this.quantity,
+        imageURL: this.selectedImageUrl,
+        productType: this.productType
+      };
 
-  closePopup() {
-    this.showPopup = false; // Close the validation popup
+      console.log("Submitting New Product:", newProduct);
+      this.productService.createProduct(newProduct);  // Call the createProduct method from the service
+    }
+
+    this.hideWindow();  // Close the window after submitting
   }
 
 }
-
