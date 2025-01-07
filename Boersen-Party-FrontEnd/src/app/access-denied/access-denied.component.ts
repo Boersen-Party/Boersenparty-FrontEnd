@@ -8,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './access-denied.component.css'
 })
 export class AccessDeniedComponent {
-
+  logout() {
+    console.log('Logout executed');
+  }
 }

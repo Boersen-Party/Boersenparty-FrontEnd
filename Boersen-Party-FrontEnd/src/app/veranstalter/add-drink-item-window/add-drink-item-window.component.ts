@@ -6,6 +6,7 @@ import { Product } from '../../_model/product';
 import {InvalidPopupComponent} from '../invalid-popup/invalid-popup.component';
 import { ProductService } from '../../services/products.service';
 
+
 @Component({
   standalone: true,
   selector: 'app-add-drink-item-window',
@@ -57,6 +58,12 @@ export class AddDrinkItemWindowComponent {
   calculateDefaultMinMaxPrices() {
     this.minPrice = this.latestCalculatedPrice * 0.5;
     this.maxPrice = this.latestCalculatedPrice * 2;
+  popupMessage: string = ''; // Added for validation messages
+  showPopup: boolean = false; // Added to track popup visibility
+
+  calculateMinMaxPrices() {
+    this.minPrice = this.basePrice * 0.5;
+    this.maxPrice = this.basePrice * 2;
   }
 
 
@@ -129,6 +136,7 @@ export class AddDrinkItemWindowComponent {
     }
 
     this.hideWindow();  // Close the window after submitting
+
   }
 
 }
