@@ -37,7 +37,7 @@ export class PartyServiceService {
 
 
   getPartyGuestUuid(): string | undefined {
-    return Cookies.get('partyGuestUuid');  
+    return Cookies.get('PartyGuestUuid');  
   }
 
   setPartyGuestUuid(uuid: string): void {

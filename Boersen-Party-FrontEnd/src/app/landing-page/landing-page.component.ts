@@ -30,7 +30,7 @@ export class LandingPageComponent implements OnInit {
       this.route.queryParams.subscribe(params => {
         if (params['code']) {
           this.accessCode = params['code'];
-          //this.joinParty();
+          this.joinParty();
         }
       });
     }
