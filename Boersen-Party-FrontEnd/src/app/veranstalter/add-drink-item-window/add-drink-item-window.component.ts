@@ -19,13 +19,13 @@ export class AddDrinkItemWindowComponent {
 
   //für die input validierung
 
-  
+
   constructor(private productService: ProductService) {
     //this.productForm = this.formService.createProductForm();
   }
   //productForm!: FormGroup;
 
-  
+
   //@Output() ProductCreated = new EventEmitter<Product>();
   @Output() close = new EventEmitter<void>();
 
@@ -70,11 +70,11 @@ export class AddDrinkItemWindowComponent {
   //handles creating new product(POST) and updating a product (PUT)
   submitProductItem() {
     let product: Product;
-  
+
     // If hideLastCalculatedPriceInput is true, it's an update (PUT request)
     if (this.hideLastCalculatedPriceInput) {
       const updatedProduct: Product = {
-        id: this.product_id_for_put_request,  
+        id: this.product_id_for_put_request,
         name: this.pname,
         latestCalculatedPrice: this.latestCalculatedPrice, //you can send whatever price, the backend won't accept it
         price_min: this.minPrice,
@@ -83,11 +83,11 @@ export class AddDrinkItemWindowComponent {
         imageURL: this.selectedImageUrl,
         productType: this.productType
       };
-  
+
       console.log("Updating Product:", updatedProduct);
       this.productService.updateProduct(updatedProduct);  // Call the updateProduct method from the service
-    } 
-    
+    }
+
     else {
       // If hideLastCalculatedPriceInput is false, it's a new product (POST request)
       const newProduct: Product = {
@@ -99,13 +99,12 @@ export class AddDrinkItemWindowComponent {
         imageURL: this.selectedImageUrl,
         productType: this.productType
       };
-  
+
       console.log("Submitting New Product:", newProduct);
       this.productService.createProduct(newProduct);  // Call the createProduct method from the service
     }
-  
+
     this.hideWindow();  // Close the window after submitting
   }
 
 }
-
