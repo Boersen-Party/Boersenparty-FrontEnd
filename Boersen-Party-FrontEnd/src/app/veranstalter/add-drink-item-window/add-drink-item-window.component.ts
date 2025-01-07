@@ -4,11 +4,12 @@ import { ProductImageSelectorComponent } from '../product-image-selector/product
 import { FormGroup, FormsModule } from '@angular/forms';
 import { FormService } from '../../services/form.service';
 import { Product } from '../../_model/product';
+import {InvalidPopupComponent} from '../invalid-popup/invalid-popup.component';
 
 @Component({
   standalone: true,
   selector: 'app-add-drink-item-window',
-  imports: [CommonModule, ProductImageSelectorComponent, FormsModule],
+  imports: [CommonModule, ProductImageSelectorComponent, FormsModule, InvalidPopupComponent],
   templateUrl: './add-drink-item-window.component.html',
   styleUrls: ['./add-drink-item-window.component.css']
 })
@@ -42,6 +43,9 @@ export class AddDrinkItemWindowComponent {
   selectedImageUrl: string = 'https://static.vecteezy.com/system/resources/thumbnails/014/440/983/small/image-icon-design-in-blue-circle-png.png';
   isImageSelectorInputClicked: boolean = false;
 
+  popupMessage: string = ''; // Added for validation messages
+  showPopup: boolean = false; // Added to track popup visibility
+
   calculateMinMaxPrices() {
     this.minPrice = this.basePrice * 0.5;
     this.maxPrice = this.basePrice * 2;
@@ -65,10 +69,25 @@ export class AddDrinkItemWindowComponent {
     this.isImageSelectorInputClicked = false;
   }
 
+  validateInputs(): boolean {
+    let message = '';
+    if (!this.pname.trim()) message += 'Product name is required. \n';
+    if (this.basePrice <= 0) message += 'Base price must be greater than 0. \n';
+    if (this.quantity <= 0) message += 'Quantity must be greater than 0. \n';
+
+    if (message) {
+      this.popupMessage = message;
+      this.showPopup = true;
+      return false;
+    }
+    return true;
+  }
 
   submitProductItem() {
     // submit a drink entry
     console.log("Button clicked!");
+
+    if (!this.validateInputs()) return; // Show popup and stop if inputs are invalid
 
     const newProduct: Product = {
       name: this.pname,
@@ -83,23 +102,10 @@ export class AddDrinkItemWindowComponent {
     console.log("Submitted Product:", newProduct);
     this.ProductCreated.emit(newProduct);
     this.hideWindow();
+  }
 
-
-    // TO-DO: Validate inputs using form groups
-    /*
-    if (this.productForm.valid) {
-      const product: Product = this.productForm.value;
-      console.log("full product object:", product);
-
-
-    } else {
-      console.error("Form is invalid, please fix errors before submitting.");
-      const product: Product = this.productForm.value;
-      console.log(product);
-    }
-      */
-
-
+  closePopup() {
+    this.showPopup = false; // Close the validation popup
   }
 
 }
