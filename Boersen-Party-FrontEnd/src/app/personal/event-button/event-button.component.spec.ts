@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PriceOverviewComponent } from './price-overview.component';
+import { EventButtonComponent } from './event-button.component';
 
-describe('PriceOverviewComponent', () => {
-  let component: PriceOverviewComponent;
-  let fixture: ComponentFixture<PriceOverviewComponent>;
+describe('EventButtonComponent', () => {
+  let component: EventButtonComponent;
+  let fixture: ComponentFixture<EventButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PriceOverviewComponent]
+      imports: [EventButtonComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PriceOverviewComponent);
+    fixture = TestBed.createComponent(EventButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

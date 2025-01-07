@@ -1,0 +1,17 @@
+.title-box {
+  border: 1px solid #151D32; /* Border for the box */
+  border-radius: 0.3125rem; /* 5px equivalent */ /* Rounded corners */
+  padding: 0.9375rem; /* 15px equivalent */ /* Inner padding */
+  background-color: #151D32; /* Background color */
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1); /* Optional shadow */
+  text-align: center; /* Center the text within the box */
+  height: 49.5rem;
+}
+
+.title{
+  font-size: 1.5vw; /* Scales with 5% of the viewport width */
+  font-weight: bold; /* Make the title bold */
+  color: white;
+  font-family: "Inter", sans-serif;
+}
+
