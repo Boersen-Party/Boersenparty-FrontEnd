@@ -1,18 +1,9 @@
 <div class= "main-grid">
-  <!--Grid for Price Overview Element-->
   <div class="price-overiew-position">
-
-    <section>
-
-    </section>
-
     <section>
       <app-price-entry-tab [hideButton]="false"/>
     </section>
   </div>
-  <!-- End of Grid-->
-
-  <!--Grid for Event Trigger-->
 
   <div class="second-grid">
     <div class="event-button-position">
@@ -21,28 +12,26 @@
       </section>
     </div>
 
-    <div class="general-statistic-1">
-      <!--  -->
+    <div class="logout-btn">
+      <section>
+        <app-logout-btn/>
+      </section>
     </div>
 
-    <div class="general-statistic-2">
-
+    <div class="create-party">
   @if(partiesAlreadyPresent()){
     <app-created-party-tab/>
   }
   @else{
     <app-create-party-button-click-window/>
   }
-
     </div>
 
-    <div class="general-statistic-3">
+    <div class="general-statistics">
       <section>
         <app-general-statistics/>
       </section>
     </div>
 
   </div>
-  <!-- End of Grid-->
-
 </div>
