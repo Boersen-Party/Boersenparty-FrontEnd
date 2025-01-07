@@ -30,6 +30,13 @@ export class AddDrinkItemWindowComponent {
   //@Output() ProductCreated = new EventEmitter<Product>();
   @Output() close = new EventEmitter<void>();
 
+  popupMessage: string = ''; // Added for validation messages
+  showPopup: boolean = false; // Added to track popup visibility
+  closePopup(): void {
+    this.showPopup = false; // Hide the popup
+    this.popupMessage = ''; // Clear the message
+  }
+
 
   //inputs
   pname: string = '';
@@ -45,12 +52,11 @@ export class AddDrinkItemWindowComponent {
   selectedImageUrl: string = 'https://static.vecteezy.com/system/resources/thumbnails/014/440/983/small/image-icon-design-in-blue-circle-png.png';
   isImageSelectorInputClicked: boolean = false;
 
-  popupMessage: string = ''; // Added for validation messages
-  showPopup: boolean = false; // Added to track popup visibility
+  
 
-  calculateMinMaxPrices() {
-    this.minPrice = this.basePrice * 0.5;
-    this.maxPrice = this.basePrice * 2;
+  calculateDefaultMinMaxPrices() {
+    this.minPrice = this.latestCalculatedPrice * 0.5;
+    this.maxPrice = this.latestCalculatedPrice * 2;
   }
 
 
@@ -74,7 +80,7 @@ export class AddDrinkItemWindowComponent {
   validateInputs(): boolean {
     let message = '';
     if (!this.pname.trim()) message += 'Product name is required. \n';
-    if (this.basePrice <= 0) message += 'Base price must be greater than 0. \n';
+    if (this.latestCalculatedPrice <= 0) message += 'Base price must be greater than 0. \n';
     if (this.quantity <= 0) message += 'Quantity must be greater than 0. \n';
 
     if (message) {
