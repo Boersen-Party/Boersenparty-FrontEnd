@@ -23,7 +23,6 @@ export class EventService {
 
 
   async fetchEvents() {
-    //console.log("fetchEvents() called");
     const headers = await this.authService.addTokenToHeader();
 
     const partyId = this.partyService.activePartyId();

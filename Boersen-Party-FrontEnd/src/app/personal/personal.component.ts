@@ -15,6 +15,8 @@ import { Party } from '../_model/party';
   styleUrl: './personal.component.css'
 })
 export class PersonalComponent {
+
+  //glaub PersonalComponent braucht Parties gar nicht
   parties: Party[] = [];
 
 
