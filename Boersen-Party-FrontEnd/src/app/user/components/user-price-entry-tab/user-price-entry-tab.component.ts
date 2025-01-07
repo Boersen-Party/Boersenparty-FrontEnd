@@ -41,7 +41,6 @@ export class UserPriceEntryTabComponent {
   }
 
   addToOrder() {
-    // Logic to add the product to the order
     console.log(
       `Added ${this.orderQuantity} of ${this.selectedProduct.name} to the order.`
     );

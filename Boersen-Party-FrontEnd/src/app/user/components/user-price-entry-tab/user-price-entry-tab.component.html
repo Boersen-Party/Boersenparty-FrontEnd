@@ -7,8 +7,11 @@
       class="drink-box mb-2 cursor-pointer"
       (click)="openOrderPopup(product)"
     >
-      <span class="drink-name">{{ product.name }}</span>
-  
+      <span class="drink-name">
+        {{ product.name }}
+        <span class="stock">Bestand: {{ product.pQuantity }}</span>
+      </span>
+    
       @if (product.imageURL) {
         <div class="w-6 h-6 overflow-hidden mr-2">
           <img [src]="product.imageURL" alt="{{ product.name }}" class="w-full h-full object-cover">
@@ -16,7 +19,7 @@
       }
       
       <div class="price-container">
-        <span class="price">{{ product.latestCalculatedPrice }} € </span>
+        <span class="price">{{ product.latestCalculatedPrice }} €</span>
       </div>
     </div>
   }
