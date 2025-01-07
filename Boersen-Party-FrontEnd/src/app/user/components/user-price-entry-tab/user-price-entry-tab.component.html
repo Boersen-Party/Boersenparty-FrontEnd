@@ -1,0 +1,53 @@
+<div class="title-box">
+    <span class="title">Price Overview</span>
+  </div>
+  
+  @for (product of products; track product.name) {
+    <div 
+      class="drink-box mb-2 cursor-pointer"
+      (click)="openOrderPopup(product)"
+    >
+      <span class="drink-name">{{ product.name }}</span>
+  
+      @if (product.imageURL) {
+        <div class="w-6 h-6 overflow-hidden mr-2">
+          <img [src]="product.imageURL" alt="{{ product.name }}" class="w-full h-full object-cover">
+        </div>
+      }
+      
+      <div class="price-container">
+        <span class="price">{{ product.latestCalculatedPrice }} € </span>
+      </div>
+    </div>
+  }
+  
+  @if(selectedProduct) {
+    <div class="fixed inset-0 flex justify-center items-center z-50">
+      <div class="bg-gold p-6 rounded-lg w-96 max-w-full">
+        <h3 class="text-lg font-bold mb-4">
+          Möchtest du {{ selectedProduct.name }} zum Preis von {{ selectedProduct.latestCalculatedPrice }} € zur Bestellung hinzufügen?
+        </h3>
+        <label for="quantity" class="block font-medium mb-2">Bestellmenge:</label>
+        <input 
+          id="quantity" 
+          type="number" 
+          [(ngModel)]="orderQuantity" 
+          class="w-full border rounded px-2 py-1"
+        >
+        <div class="flex justify-end mt-4">
+          <button 
+            class="bg-red text-white px-4 py-2 rounded mr-2"
+            (click)="closePopup()"
+          >
+            Abbrechen
+          </button>
+          <button 
+            class="bg-green text-white px-4 py-2 rounded"
+            (click)="addToOrder()"
+          >
+            Hinzufügen
+          </button>
+        </div>
+      </div>
+    </div>
+  }

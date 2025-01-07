@@ -1,7 +1,9 @@
 export interface Party {
-    id?:number,
+    id?:number, 
     name: string;
     start_date: string;
     end_date: string;
     hosted_by: string | null | undefined;
+    access_code?: string | null | undefined;  
+
   }

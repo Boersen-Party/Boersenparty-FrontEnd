@@ -7,7 +7,9 @@ module.exports = {
       'box': '#151D32',
       'white': '#ffffff',
       'blue': '#159AF5',
-      'gold': '#FFE955'
+      'gold': '#FFE955',
+      'red' : '#FF0000',
+      'green' : '#00FF00'
     },
     extend: {
       boxShadow:{

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PayButtonComponent } from './pay-button.component';
+import { QRButtonComponent } from './qrbutton.component';
 
-describe('PayButtonComponent', () => {
-  let component: PayButtonComponent;
-  let fixture: ComponentFixture<PayButtonComponent>;
+describe('QRButtonComponent', () => {
+  let component: QRButtonComponent;
+  let fixture: ComponentFixture<QRButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PayButtonComponent]
+      imports: [QRButtonComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PayButtonComponent);
+    fixture = TestBed.createComponent(QRButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
