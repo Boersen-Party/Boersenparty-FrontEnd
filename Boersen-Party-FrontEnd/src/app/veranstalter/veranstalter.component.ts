@@ -6,7 +6,7 @@ import { GeneralStatisticsComponent } from './general-statistics/general-statist
 import { CreatePartyButtonClickWindowComponent } from './create-party-button-click-window/create-party-button-click-window.component';
 import { CreatedPartyTabComponent } from "./created-party-tab/created-party-tab.component";
 import { PartyServiceService } from '../services/party-service.service';
-import {LogoutBtnComponent} from './logout-btn/logout-btn.component';
+import {LogoutBtnComponent} from '../logout-btn/logout-btn.component';
 
 @Component({
   selector: 'app-veranstalter',

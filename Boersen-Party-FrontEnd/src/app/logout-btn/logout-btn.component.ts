@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { KeycloakService } from 'keycloak-angular';
+import {environment} from '../../environments/environments';
 
 @Component({
   selector: 'app-logout-btn',
@@ -12,8 +13,8 @@ export class LogoutBtnComponent {
   constructor(private keycloakService: KeycloakService) {}
 
   logout(): void {
-    const keycloakLogoutUrl = `http://localhost:4200/verantstalter`; //https://idp.stock-party.live/realms/stock-party/protocol/openid-connect/auth
-    this.keycloakService.logout(keycloakLogoutUrl);
+    const redirectUri = environment.baseUrl; // This dynamically adjusts based on environment.ts
+    this.keycloakService.logout(redirectUri);
   }
 
 }
