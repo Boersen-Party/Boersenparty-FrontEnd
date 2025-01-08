@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'
 })
-export class LandingPageComponent implements OnInit {
+export class LandingPageComponent  {
 
   accessCode: string = ''; 
 
@@ -21,20 +21,9 @@ export class LandingPageComponent implements OnInit {
     private router: Router 
   ) {}
 
-  ngOnInit(): void {
 
-    if (this.partyService.getPartyGuestUuid()) {
-      console.log('Cookie found, redirecting...');
-      this.router.navigate(['/user/home']); 
-    } else {
-      this.route.queryParams.subscribe(params => {
-        if (params['code']) {
-          this.accessCode = params['code'];
-          this.joinParty();
-        }
-      });
-    }
-  }
+  //start over with the routes.
+  
 
   joinParty() {
     if (this.accessCode.length === 5) {

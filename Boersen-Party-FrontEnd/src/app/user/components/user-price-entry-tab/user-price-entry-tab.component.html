@@ -1,27 +1,27 @@
 <div class="title-box">
-    <span class="title">Price Overview</span>
+    <span class="title">Price Overviewwwwwww</span>
   </div>
   
   @for (product of products; track product.name) {
-    <div 
-      class="drink-box mb-2 cursor-pointer"
-      (click)="openOrderPopup(product)"
-    >
-      <span class="drink-name">
-        {{ product.name }}
-        <span class="stock">Bestand: {{ product.pQuantity }}</span>
-      </span>
-    
+    <div class="drink-box mb-2 flex items-center"> 
       @if (product.imageURL) {
-        <div class="w-6 h-6 overflow-hidden mr-2">
-          <img [src]="product.imageURL" alt="{{ product.name }}" class="w-full h-full object-cover">
+        <div class="w-8 h-8 overflow-hidden mr-4">
+          <img [src]="product.imageURL" alt="{{ product.name }}" class="w-full h-full object-cover rounded">
         </div>
       }
-      
-      <div class="price-container">
-        <span class="price">{{ product.latestCalculatedPrice }} €</span>
+  
+      <div class="flex-1 flex items-center justify-between"> 
+        <div class="flex items-center">
+          <span class="drink-name font-bold mr-2">{{ product.name }}&nbsp;</span>
+          <span class="price text-sm mr-2">{{ product.latestCalculatedPrice }} €</span>
+          <span class="price text-sm">Bestand: {{ product.pQuantity }}</span>
+        </div>
+  
+        
+  
+  
+        </div>
       </div>
-    </div>
   }
   
   @if(selectedProduct) {

@@ -16,7 +16,7 @@ export class QRButtonComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      if (this.partyService.activePartyId()) {
+      if (this.partyService.getActivePartyId()) {
         this.loadQRCode();
       } else {
         console.log("activePartyId is still not available");
