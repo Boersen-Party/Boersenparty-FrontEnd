@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'
 })
-export class LandingPageComponent  {
+export class LandingPageComponent implements OnInit {
 
   accessCode: string = ''; 
 
@@ -21,9 +21,14 @@ export class LandingPageComponent  {
     private router: Router 
   ) {}
 
-
-  //start over with the routes.
-  
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      const code = params['code'];
+      if (code) {
+        this.accessCode = code;
+      }
+    });
+  }
 
   joinParty() {
     if (this.accessCode.length === 5) {

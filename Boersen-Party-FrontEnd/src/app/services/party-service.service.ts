@@ -73,6 +73,11 @@ export class PartyServiceService {
     const partyId = Cookies.get(this.activePartyIdKey);
     return partyId ? parseInt(partyId, 10) : null;
   }
+
+  getUserUUID(): string | null {
+    const uuid = Cookies.get(this.userUUIDKey);
+    return uuid ?? null;
+  }
 /*
   get activePartyId(): Signal<number | null> {
     return computed(() => {

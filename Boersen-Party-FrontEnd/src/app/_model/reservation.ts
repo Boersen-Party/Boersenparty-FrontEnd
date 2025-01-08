@@ -1,12 +1,12 @@
-export interface Reservation {
+export interface Order {
     id?: string; 
-    items: ReservationItem[]; 
+    items: OrderItem[]; 
     totalPrice: number; 
     isPaid: boolean; 
-    user_uuid: string;
+    uuid: string;
   }
   
-  export interface ReservationItem {
+  export interface OrderItem {
     productId: number; 
     productName: string; 
     pricePerItem: number; 
