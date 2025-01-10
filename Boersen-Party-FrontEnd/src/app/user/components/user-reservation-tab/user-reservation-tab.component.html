@@ -7,16 +7,42 @@
   (click)="toggleTab()"
 >
   @if(!isExpanded) {
-    <div
-      class="text-center font-bold text-xl transform rotate-90 origin-center cursor-pointer">
-      Reservations
+    <div class="text-center font-bold text-lg transform rotate-90 origin-center cursor-pointer">
+      Reservierungen
     </div>
   }
+
   @if(isExpanded) {
-    <div
-      class="w-full px-4 py-6 flex flex-col gap-4 cursor-pointer">
-      <h3 class="text-lg font-semibold">Reservations</h3>
-      <p>Your reservation details go here...</p>
+    <div class="w-full h-3/4 px-2 py-4 flex flex-col gap-2 cursor-pointer">
+      <h3 class="text-md font-semibold text-center mb-4">Reservations</h3>
+
+      <div class="flex flex-col gap-2 overflow-y-auto h-full">
+        @for (item of orderItems; track item.productName) {
+          <div class="reservation-item border-b border-gray-600 pb-2 mb-2 p-2 rounded-lg bg-gold">
+            <p class="font-medium text-white text-xs">{{ item.productName }}</p>
+            <p class="text-xs text-gray-300">Qty: {{ item.quantity }}</p>
+            <p class="text-xs text-gray-300">Price: {{ item.pricePerItem }} €</p>
+            <p class="text-xs text-gray-300">Total: {{ item.totalItemPrice }} €</p>
+          </div>
+        }
+      </div>
+
+      @if (orderItems.length === 0) {
+        <p class="text-center text-gray-400 text-sm">Leer</p>
+      }
+
+      <div class="mt-4 text-center">
+        <button 
+          class="border border-gold text-white py-1 px-4 rounded-full text-sm hover:bg-green-600 focus:outline-none"
+          (click)="createReservation()"
+        >
+          Reservierung anlegen
+        </button>
+      </div>
+
+      <div class="mb-2 text-center text-sm text-gold">
+        <p>Achtung: Sie haben 5 Minuten Zeit um an der Kasse zu zahlen. Die Reservierung verfällt nach 5 Minuten.</p>
+      </div>
     </div>
-}
- 
+  }
+</div>

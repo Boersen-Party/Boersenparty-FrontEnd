@@ -25,7 +25,7 @@ export class EventService {
   async fetchEvents() {
     const headers = await this.authService.addTokenToHeader();
 
-    const partyId = this.partyService.activePartyId();
+    const partyId = this.partyService.getActivePartyId();
     if (partyId === null) {
       console.warn('Cannot fetch events: No active Party ID.');
       return;
@@ -56,7 +56,7 @@ export class EventService {
   async createEvent(newEvent: PartyEvent) {
     try {
       const headers = await this.authService.addTokenToHeader();
-      const partyId = this.partyService.activePartyId();
+      const partyId = this.partyService.getActivePartyId();
       if (partyId === null) {
         console.error('Cannot create event: No active Party ID.');
         return;
@@ -85,7 +85,7 @@ export class EventService {
   async triggerEvent(eventId: number) {
     try {
       const headers = await this.authService.addTokenToHeader();
-      const partyId = this.partyService.activePartyId();
+      const partyId = this.partyService.getActivePartyId();
   
       if (partyId === null) {
         console.error('Cannot trigger event: No active Party ID.');

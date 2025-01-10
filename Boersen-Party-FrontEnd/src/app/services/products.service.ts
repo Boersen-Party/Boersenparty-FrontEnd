@@ -60,18 +60,19 @@ export class ProductService {
 
   async fetchProducts() {
     //console.log("fetchProducts() called");
-    const headers = await this.authService.addTokenToHeader();
+    //const headers = await this.authService.addTokenToHeader();
 
 
-    const partyId = this.partyService.activePartyId();
-    if (partyId === null) {
-    console.warn('Cannot fetch products: No active Party ID.');
-    return; 
-  }
+    let partyId: number | null = this.partyService.getActivePartyId(); 
+    if (partyId === null) {{
+        console.warn('Cannot fetch products: No active Party ID.');
+        return;
+      }
+    }
     let url = baseURL + '/' + partyId + '/products';
 
     axios.get(url, {
-      headers:headers,
+     // headers:headers,
     })
       .then(response => {
         
@@ -96,7 +97,7 @@ export class ProductService {
     
     try {
       const headers = await this.authService.addTokenToHeader();
-      const partyId = this.partyService.activePartyId();
+      const partyId = this.partyService.getActivePartyId();
       if (partyId === null) {
       console.error('Cannot create product: No active Party ID.');
       return; 
@@ -127,7 +128,7 @@ export class ProductService {
 async deleteProduct(productId: number) {
   try {
     const headers = await this.authService.addTokenToHeader();
-    const partyId = this.partyService.activePartyId();
+    const partyId = this.partyService.getActivePartyId();
     if (partyId === null) {
       console.error('Cannot delete product: No active Party ID.');
       return;
@@ -155,7 +156,7 @@ async deleteProduct(productId: number) {
 async updateProduct(updatedProduct: Product) {
   try {
     const headers = await this.authService.addTokenToHeader();
-    const partyId = this.partyService.activePartyId();
+    const partyId = this.partyService.getActivePartyId();
     if (partyId === null) {
       console.error('Cannot update product: No active Party ID.');
       return;

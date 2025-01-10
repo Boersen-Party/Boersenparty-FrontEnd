@@ -21,19 +21,13 @@ export class LandingPageComponent implements OnInit {
     private router: Router 
   ) {}
 
-  ngOnInit(): void {
-
-    if (this.partyService.getPartyGuestUuid()) {
-      console.log('Cookie found, redirecting...');
-      this.router.navigate(['/user/home']); 
-    } else {
-      this.route.queryParams.subscribe(params => {
-        if (params['code']) {
-          this.accessCode = params['code'];
-          this.joinParty();
-        }
-      });
-    }
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      const code = params['code'];
+      if (code) {
+        this.accessCode = code;
+      }
+    });
   }
 
   joinParty() {
