@@ -17,7 +17,7 @@
       <div class="w-1/2 space-y-2">
         <label for="drinkName" class="text-sm font-medium">Produktname</label>
         <input id="drinkName" class="input-field p-1 text-sm" placeholder="Produktname" [(ngModel)]="pname">
-        
+
         <label for="producttype" class="text-sm font-medium">Produkt-typ</label>
         <select id="producttype" class="input-field p-1 text-sm" [(ngModel)]="productType">
           <option value="alkoholfrei">alkoholfrei</option>
@@ -30,23 +30,23 @@
 
           </div>
 
-      @if(!hideLastCalculatedPriceInput){   
+      @if(!hideLastCalculatedPriceInput){
       <div class="w-1/2 space-y-2">
         <label for="quantity" class="text-sm font-medium">Menge</label>
         <input type="number" min="0" id="quantity" class="input-field p-1 text-sm" placeholder="Menge" [(ngModel)]="quantity">
 
         <label for="latestCalculatedPrice" class="text-sm font-medium">Grundpreis</label>
         <input type="number" min="0" id="latestCalculatedPrice" class="input-field p-1 text-sm" placeholder="Grundpreis" [(ngModel)]="latestCalculatedPrice" (ngModelChange)="calculateDefaultMinMaxPrices()">
-       
+
 
         <label for="maxPrice" class="text-sm font-medium">Max-Preis</label>
         <input type="number" min="0" id="maxPrice" class="input-field p-1 text-sm" placeholder="Max-Preis" [(ngModel)]="maxPrice">
 
         <label for="minPrice" class="text-sm font-medium">Minimal-Preis</label>
         <input type="number" min="0" id="minPrice" class="input-field p-1 text-sm" placeholder="Minimal-Preis" [(ngModel)]="minPrice">
-   
 
-        
+
+
 
       </div>
     }
@@ -65,4 +65,5 @@
     </button>
 
   </div>
+  <app-invalid-popup *ngIf="showPopup" [message]="popupMessage" (closePopup)="closePopup()"></app-invalid-popup>
 </div>

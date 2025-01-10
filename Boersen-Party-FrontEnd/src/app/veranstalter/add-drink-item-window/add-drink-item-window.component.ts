@@ -4,11 +4,12 @@ import { ProductImageSelectorComponent } from '../product-image-selector/product
 import { FormGroup, FormsModule } from '@angular/forms';
 import { Product } from '../../_model/product';
 import { ProductService } from '../../services/products.service';
+import {InvalidPopupComponent} from '../../invalid-popup/invalid-popup.component';
 
 @Component({
   standalone: true,
   selector: 'app-add-drink-item-window',
-  imports: [CommonModule, ProductImageSelectorComponent, FormsModule],
+  imports: [CommonModule, ProductImageSelectorComponent, FormsModule, InvalidPopupComponent],
   templateUrl: './add-drink-item-window.component.html',
   styleUrls: ['./add-drink-item-window.component.css']
 })
@@ -19,13 +20,13 @@ export class AddDrinkItemWindowComponent {
 
   //für die input validierung
 
-  
+
   constructor(private productService: ProductService) {
     //this.productForm = this.formService.createProductForm();
   }
   //productForm!: FormGroup;
 
-  
+
   //@Output() ProductCreated = new EventEmitter<Product>();
   @Output() close = new EventEmitter<void>();
 
@@ -43,6 +44,9 @@ export class AddDrinkItemWindowComponent {
   //aber dann überschrieben von product-image-selector
   selectedImageUrl: string = 'https://static.vecteezy.com/system/resources/thumbnails/014/440/983/small/image-icon-design-in-blue-circle-png.png';
   isImageSelectorInputClicked: boolean = false;
+
+  popupMessage: string = ''; // Added for validation messages
+  showPopup: boolean = false; // Added to track popup visibility
 
   calculateDefaultMinMaxPrices() {
     this.minPrice = this.latestCalculatedPrice * 0.5;
@@ -67,14 +71,30 @@ export class AddDrinkItemWindowComponent {
     this.isImageSelectorInputClicked = false;
   }
 
+  validateInputs(): boolean {
+    let message = '';
+    if (!this.pname.trim()) message += 'Product name is required. \n';
+    if (this.latestCalculatedPrice <= 0) message += 'Base price must be greater than 0. \n';
+    if (this.quantity <= 0) message += 'Quantity must be greater than 0. \n';
+
+    if (message) {
+      this.popupMessage = message;
+      this.showPopup = true;
+      return false;
+    }
+    return true;
+  }
+
   //handles creating new product(POST) and updating a product (PUT)
   submitProductItem() {
     let product: Product;
-  
+
+    if (!this.validateInputs()) return;
+
     // If hideLastCalculatedPriceInput is true, it's an update (PUT request)
     if (this.hideLastCalculatedPriceInput) {
       const updatedProduct: Product = {
-        id: this.product_id_for_put_request,  
+        id: this.product_id_for_put_request,
         name: this.pname,
         latestCalculatedPrice: this.latestCalculatedPrice, //you can send whatever price, the backend won't accept it
         price_min: this.minPrice,
@@ -83,11 +103,11 @@ export class AddDrinkItemWindowComponent {
         imageURL: this.selectedImageUrl,
         productType: this.productType
       };
-  
+
       console.log("Updating Product:", updatedProduct);
       this.productService.updateProduct(updatedProduct);  // Call the updateProduct method from the service
-    } 
-    
+    }
+
     else {
       // If hideLastCalculatedPriceInput is false, it's a new product (POST request)
       const newProduct: Product = {
@@ -99,12 +119,16 @@ export class AddDrinkItemWindowComponent {
         imageURL: this.selectedImageUrl,
         productType: this.productType
       };
-  
+
       console.log("Submitting New Product:", newProduct);
       this.productService.createProduct(newProduct);  // Call the createProduct method from the service
     }
-  
+
     this.hideWindow();  // Close the window after submitting
+  }
+
+  closePopup() {
+    this.showPopup = false; // Close the validation popup
   }
 
 }

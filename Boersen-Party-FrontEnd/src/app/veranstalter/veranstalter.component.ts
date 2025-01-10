@@ -7,11 +7,12 @@ import { CreatePartyButtonClickWindowComponent } from './create-party-button-cli
 import { CreatedPartyTabComponent } from "./created-party-tab/created-party-tab.component";
 import { PartyServiceService } from '../services/party-service.service';
 import {LogoutBtnComponent} from '../logout-btn/logout-btn.component';
+import {InvalidPopupComponent} from '../invalid-popup/invalid-popup.component';
 
 @Component({
   selector: 'app-veranstalter',
   standalone: true,
-  imports: [CommonModule, PriceEntryTabComponent, EventTriggerWindowComponent, GeneralStatisticsComponent, CreatePartyButtonClickWindowComponent, CreatedPartyTabComponent, LogoutBtnComponent],
+  imports: [CommonModule, PriceEntryTabComponent, EventTriggerWindowComponent, GeneralStatisticsComponent, CreatePartyButtonClickWindowComponent, CreatedPartyTabComponent, LogoutBtnComponent, InvalidPopupComponent],
   templateUrl: `./veranstalter.component.html`,
   styleUrl: './veranstalter.component.css'
 })
