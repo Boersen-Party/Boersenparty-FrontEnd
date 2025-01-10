@@ -5,7 +5,8 @@
   background-color: #151D32; /* Background color */
   box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1); /* Optional shadow */
   text-align: center; /* Center the text within the box */
-  height: 49.5rem;
+  margin-bottom: 1.25rem; /* Optional spacing below the title */
+  height: 50rem;
 }
 
 .title{
@@ -14,4 +15,3 @@
   color: white;
   font-family: "Inter", sans-serif;
 }
-
