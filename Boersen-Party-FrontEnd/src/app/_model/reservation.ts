@@ -3,7 +3,7 @@ export interface Order {
     items: OrderItem[]; 
     totalPrice: number; 
     isPaid: boolean; 
-    uuid: string;
+    belongs_to?: string;
   }
   
   export interface OrderItem {

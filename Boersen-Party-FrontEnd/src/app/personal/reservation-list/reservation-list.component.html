@@ -1,3 +1,37 @@
 <div class="title-box">
   <div class="title">Reservierungen</div>
 </div>
+
+<div class="orders-container">
+  @if (ManagedOrders.length > 0) {
+    @for(order of ManagedOrders; track order.id) {
+    <div class="order-card">
+      <div class="order-header">
+        <h3>Order belongs to: {{ order.belongs_to }}</h3>
+        <p>Total Price: {{ order.totalPrice  }}</p>
+        <p>Status: {{ order.isPaid ? 'Paid' : 'Not Paid' }}</p>
+      </div>
+      <div class="order-items">
+        <h4>Items:</h4>
+        <ul>
+          @for (item of order.items; track item.productId) {
+            <li>
+              <div class="item-info">
+                <p>Product ID: {{ item.productId }}</p>
+                <p>Product Name: {{ item.productName }}</p>
+                <p>Price per Item: {{ item.pricePerItem  }}</p>
+                <p>Quantity: {{ item.quantity }}</p>
+                <p>Total Item Price: {{ item.totalItemPrice }}</p>
+              </div>
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+  }
+  } @else {
+    <div class="no-orders">
+      <p>No orders available.</p>
+    </div>
+  }
+</div>

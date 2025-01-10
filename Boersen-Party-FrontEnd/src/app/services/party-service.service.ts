@@ -110,15 +110,18 @@ async joinParty(accessCode: string): Promise<void> {
     console.log('UUID not found, sending request to create one...');
     try {
       const url = `${baseURL}/rooms`;
+      console.log("url is :", url);
+      console.log("accessCode is:", accessCode);
       const response = await axios.post(url, { accessCode });
 
       const { party_id, uuid } = response.data;
-
+      console.log("From joinParty, response is:", response.data);
       // Persist UUID and Active Party ID
       Cookies.set(this.userUUIDKey, uuid, {
         expires: 7, // Cookie expiration in days
         path: '/',  // Ensure cookie is accessible throughout the site
       });
+      console.log("cookies are now:" , this.getUserUUID())
             this.setActivePartyId(party_id);
 
         console.log(`Joined party with ID: ${party_id}, UUID: ${uuid}`);

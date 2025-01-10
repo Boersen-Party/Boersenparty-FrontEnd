@@ -9,7 +9,9 @@ import { ReservationService } from '../../../services/reservation.service';
   selector: 'app-user-reservation-tab',
   imports: [CommonModule],
   templateUrl: './user-reservation-tab.component.html',
-  styleUrl: './user-reservation-tab.component.css'
+  styleUrl: './user-reservation-tab.component.css',
+ 
+ 
 })
 export class UserReservationTabComponent {
 
@@ -17,15 +19,23 @@ export class UserReservationTabComponent {
   order: Order | undefined;
   orderItems: OrderItem[] = []; 
 
+  ordersBackend: Order[] = [];
+
   constructor(private reservationService: ReservationService) {
+    this.reservationService.initialize('_USER');
     effect(() => {
-      const reservation = this.reservationService.order();
+      const reservation = this.reservationService.draftOrder();
       this.order = reservation;
       if (reservation) {
         this.orderItems = reservation.items; // Extract items from the reservation
       } else {
         this.orderItems = []; // Reset if no reservation exists
       }
+    });
+
+    effect(() => {
+      this.ordersBackend = this.reservationService.orders();
+      console.log("backend orders updated: ", this.ordersBackend);
     });
   }
 
@@ -38,11 +48,11 @@ export class UserReservationTabComponent {
       const newOrder: Order = {
         items: this.orderItems,
         totalPrice: this.reservationService.calculateTotalPrice(this.orderItems),
-        isPaid: false, // Set the appropriate value for "isPaid"
-        uuid: this.reservationService.order().uuid || '', //user uuid gets passed down in the partyService
+        isPaid: false, 
       };
 
       this.reservationService.createReservation(newOrder);
+
     } else {
       console.log('No items in reservation to create.');
     }

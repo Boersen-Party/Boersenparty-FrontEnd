@@ -1,8 +1,8 @@
-import { Injectable, signal } from '@angular/core';
+import { Inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Order, OrderItem } from '../_model/reservation';
 import { Product } from '../_model/product';
-import { Observable } from 'rxjs';
+import { Observable, timer } from 'rxjs';
 import { PartyServiceService } from './party-service.service';
 import axios from 'axios';
 import { baseURL } from '../_config/config';
@@ -11,29 +11,70 @@ import { baseURL } from '../_config/config';
   providedIn: 'root',
 })
 export class ReservationService {
-  
-  order = signal<Order>({
+  timer = timer(0, 3000);
+  UserOfService: string = '';
+  draftOrder = signal<Order>({
     items: [],
     totalPrice: 0,
     isPaid: false,
-    uuid: '',
+    belongs_to: '',
   });  
 
+  orders = signal<Order[]>([]);
 
   
-  constructor(private partyService: PartyServiceService) {
-    this.order.set({
-      ...this.order(),
-      uuid: this.partyService.getUserUUID() || '',
-    });
+  constructor(private partyService: PartyServiceService) {}
+
+  initialize(usedBy: string): void {
+    this.UserOfService = usedBy;
+
+    if (this.UserOfService == '_PERSONAL') {
+      this.timer.subscribe(() => {
+        this.fetchAllOrders();
+      });
+    }
+
+    if (this.UserOfService === '_USER') {
+      const uuid = this.partyService.getUserUUID();
+      if (uuid) {
+        this.timer.subscribe(() => this.fetchOrdersOfUser(uuid));
+      } else {
+        console.error('UUID not available for the user');
+      }
+    }
   }
 
-  
 
+
+  
+private async fetchAllOrders(): Promise<void> {
+  try {
+    const partyId = this.partyService.getActivePartyId();
+    const URL = `${baseURL}/${partyId}/guests/orders`;
+    const response = await axios.get<Order[]>(URL);
+    this.orders.set(response.data);
+    console.log('Fetched all orders:', response.data);
+  } catch (error) {
+    console.error('Error fetching all orders:', error);
+  }
+}
+
+// Fetch orders for a specific user '_USER'
+private async fetchOrdersOfUser(uuid: string): Promise<void> {
+  try {
+    console.log("fetching with uuid:" + uuid);
+    const URL = `${baseURL}/guests/orders?uuid=${uuid}`;
+    const response = await axios.get<Order[]>(URL);
+    this.orders.set(response.data);
+    console.log('Fetched orders for user:', response.data);
+  } catch (error) {
+    console.error('Error fetching user orders:', error);
+  }
+}
  
   
   addToReservation(product: Product, quantity: number): void {
-    const currentReservation = this.order();
+    const currentReservation = this.draftOrder();
     
     // Find the existing item in the reservation
     const existingItem = currentReservation.items.find(
@@ -59,16 +100,17 @@ export class ReservationService {
     currentReservation.totalPrice = this.calculateTotalPrice(currentReservation.items);
   
     // Update the reservation with the new data
-    this.order.set({ ...currentReservation });
+    this.draftOrder.set({ ...currentReservation });
   }
 
   async createReservation(order: Order): Promise<any> {
-    order.uuid = this.partyService.getUserUUID() ?? '';
-    console.log("CREATE RESERVATION UUID IS:", order.uuid);
+    order.belongs_to = this.partyService.getUserUUID() ?? '';
+    console.log("CREATE RESERVATION UUID IS:", order.belongs_to);
 
     try {
       const URL = baseURL + '/' + this.partyService.getActivePartyId() + '/guests/orders';
       const response = await axios.post(URL, order);
+
       console.log('Reservation created:', response.data);
       return response.data;
     } catch (error) {

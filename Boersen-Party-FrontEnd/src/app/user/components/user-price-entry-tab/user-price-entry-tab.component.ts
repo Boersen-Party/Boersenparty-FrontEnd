@@ -12,6 +12,7 @@ import { ReservationService } from '../../../services/reservation.service';
   imports: [CommonModule, FormsModule],
   templateUrl: './user-price-entry-tab.component.html',
   styleUrl: './user-price-entry-tab.component.css',
+  
 })
 export class UserPriceEntryTabComponent {
   products: Product[] = []; // List of products to display
@@ -22,13 +23,14 @@ export class UserPriceEntryTabComponent {
     items: [],
     totalPrice: 0,
     isPaid: false,
-    uuid: '', 
+    belongs_to: '', 
   };
 
   constructor(
     private productService: ProductService,
-    private reservationService: ReservationService 
-  ) {
+    private reservationService: ReservationService ) {
+    
+      this.reservationService.initialize('_USER');
     effect(() => {
       this.products = this.productService.products();
     });
