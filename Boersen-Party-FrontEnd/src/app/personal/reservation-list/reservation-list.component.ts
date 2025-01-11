@@ -1,6 +1,7 @@
 import { Component, effect } from '@angular/core';
 import { Order } from '../../_model/reservation';
 import { ReservationService } from '../../services/reservation.service';
+import { OrderSelectionService } from '../../services/order-selection.service';
 
 @Component({
   selector: 'app-reservation-list',
@@ -11,8 +12,10 @@ import { ReservationService } from '../../services/reservation.service';
 })
 export class ReservationListComponent {
   ManagedOrders: Order[] = [];
+  selectedOrder?: Order;
 
-  constructor(private reservationService: ReservationService) {
+
+  constructor(private reservationService: ReservationService, private orderSelectionService: OrderSelectionService) {
       this.reservationService.initialize('_PERSONAL');
   
      effect(() => {
@@ -21,6 +24,10 @@ export class ReservationListComponent {
       });
     }
 
+    selectOrder(order: Order): void {
+      this.orderSelectionService.setSelectedOrder(order);
+      console.log('Selected Order:', order);
+    }
 
 
 }
