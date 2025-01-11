@@ -21,6 +21,7 @@ export class UserReservationTabComponent {
 
   ordersBackend: Order[] = [];
 
+  users_uuid: string = '';
   constructor(private reservationService: ReservationService) {
     this.reservationService.initialize('_USER');
     effect(() => {
@@ -37,6 +38,7 @@ export class UserReservationTabComponent {
       this.ordersBackend = this.reservationService.orders();
       console.log("backend orders updated: ", this.ordersBackend);
     });
+    this.users_uuid = this.reservationService.getUserUUID();
   }
 
   toggleTab(): void {

@@ -11,6 +11,7 @@ import { baseURL } from '../_config/config';
   providedIn: 'root',
 })
 export class ReservationService {
+  
   timer = timer(0, 3000);
   UserOfService: string = '';
   draftOrder = signal<Order>({
@@ -42,6 +43,10 @@ export class ReservationService {
         console.error('UUID not available for the user');
       }
     }
+  }
+
+  getUserUUID(): string {
+    return this.partyService.getUserUUID() ?? '';
   }
 
 
