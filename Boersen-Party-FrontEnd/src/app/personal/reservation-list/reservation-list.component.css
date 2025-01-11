@@ -1,13 +1,11 @@
 .title-box {
-/*  border: 1px solid #151D32; /* Border for the box */
+  border: 1px solid #151D32; /* Border for the box */
   border-radius: 0.3125rem; /* 5px equivalent */ /* Rounded corners */
   padding: 0.9375rem; /* 15px equivalent */ /* Inner padding */
   background-color: #151D32; /* Background color */
   box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1); /* Optional shadow */
   text-align: center; /* Center the text within the box */
-  height: 42rem;
-  border: 5px red;
-  margin-top: 0.9375rem;
+  margin-bottom: 1.25rem; /* Optional spacing below the title */
 }
 
 .title{
@@ -15,4 +13,46 @@
   font-weight: bold; /* Make the title bold */
   color: white;
   font-family: "Inter", sans-serif;
+}
+
+.reservation-box{
+  border: 1px solid #151D32; /* Border for the box */
+  border-radius: 0.3125rem; /* 5px equivalent */
+  padding: 0.9375rem; /* 15px equivalent */ /* Inner padding */
+  background-color: #151D32; /* Background color */
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1); /* Optional shadow */
+  display: flex; /* Use flexbox layout */
+  align-items: center; /* Center items vertically */
+}
+
+.order-card{
+  margin-left: .5rem;
+  border: 1px solid #151D32; /* Border for the box */
+  background-color: #151D32; /* Background color */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  color: white;
+  font-family: "Inter", sans-serif;
+  line-height: 2rem;
+}
+
+h3{
+  font-size: .8vw; /* Scales with 5% of the viewport width */
+  font-weight: bold;
+}
+
+p{
+  font-size: .7vw;
+}
+
+h4{
+  margin-top: 1rem;
+  font-size: .8vw; /* Scales with 5% of the viewport width */
+  font-weight: bold;
+}
+
+.no-orders{
+  margin-left: .5rem;
+  font-size: .8vw;
+  color: white;
 }

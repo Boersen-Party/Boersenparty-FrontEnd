@@ -1,16 +1,13 @@
-<div class="title-box bg-[#151D32] p-6 rounded-lg shadow-md text-white">
-  <div class="text-center mb-6">
-    <span class="title text-xl font-bold tracking-wide">
-      Event Auslösen
-    </span>
+<div class="event-box">
+  <div class="title">
+    Events
   </div>
 
   <div class="flex justify-between items-center gap-8 ">
     @for(event of events; track event.id) {
     <div
       class="bg-[#151D32] border-gold border-2 text-white rounded-lg flex items-center justify-center w-40 h-24 hover:bg-[#1A243F] cursor-pointer"
-      (click)="triggerEvent(event.id ?? 0)"
-    >
+      (click)="triggerEvent(event.id ?? 0)">
       {{ event.type }}
     </div>
     }
