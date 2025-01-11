@@ -1,18 +1,22 @@
+.x-scroller{
+  position: absolute;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  width: 92.5%;
+  white-space: nowrap;
+}
+
 .favorite-item-grid{
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   grid-template-rows: minmax(5px, auto);
   gap: 1em; /* Optional: add spacing between items */
-  margin-left: 2.5%;
-  margin-right: 2.5%;
-  margin-bottom: 15%;
-  /*border: 1px solid green;*/
 }
 
 .trending-item-1{
   grid-column: 1;
-  grid-row: 1;
-  height: 15rem;
+  height: 12rem;
+  width: 7rem;
   border: 1px solid #151D32;
   border-radius: 0.3125rem;
   padding: 0.9375rem;
@@ -24,9 +28,8 @@
 
 .trending-item-2{
   grid-column: 2;
-  grid-row: 1;
-  height: 15rem;
-
+  height: 12rem;
+  width: 7rem;
   border: 1px solid #151D32;
   border-radius: 0.3125rem;
   padding: 0.9375rem;
@@ -37,8 +40,9 @@
 }
 
 .trending-item-3{
-  grid-row: 2;
-  height: 15rem;
+  grid-column: 3;
+  height: 12rem;
+  width: 7rem;
   border: 1px solid #151D32;
   border-radius: 0.3125rem;
   padding: 0.9375rem;
@@ -49,8 +53,9 @@
 }
 
 .trending-item-4{
-  grid-row: 2;
-  height: 15rem;
+  grid-column: 4;
+  height: 12rem;
+  width: 7rem;
   border: 1px solid #151D32;
   border-radius: 0.3125rem;
   padding: 0.9375rem;
@@ -61,8 +66,9 @@
 }
 
 .trending-item-5{
-  grid-row: 3;
-  height: 15rem;
+  grid-column: 5;
+  height: 12rem;
+  width: 7rem;
   border: 1px solid #151D32;
   border-radius: 0.3125rem;
   padding: 0.9375rem;
@@ -73,8 +79,9 @@
 }
 
 .trending-item-6{
-  grid-row: 3;
-  height: 15rem;
+  grid-column: 6;
+  height: 12rem;
+  width: 7rem;
   border: 1px solid #151D32;
   border-radius: 0.3125rem;
   padding: 0.9375rem;
@@ -85,8 +92,9 @@
 }
 
 .trending-item-7{
-  grid-row: 4;
-  height: 15rem;
+  grid-column: 7;
+  height: 12rem;
+  width: 7rem;
   border: 1px solid #151D32;
   border-radius: 0.3125rem;
   padding: 0.9375rem;
@@ -97,8 +105,9 @@
 }
 
 .trending-item-8{
-  grid-row: 4;
-  height: 15rem;
+  grid-column: 8;
+  height: 12rem;
+  width: 7rem;
   border: 1px solid #151D32;
   border-radius: 0.3125rem;
   padding: 0.9375rem;

@@ -6,7 +6,6 @@ import { PersonalComponent } from './personal/personal.component';
 import { DisplayComponent } from './display/display.component';
 import { AuthGuard } from './services/auth.guard';
 import { AccessDeniedComponent } from './access-denied/access-denied.component';
-import { FavoritesComponent } from './user/pages/favorites/favorites.component';
 import { MenuComponent } from './user/pages/menu/menu.component';
 
 export const routes: Routes = [
@@ -16,7 +15,6 @@ export const routes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', title: 'User Home', component: UserComponent },
       { path: 'menu', title: 'Speisekarte', component: MenuComponent },
-      { path: 'favorites', title: 'Favourites', component: FavoritesComponent },
     ]
   },
   { path: 'personal', title: 'Personal-Bereich', component: PersonalComponent, canActivate: [AuthGuard], data: { roles: ['personal'] } },
