@@ -5,24 +5,25 @@
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: minmax(5px, auto);
   gap: 1em; /* Optional: add spacing between items */
+
 }
 
 /*-------Start of General Statistic -------*/
 
 .general-statistic-user{
-  grid-row: 2;
+  grid-row: 1;
 }
 
 /*-------End of General Statistic -------*/
 /*-------Start of Favorite Item -------*/
 .favorite-item{
-  grid-row: 3
+  grid-row: 2;
 }
 /*-------End of Favorite Item -------*/
 /*-------Start of Price overview -------*/
 
 .price-overiew-position{
-  grid-row: 4;
+  grid-row: 15;
 }
 
 /*-------End of Price overview -------*/
