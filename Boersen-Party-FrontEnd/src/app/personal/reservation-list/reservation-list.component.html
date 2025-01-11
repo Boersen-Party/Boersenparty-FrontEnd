@@ -5,7 +5,7 @@
 <div class="reservation-box">
   @if (ManagedOrders.length > 0) {
     @for(order of ManagedOrders; track order.id) {
-      <div class="order-card">
+      <div class="order-card" (click)="selectOrder(order)">
         <div class="order-header">
           <h3>Order belongs to: {{ order.belongs_to }}</h3>
           <p>Total Price: {{ order.totalPrice  }}</p>
