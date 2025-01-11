@@ -18,7 +18,6 @@
 /*-------Start of Favorite Item -------*/
 .favorite-item{
   grid-row: 2;
-  border: 1px solid green;
 }
 /*-------End of Favorite Item -------*/
 /*-------Start of Price overview -------*/
