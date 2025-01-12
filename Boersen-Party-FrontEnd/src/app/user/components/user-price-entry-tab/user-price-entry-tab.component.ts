@@ -14,9 +14,10 @@ import { ReservationService } from '../../../services/reservation.service';
   styleUrls: ['./user-price-entry-tab.component.css'],
 })
 export class UserPriceEntryTabComponent {
-  products: Product[] = []; // Liste der Produkte
-  selectedProduct: Product | null = null; // Aktuell ausgewähltes Produkt
-  orderQuantity: number = 1; // Bestellmenge
+  products: Product[] = [];
+  selectedProduct: Product | null = null;
+  orderQuantity: number = 1;
+  likedProducts: Record<number, boolean> = {};
 
   reservation: Order = {
     items: [],
@@ -31,38 +32,44 @@ export class UserPriceEntryTabComponent {
   ) {
     this.reservationService.initialize('_USER');
 
-    // Initialisiere Produkte und füge `liked` hinzu
     effect(() => {
-      this.products = this.productService.products().map((product) => ({
-        ...product,
-        liked: product.liked ?? false, // Falls liked nicht existiert, setze false
-      }));
+      this.products = this.productService.products();
+      this.loadLikedStatus();
     });
   }
 
   onHeartClick(event: Event, product: Product) {
-    event.stopPropagation(); // Verhindert Popup-Anzeige
-    product.liked = !product.liked; // Toggle liked
-    this.updateProductOrder(); // Sortiere Produkte neu
+    event.stopPropagation();
+
+    const productId = product.id ?? -1;
+    this.likedProducts[productId] = !this.likedProducts[productId];
+    this.saveLikedStatus();
+    this.updateProductOrder();
   }
 
   updateProductOrder() {
     this.products.sort((a, b) => {
-      if (a.liked && !b.liked) return -1;
-      if (!a.liked && b.liked) return 1;
+      const aId = a.id ?? -1;
+      const bId = b.id ?? -1;
+
+      const aLiked = this.likedProducts[aId] || false;
+      const bLiked = this.likedProducts[bId] || false;
+
+      if (aLiked && !bLiked) return -1;
+      if (!aLiked && bLiked) return 1;
       return 0;
     });
   }
 
   onProductClick(product: Product) {
-    if (!product.liked) {
+    const productId = product.id ?? -1;
+    if (!this.likedProducts[productId]) {
       this.selectedProduct = product;
-      console.log(`Produkt geklickt: ${product.name}`);
+      console.log(`Product clicked: ${product.name}`);
     }
   }
 
   closePopup() {
-    console.log('Popup geschlossen.');
     this.selectedProduct = null;
     this.orderQuantity = 1;
   }
@@ -70,10 +77,22 @@ export class UserPriceEntryTabComponent {
   addToOrder() {
     if (this.selectedProduct && this.orderQuantity > 0) {
       this.reservationService.addToReservation(this.selectedProduct, this.orderQuantity);
-      console.log(`Hinzugefügt: ${this.orderQuantity} von ${this.selectedProduct.name}`);
       this.closePopup();
-    } else {
-      console.error('Ungültiges Produkt oder Menge');
     }
+  }
+
+  trackByProductName(index: number, product: Product): string {
+    return product.name;
+  }
+
+  loadLikedStatus() {
+    const storedLikedProducts = localStorage.getItem('likedProducts');
+    if (storedLikedProducts) {
+      this.likedProducts = JSON.parse(storedLikedProducts);
+    }
+  }
+
+  saveLikedStatus() {
+    localStorage.setItem('likedProducts', JSON.stringify(this.likedProducts));
   }
 }
