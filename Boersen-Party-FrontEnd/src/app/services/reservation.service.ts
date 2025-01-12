@@ -17,7 +17,7 @@ export class ReservationService {
   draftOrder = signal<Order>({
     items: [],
     totalPrice: 0,
-    isPaid: false,
+    paid: false,
     belongs_to: '',
   });  
 
@@ -48,6 +48,20 @@ export class ReservationService {
   getUserUUID(): string {
     return this.partyService.getUserUUID() ?? '';
   }
+
+  async processPayment(orderId: string): Promise<void> {
+    try {
+      const partyId = this.partyService.getActivePartyId();
+      const URL = `${baseURL}/${partyId}/guests/orders/${orderId}`;
+      const response = await axios.post(URL);
+  
+      console.log('Payment processed successfully:', response.data);
+    } catch (error) {
+      console.error('Error processing payment:', error);
+      throw error;
+    }
+  }
+  
 
 
 

@@ -50,7 +50,7 @@ export class UserReservationTabComponent {
       const newOrder: Order = {
         items: this.orderItems,
         totalPrice: this.reservationService.calculateTotalPrice(this.orderItems),
-        isPaid: false, 
+        paid: false, 
       };
 
       this.reservationService.createReservation(newOrder);
@@ -59,6 +59,8 @@ export class UserReservationTabComponent {
       console.log('No items in reservation to create.');
     }
   }
+
+
 
 
 }

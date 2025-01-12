@@ -22,7 +22,7 @@ export class UserPriceEntryTabComponent {
   reservation: Order = {
     items: [],
     totalPrice: 0,
-    isPaid: false,
+    paid: false,
     belongs_to: '', 
   };
 

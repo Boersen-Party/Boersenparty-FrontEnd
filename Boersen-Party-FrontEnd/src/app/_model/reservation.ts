@@ -2,7 +2,7 @@ export interface Order {
     id?: string; 
     items: OrderItem[]; 
     totalPrice: number; 
-    isPaid: boolean; 
+    paid: boolean; 
     belongs_to?: string;
   }
   
