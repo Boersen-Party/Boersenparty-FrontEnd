@@ -31,7 +31,7 @@
   }
 
   .drink-name {
-    font-size: 1vw; /* Adjust this value as needed */
+    font-size: 4vw; /* Adjust this value as needed */
     color: white;
     font-family: "Inter", sans-serif;
     font-weight: bold; /* Bold drink name */

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {DrinkPriceOverviewUserComponent} from './components/drink-price-overview-user/drink-price-overview-user.component';
 import {GerneralStatisticsUserComponent} from './components/gerneral-statistics-user/gerneral-statistics-user.component';
 import {ToolbarComponent} from './components/toolbar/toolbar.component';
 import {RouterOutlet} from '@angular/router';
@@ -11,7 +10,7 @@ import { UserReservationTabComponent } from "./components/user-reservation-tab/u
 @Component({
   standalone: true,
   selector: 'app-user',
-  imports: [GerneralStatisticsUserComponent, FavoriteItemHomeComponent, ToolbarComponent, RouterOutlet, PriceOverviewComponent, UserPriceEntryTabComponent, DrinkPriceOverviewUserComponent, UserReservationTabComponent],
+  imports: [GerneralStatisticsUserComponent, FavoriteItemHomeComponent, ToolbarComponent, RouterOutlet, PriceOverviewComponent, UserPriceEntryTabComponent, UserReservationTabComponent],
   templateUrl: `./user.component.html`,
   styleUrls: ['./user.component.css']
 })
