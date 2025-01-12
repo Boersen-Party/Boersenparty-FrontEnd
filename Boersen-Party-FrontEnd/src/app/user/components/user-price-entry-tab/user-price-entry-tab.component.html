@@ -3,10 +3,7 @@
 </div>
 
 @for (product of products; track product.name) {
-  <div
-    class="drink-box mb-2 cursor-pointer"
-    (click)="onProductClick(product)"
-  >
+  <div class="drink-box mb-2 cursor-pointer" (click)="onProductClick(product)">
     <span class="drink-name">{{ product.name }}</span>
 
     <input class="check" type="checkbox" id="like-toggle-{{product.name}}" />
