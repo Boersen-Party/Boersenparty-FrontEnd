@@ -15,44 +15,41 @@
   font-family: "Inter", sans-serif;
 }
 
-.reservation-box{
+.reservation-box {
   border: 1px solid #151D32; /* Border for the box */
   border-radius: 0.3125rem; /* 5px equivalent */
-  padding: 0.9375rem; /* 15px equivalent */ /* Inner padding */
+  padding: 0.9375rem; /* 15px equivalent */
   background-color: #151D32; /* Background color */
   box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1); /* Optional shadow */
-  display: flex; /* Use flexbox layout */
-  align-items: center; /* Center items vertically */
+  display: grid; /* Use grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Two items per row */
+  gap: 1rem; /* Space between items */
 }
 
-.order-card{
-  margin-left: .5rem;
+.order-card {
   border: 1px solid #151D32; /* Border for the box */
   background-color: #151D32; /* Background color */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2); /* Reduce shadow size for a compact look */
   transition: 0.3s;
   color: white;
   font-family: "Inter", sans-serif;
-  line-height: 2rem;
+  line-height: 1.5rem; /* Reduce line height */
+  padding: 0.5rem; /* Reduce padding inside the card */
+  font-size: 0.85rem; /* Smaller font size for text */
 }
 
-h3{
-  font-size: .8vw; /* Scales with 5% of the viewport width */
+h3 {
+  font-size: 1rem; /* Adjust font size */
   font-weight: bold;
 }
 
-p{
-  font-size: .7vw;
+p {
+  font-size: 0.9rem; /* Adjust font size */
 }
 
-h4{
-  margin-top: 1rem;
-  font-size: .8vw; /* Scales with 5% of the viewport width */
-  font-weight: bold;
-}
-
-.no-orders{
-  margin-left: .5rem;
-  font-size: .8vw;
+.no-orders {
+  font-size: 1rem;
   color: white;
+  text-align: center; /* Center the text */
+  grid-column: span 2; /* Make it span across the full width */
 }

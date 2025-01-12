@@ -1,6 +1,7 @@
 <div
   class="fixed bg-box text-white flex flex-col justify-center items-center shadow-lg transition-all duration-300 rounded-lg reservationTab"
   [ngClass]="{ 'w-full h-10': !isExpanded, 'h-4/5': isExpanded }"
+  style="z-index: 9999; position: fixed;" 
   (click)="toggleTab()"
 >
   @if(!isExpanded) {
@@ -10,6 +11,9 @@
   }
 
   @if(isExpanded) {
+    <div class="text-center text-xs mb-2">
+      user_id: {{ this.users_uuid }}
+    </div>
     <div class="w-full px-2 py-1 flex flex-col cursor-pointer">
       <h3 class="text-md font-semibold text-center mb-2">Reservations</h3>
 
@@ -35,7 +39,7 @@
         </button>
       </div>
 
-      <div class="mb-2 text-center text-sm py-4">
+      <div class="mb-2 text-center text-gold text-sm py-4">
         <p>Caution: Your reservation will only only be active for 5 minutes.</p>
       </div>
     </div>

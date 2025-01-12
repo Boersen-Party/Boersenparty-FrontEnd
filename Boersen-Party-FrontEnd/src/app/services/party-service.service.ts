@@ -7,6 +7,7 @@ import { AuthService } from './auth.service';
 import { KeycloakProfile } from 'keycloak-js';
 import { Router } from '@angular/router';
 import Cookies from 'js-cookie';
+import { PartyStats } from '../_model/partystats';
 
 
 @Injectable({
@@ -16,6 +17,7 @@ import Cookies from 'js-cookie';
 export class PartyServiceService {
   timer = timer(0, 30000)
   parties = signal<Party[]>([]);
+  partyStats = signal<PartyStats[]>([]);
   private _activePartyIdUser : number | null = null;
   private activePartyIdKey = 'activePartyId';
   private userUUIDKey = 'userUUID';
@@ -31,11 +33,12 @@ export class PartyServiceService {
     }
     
     this.timer.subscribe(_ => {
-      console.log("timer subscribed.. fetching parties now..");
       this.fetchParties();
-    
+      this.fetchPartyStats();
     })
   }
+
+  
   setActivePartyIdUsingWorksFor(worksFor: string): void {
     const url = `${baseURL}/personal-party-id?worksFor=${encodeURIComponent(worksFor)}`;
   
@@ -191,6 +194,29 @@ async joinParty(accessCode: string): Promise<void> {
 
 
   }
+
+  async fetchPartyStats(): Promise<void> {
+    const activePartyId = this.getActivePartyId();
+    if (!activePartyId) {
+      console.warn("No active party ID found. Skipping stats fetch.");
+      return;
+    }
+
+    try {
+      const URL = baseURL + '/' + activePartyId +  '/partystats';
+      
+      const response = await axios.get(URL);
+      console.log("response is:" , response.data);
+      const fetchedStats: PartyStats = response.data;
+      this.partyStats.update((stats) => [...stats, fetchedStats]);
+      console.log("Fetched PartyStats:", fetchedStats);
+
+      this.partyStats.update((stats) => [...stats, fetchedStats]);
+    } catch (error) {
+      console.error("Error fetching party stats:", error);
+    }
+  }
+  
 
 
 

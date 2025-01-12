@@ -5,7 +5,6 @@ import { Order } from '../_model/reservation';
   providedIn: 'root'
 })
 export class OrderSelectionService {
-  // Signal to store the selected order
   selectedOrder: WritableSignal<Order | null> = signal(null);
 
   setSelectedOrder(order: Order): void {
