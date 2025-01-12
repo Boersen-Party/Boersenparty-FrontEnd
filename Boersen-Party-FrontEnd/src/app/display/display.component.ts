@@ -1,25 +1,23 @@
 import { Component, effect } from '@angular/core';
 import { PartyHeaderComponent } from './party-header/party-header.component';
-import { SwipeableStatsgridComponent } from './swipeable-statsgrid/swipeable-statsgrid.component';
 import { PartyServiceService } from '../services/party-service.service';
 import { ProductService } from '../services/products.service';
 import { Party } from '../_model/party';
 import { Product } from '../_model/product';
+import {MonitorStatsComponent} from './monitor-stats/monitor-stats.component';
 
 @Component({
   standalone: true,
   selector: 'app-display',
-  imports: [PartyHeaderComponent, SwipeableStatsgridComponent],
+  imports: [PartyHeaderComponent, MonitorStatsComponent],
   templateUrl: './display.component.html',
   styleUrl: './display.component.css'
 })
 export class DisplayComponent {
-    parties: Party[] = [];
-    //products: Product[] = [];
-    // später überlegen welches objekt das party header eig braucht? ganzes party[] übergeben?
-    partyName: string = '';
-
-  
+  parties: Party[] = [];
+  //products: Product[] = [];
+  // später überlegen welches objekt das party header eig braucht? ganzes party[] übergeben?
+  partyName: string = '';
 
   constructor(private partyService: PartyServiceService) {
     effect(() => {
@@ -29,8 +27,4 @@ export class DisplayComponent {
     });
 
   }
-
-
-   
-
 }
