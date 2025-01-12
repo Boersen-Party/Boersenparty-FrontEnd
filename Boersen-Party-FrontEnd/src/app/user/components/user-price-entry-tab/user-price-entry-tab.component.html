@@ -6,8 +6,8 @@
   <div class="drink-box mb-2 cursor-pointer" (click)="onProductClick(product)">
     <span class="drink-name">{{ product.name }}</span>
 
-    <input class="check" type="checkbox" id="like-toggle-{{product.name}}" />
-    <label class="container" for="like-toggle-{{product.name}}">
+    <!-- Herz-Icon -->
+    <label class="container">
       <svg
         viewBox="0 0 512 512"
         xmlns="http://www.w3.org/2000/svg"
@@ -19,17 +19,14 @@
           d="M225.8 468.2l-2.5-2.3L48.1 303.2C17.4 274.7 0 234.7 0 192.8v-3.3c0-70.4 50-130.8 119.2-144C158.6 37.9 198.9 47 231 69.6c9 6.4 17.4 13.8 25 22.3c4.2-4.8 8.7-9.2 13.5-13.3c3.7-3.2 7.5-6.2 11.5-9c0 0 0 0 0 0C313.1 47 353.4 37.9 392.8 45.4C462 58.6 512 119.1 512 189.5v3.3c0 41.9-17.4 81.9-48.1 110.4L288.7 465.9l-2.5 2.3c-8.2 7.6-19 11.9-30.2 11.9s-22-4.2-30.2-11.9z"
         ></path>
       </svg>
-      <svg
-        viewBox="0 0 512 512"
-        xmlns="http://www.w3.org/2000/svg"
-        class="icon" [ngClass]="{'active': product.liked, 'inactive': !product.liked}"
-        (click)="onHeartClick($event, product)"
-      >
-        <path d="M225.8 468.2l-2.5-2.3L48.1 303.2C17.4 274.7 0 234.7 0 192.8v-3.3c0-70.4 50-130.8 119.2-144C158.6 37.9 198.9 47 231 69.6c9 6.4 17.4 13.8 25 22.3c4.2-4.8 8.7-9.2 13.5-13.3c3.7-3.2 7.5-6.2 11.5-9c0 0 0 0 0 0C313.1 47 353.4 37.9 392.8 45.4C462 58.6 512 119.1 512 189.5v3.3c0 41.9-17.4 81.9-48.1 110.4L288.7 465.9l-2.5 2.3c-8.2 7.6-19 11.9-30.2 11.9s-22-4.2-30.2-11.9z"></path>
-      </svg>
     </label>
 
-    @if (product.imageURL) {
+    <div class="price-container">
+      <span class="price">{{ product.latestCalculatedPrice }}€</span>
+    </div>
+
+
+  @if (product.imageURL) {
       <div class="w-6 h-6 overflow-hidden mr-2">
         <img [src]="product.imageURL" alt="{{ product.name }}" class="w-full h-full object-cover">
       </div>
