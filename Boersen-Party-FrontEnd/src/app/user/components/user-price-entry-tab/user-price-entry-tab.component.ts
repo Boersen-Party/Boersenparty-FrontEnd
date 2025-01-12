@@ -33,9 +33,14 @@ export class UserPriceEntryTabComponent {
     this.reservationService.initialize('_USER');
 
     effect(() => {
-      this.products = this.productService.products();
-      this.loadLikedStatus();
+      this.products = this.productService.products().map((product) => {
+        const liked = this.likedProducts[product.id ?? -1] || false;
+        return { ...product, liked };
+      });
+      this.updateProductOrder();
     });
+
+    this.loadLikedStatus();
   }
 
   onHeartClick(event: Event, product: Product) {
@@ -44,6 +49,14 @@ export class UserPriceEntryTabComponent {
     const productId = product.id ?? -1;
     this.likedProducts[productId] = !this.likedProducts[productId];
     this.saveLikedStatus();
+
+    this.products = this.products.map((p) => {
+      if (p.id === product.id) {
+        return { ...p, liked: this.likedProducts[productId] };
+      }
+      return p;
+    });
+
     this.updateProductOrder();
   }
 
@@ -65,7 +78,6 @@ export class UserPriceEntryTabComponent {
     const productId = product.id ?? -1;
     if (!this.likedProducts[productId]) {
       this.selectedProduct = product;
-      console.log(`Product clicked: ${product.name}`);
     }
   }
 
