@@ -12,7 +12,7 @@ import { ReservationService } from '../../../services/reservation.service';
   imports: [CommonModule, FormsModule],
   templateUrl: './user-price-entry-tab.component.html',
   styleUrl: './user-price-entry-tab.component.css',
-  
+
 })
 export class UserPriceEntryTabComponent {
   products: Product[] = []; // List of products to display
@@ -23,42 +23,48 @@ export class UserPriceEntryTabComponent {
     items: [],
     totalPrice: 0,
     paid: false,
-    belongs_to: '', 
+    belongs_to: '',
   };
 
   constructor(
     private productService: ProductService,
     private reservationService: ReservationService ) {
-    
+
       this.reservationService.initialize('_USER');
     effect(() => {
       this.products = this.productService.products();
     });
   }
 
- 
-  
+
+
   onProductClick(product: Product) {
     this.selectedProduct = product;
     console.log(`Product clicked: ${product.name}`);
   }
 
-  
+
   closePopup() {
     console.log('Popup closed.');
     this.selectedProduct = null;
-    this.orderQuantity = 1; 
+    this.orderQuantity = 1;
   }
 
   addToOrder() {
     if (this.selectedProduct && this.orderQuantity > 0) {
       this.reservationService.addToReservation(this.selectedProduct, this.orderQuantity);
       console.log(`Added ${this.orderQuantity} of ${this.selectedProduct.name} to the reservation.`);
-      this.closePopup(); 
+      this.closePopup();
     } else {
       console.error('Invalid product or quantity');
     }
   }
 
-
+  onHeartClick(event: Event, product: Product): void {
+    event.stopPropagation();
+    // Remove the product from its current position
+    this.products = this.products.filter(p => p !== product);
+    // Add the product to the top of the list
+    this.products.unshift(product);
+  }
 }
