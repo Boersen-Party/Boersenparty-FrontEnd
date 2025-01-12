@@ -39,7 +39,7 @@
   }
 
   .price {
-    font-size: 1vw; /* Adjust this value as needed */
+    font-size: 4vw; /* Adjust this value as needed */
     text-align: right;
     color: white;
     font-family: "Inter", sans-serif;
