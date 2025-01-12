@@ -54,6 +54,8 @@ export class UserReservationTabComponent {
       };
 
       this.reservationService.createReservation(newOrder);
+      this.orderItems = [];
+
 
     } else {
       console.log('No items in reservation to create.');
