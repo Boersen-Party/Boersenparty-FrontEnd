@@ -1,7 +1,7 @@
 <ul class="price-list">
   <li *ngFor="let drink of prices" class="price-entry" [attr.data-id]="drink.id">
     <div class="drink-box">
-      <span class="drink-name">{{ drink.name }}</span>
+      <span class="drink-name text-7xl">{{ drink.name }}</span>
       <div class="price-container">
         <span class="price">{{ drink.price | currency: 'EUR' }}</span>
         <span [ngClass]="{'positive': drink.price_change > 0, 'negative': drink.price_change < 0}">

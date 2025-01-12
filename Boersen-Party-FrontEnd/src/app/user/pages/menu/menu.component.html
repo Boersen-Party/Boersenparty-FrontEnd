@@ -2,32 +2,18 @@
   <app-toolbar/>
 </section>
 
-<div class="menu-grid">
-  <div class="drink-h1-position">
-    <section>
-      <p>Drinks</p>
-    </section>
-  </div>
-
-  <div class="drink_price-overiew-position bg-gold">
-    <section>
-      
-     <!--  <app-user-price-entry-tab/> -->
-      <!-- <app-drink-price-overview-user/>  -->
-    </section>
-  </div>
-
-  <div class="meal-h1-position">
-    <section>
-      <p>Meals</p>
-    </section>
-  </div>
-
-  <div class="meal_price-overiew-position">
-    <section>
-      <app-meal-price-overview-user/>
-    </section>
-  </div>
-</div>
+<ul class="price-list">
+  <li *ngFor="let drink of prices" class="price-entry" [attr.data-id]="drink.id">
+    <div class="drink-box">
+      <span class="drink-name">{{ drink.name }}</span>
+      <div class="price-container">
+        <span class="price">{{ drink.price | currency: 'EUR' }}</span>
+        <span [ngClass]="{'positive': drink.price_change > 0, 'negative': drink.price_change < 0}">
+          {{ drink.price_change }}%
+        </span>
+      </div>
+    </div>
+  </li>
+</ul>
 
 <router-outlet/>

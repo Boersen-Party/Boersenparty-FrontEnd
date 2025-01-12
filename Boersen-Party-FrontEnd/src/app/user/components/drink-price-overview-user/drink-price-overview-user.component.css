@@ -18,7 +18,6 @@
 }
 
 .drink-name {
-  font-size: 4vw; /* Adjust this value as needed */
   color: white;
   font-family: "Inter", sans-serif;
   margin-right: auto; /* Pushes the drink name to the left */
