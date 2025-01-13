@@ -24,13 +24,14 @@
     </label>
 
     @if (product.imageURL) {
-      <div class="w-6 h-6 overflow-hidden mr-2">
+      <div class="w-12 h-8 mr-2">
         <img [src]="product.imageURL" alt="{{ product.name }}" class="w-full h-full object-cover">
       </div>
     }
 
     <div class="price-container">
       <span class="price">{{ product.latestCalculatedPrice }}€ </span>
+      <span class="price text-sm ml-4">Bestand: {{ product.pQuantity }}</span>
     </div>
   </div>
 }
