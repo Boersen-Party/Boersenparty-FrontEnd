@@ -5,7 +5,6 @@
   grid-template-rows: minmax(100px, auto);
   gap: 1em; /* Optional: add spacing between items */
 
-  border: 1px solid blue;
 }
 
 .statistics-position{
@@ -13,7 +12,6 @@
   grid-row: 1;
   color: white;
 
-  border: 1px solid purple;
 }
 
 

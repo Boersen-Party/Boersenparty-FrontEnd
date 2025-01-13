@@ -33,20 +33,46 @@ export class ItemStatCardComponent implements AfterViewInit, OnChanges {
 
     // Format the x labels to only show time
     const formattedX = x.map(date => {
-      // Erzwinge UTC-Interpretation
-      const utcDate = new Date(date + 'Z'); // 'Z' für UTC
-      // Konvertiere in lokale Zeit
+      const utcDate = new Date(date + 'Z'); // 'Z' for UTC
       return utcDate.toLocaleTimeString('de-DE', {
         hour: '2-digit',
         minute: '2-digit',
-        hour12: false, // 24-Stunden-Format
+        hour12: false, // 24-hour format
       });
     });
 
     this.chartInstance = this.chartService.createLineChart(
       this.lineChartRef.nativeElement,
       formattedX,
-      y
+      y,
+      {
+        scales: {
+          y: {
+            ticks: {
+              callback: function(tickValue: string | number) {
+                const value = typeof tickValue === 'string' ? parseFloat(tickValue) : tickValue;
+                return value.toFixed(2); // Limit to 2 decimal places
+              }
+            }
+          }
+        },
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: function(context: any) {
+                let label = context.dataset.label || '';
+                if (label) {
+                  label += ': ';
+                }
+                if (context.parsed.y !== null) {
+                  label += context.parsed.y.toFixed(2); // Limit to 2 decimal places
+                }
+                return label;
+              }
+            }
+          }
+        }
+      }
     );
   }
 
@@ -56,13 +82,11 @@ export class ItemStatCardComponent implements AfterViewInit, OnChanges {
 
       // Format the x labels to only show time
       const formattedX = x.map(date => {
-        // Erzwinge UTC-Interpretation
-        const utcDate = new Date(date + 'Z'); // 'Z' für UTC
-        // Konvertiere in lokale Zeit
+        const utcDate = new Date(date + 'Z'); // 'Z' for UTC
         return utcDate.toLocaleTimeString('de-DE', {
           hour: '2-digit',
           minute: '2-digit',
-          hour12: false, // 24-Stunden-Format
+          hour12: false, // 24-hour format
         });
       });
 

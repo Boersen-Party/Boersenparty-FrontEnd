@@ -1,9 +1,9 @@
-<div class="h-full w-full bg-box text-white flex-grow items-start justify-items p-4 border border-sky-500">
-  <div class="grid grid-cols-3 gap-2 w-full h-full border border-indigo-500"> <!-- Ändere grid auf 3 Spalten -->
+<div class="h-full w-full bg-box text-white flex-grow items-start justify-items p-4">
+  <div class="grid grid-cols-3 gap-2 w-full h-full"> <!-- Ändere grid auf 3 Spalten -->
 
     @for (product of products; track product.id) {
       <div class="grid-item">
-        <h3>{{ getProductName(product.id ?? 0) }}</h3>
+        <p>{{ getProductName(product.id ?? 0) }}</p>
         <app-item-stat-card
           [product]="product"
           [chartData]="getChartData(product.id ?? 0)">
