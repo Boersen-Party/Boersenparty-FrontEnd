@@ -6,6 +6,7 @@ import { baseURL } from '../_config/config';
 import axios from 'axios';
 import { timer } from 'rxjs';
 import { CircularBuffer } from '../_datastructure/CircularBuffer';
+import { LikedProductsService } from './liked-products.service';
 
 
 @Injectable({
@@ -17,13 +18,20 @@ export class ProductService {
   products = signal<Product[]>([]);
   latestPriceBuffers = signal<Map<number, CircularBuffer<{ timestamp: string | undefined, price: number }>>>(new Map());
 
+  pinnedByUserProducts = computed(() => {
+    const pinnedProductIds = this.likedProductsService.getPinnedProductIds(); 
+    return this.products().filter(product => pinnedProductIds.includes(product.id!)); 
+  });
 
-  constructor(private authService: AuthService, private partyService: PartyServiceService) {
+  constructor(private authService: AuthService, private partyService: PartyServiceService, private likedProductsService: LikedProductsService) {
     this.timer.subscribe(() => {
       this.fetchProducts();
       this.updateLatestPriceBuffers();
     });
+
   }
+  
+  
 
 
   updateLatestPriceBuffers(): void {

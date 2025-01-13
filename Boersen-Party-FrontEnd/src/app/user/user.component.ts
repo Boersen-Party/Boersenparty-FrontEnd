@@ -6,11 +6,11 @@ import {FavoriteItemHomeComponent} from './components/favorite-item-home/favorit
 import { PriceOverviewComponent } from "../personal/price-overview/price-overview.component";
 import { UserPriceEntryTabComponent } from "./components/user-price-entry-tab/user-price-entry-tab.component";
 import { UserReservationTabComponent } from "./components/user-reservation-tab/user-reservation-tab.component";
-
+import { FavoriteUserProductsComponent } from './components/favorite-user-products/favorite-user-products.component';
 @Component({
   standalone: true,
   selector: 'app-user',
-  imports: [GerneralStatisticsUserComponent, FavoriteItemHomeComponent, ToolbarComponent, RouterOutlet, PriceOverviewComponent, UserPriceEntryTabComponent, UserReservationTabComponent],
+  imports: [GerneralStatisticsUserComponent, FavoriteUserProductsComponent, FavoriteItemHomeComponent, ToolbarComponent, RouterOutlet, PriceOverviewComponent, UserPriceEntryTabComponent, UserReservationTabComponent],
   templateUrl: `./user.component.html`,
   styleUrls: ['./user.component.css']
 })
