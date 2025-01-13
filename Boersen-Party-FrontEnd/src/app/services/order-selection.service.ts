@@ -10,4 +10,8 @@ export class OrderSelectionService {
   setSelectedOrder(order: Order): void {
     this.selectedOrder.set(order);
   }
+
+  resetSelectedOrder() {
+    this.selectedOrder.set(null);
+  }
 }

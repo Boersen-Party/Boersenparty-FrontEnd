@@ -24,10 +24,15 @@ import { ReservationService } from '../../services/reservation.service';
   
       if (selectedOrder.id) {
         this.reservationService.processPayment(selectedOrder.id);
+        this.resetOrder();
       } else {
         console.error('Order ID is undefined.');
       }
       
+    }
+
+    resetOrder() {
+      this.orderSelectionService.resetSelectedOrder();
     }
   
   
