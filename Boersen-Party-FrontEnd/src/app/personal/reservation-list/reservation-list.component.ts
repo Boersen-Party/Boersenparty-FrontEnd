@@ -2,16 +2,23 @@ import { Component, effect } from '@angular/core';
 import { Order } from '../../_model/reservation';
 import { ReservationService } from '../../services/reservation.service';
 import { OrderSelectionService } from '../../services/order-selection.service';
-import { truncate } from 'node:fs/promises';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-reservation-list',
   standalone:true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './reservation-list.component.html',
   styleUrl: './reservation-list.component.css'
 })
 export class ReservationListComponent {
+
+
+  justLog() {
+  console.log("CLICKINGCLICKINGCLICKING");
+}
+
+
   ManagedOrders: Order[] = [];
   selectedOrder?: Order;
 
@@ -21,15 +28,17 @@ export class ReservationListComponent {
   
       effect(() => {
         this.ManagedOrders = this.reservationService.orders().filter(order => order.paid === false);
-  console.log('PERSONALER orders updated (only unpaid): ', this.ManagedOrders);
+        console.log('PERSONALER orders updated (only unpaid): ', this.ManagedOrders);
 
       });
     }
       
     selectOrder(order: Order): void {
+      console.log('Order selected:', order); // Debug log
+  
       if (order.id) {
         this.orderSelectionService.setSelectedOrder(order);
-        console.log('Selected Order:', order);
+        console.log('Selected Order in service:', order); // Debug log
       } else {
         console.error('Order ID is missing:', order);
       }
