@@ -1,7 +1,7 @@
 <div
-  class="fixed bg-box text-white flex flex-col justify-center items-center shadow-lg transition-all duration-300 rounded-lg reservationTab"
+  class="fixed bg-box text-white flex flex-col justify-center items-center shadow-lg transition-all duration-300 rounded-t-box reservationTab"
   [ngClass]="{ 'w-full h-10': !isExpanded, 'h-4/5': isExpanded }"
-  style="z-index: 9999; position: fixed;" 
+  style="z-index: 9999; position: fixed;"
   (click)="toggleTab()"
 >
   @if(!isExpanded) {

@@ -7,6 +7,7 @@ import { PriceOverviewComponent } from "../personal/price-overview/price-overvie
 import { UserPriceEntryTabComponent } from "./components/user-price-entry-tab/user-price-entry-tab.component";
 import { UserReservationTabComponent } from "./components/user-reservation-tab/user-reservation-tab.component";
 import { FavoriteUserProductsComponent } from './components/favorite-user-products/favorite-user-products.component';
+
 @Component({
   standalone: true,
   selector: 'app-user',
@@ -14,6 +15,8 @@ import { FavoriteUserProductsComponent } from './components/favorite-user-produc
   templateUrl: `./user.component.html`,
   styleUrls: ['./user.component.css']
 })
+
+
 export class UserComponent {
 
 }
