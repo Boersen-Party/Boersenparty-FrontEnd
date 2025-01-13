@@ -24,31 +24,31 @@ export class PartyServiceService {
   private activePartyIdKey = 'activePartyId';
   private userUUIDKey = 'userUUID';
 
-  
+
   constructor(private authService: AuthService, private router: Router) {
     //check if i'm a personaler, then set fetch active_party_id using 'works_for' from keycloak
     const works_for = this.authService.getWorksFor();
     //this means that the user is a personaler
     console.log("works_for is:", works_for);
     if (works_for !== "This user is not _PERSONAL") {
-    this.setActivePartyIdUsingWorksFor(works_for);
+      this.setActivePartyIdUsingWorksFor(works_for);
     }
 
     this.fetchPartiesOnce();
 
-    
-    
+
+
   }
 
-  
+
   setActivePartyIdUsingWorksFor(worksFor: string): void {
     const url = `${baseURL}/personal-party-id?worksFor=${encodeURIComponent(worksFor)}`;
-  
+
     axios
       .get(url)
       .then((response) => {
         const partyId = response.data;
-  
+
         if (partyId) {
           this.setActivePartyId(partyId); // Store the received party ID as the active ID
           console.log(`PERSONALER partyId is: ${partyId}`);
@@ -60,17 +60,17 @@ export class PartyServiceService {
         console.error(`Error fetching active party ID for worksFor: ${worksFor}`, error);
       });
   }
-  
-  
 
 
-  
+
+
+
 
 
   setActivePartyId(partyId: number): void {
     Cookies.set(this.activePartyIdKey, partyId.toString(), {
       expires: 7,
-      path: '/',  
+      path: '/',
     });
   }
 
@@ -83,34 +83,34 @@ export class PartyServiceService {
     const uuid = Cookies.get(this.userUUIDKey);
     return uuid ?? null;
   }
-/*
-  get activePartyId(): Signal<number | null> {
-    return computed(() => {
-      const parties = this.parties();
-      return parties.length > 0 && parties[0]?.id !== undefined ? parties[0].id : null;
-    });
-  }
-    */
+  /*
+    get activePartyId(): Signal<number | null> {
+      return computed(() => {
+        const parties = this.parties();
+        return parties.length > 0 && parties[0]?.id !== undefined ? parties[0].id : null;
+      });
+    }
+      */
 
   get activePartyIdUser(): number | null {
     return this._activePartyIdUser;
   }
 
 // Method to check if UUID is valid
-async checkUUIDValidity(uuid: string): Promise<boolean> {
-  try {
-    const response = await axios.get(`${baseURL}/check-uuid/${uuid}`);
-    console.log("response for check UUID Validity is:", response);
-    this._activePartyIdUser = response.data.partyId;
-    return response.data; // Assuming the backend returns an object with a valid flag
-  } catch (error) {
-    console.error('Error checking UUID:', error);
-    return false;
+  async checkUUIDValidity(uuid: string): Promise<boolean> {
+    try {
+      const response = await axios.get(`${baseURL}/check-uuid/${uuid}`);
+      console.log("response for check UUID Validity is:", response);
+      this._activePartyIdUser = response.data.partyId;
+      return response.data; // Assuming the backend returns an object with a valid flag
+    } catch (error) {
+      console.error('Error checking UUID:', error);
+      return false;
+    }
   }
-}
 
 // Method to create UUID and join the party
-async joinParty(accessCode: string): Promise<void> {
+  async joinParty(accessCode: string): Promise<void> {
 
     console.log('UUID not found, sending request to create one...');
     try {
@@ -127,21 +127,21 @@ async joinParty(accessCode: string): Promise<void> {
         path: '/',  // Ensure cookie is accessible throughout the site
       });
       console.log("cookies are now:" , this.getUserUUID())
-            this.setActivePartyId(party_id);
+      this.setActivePartyId(party_id);
 
-        console.log(`Joined party with ID: ${party_id}, UUID: ${uuid}`);
-        this.router.navigate(['/user/home']);
-      }
-     catch (error) {
+      console.log(`Joined party with ID: ${party_id}, UUID: ${uuid}`);
+      this.router.navigate(['/user/home']);
+    }
+    catch (error) {
       console.error('Error joining the party:', error);
     }
-  } 
+  }
 
 
 
 
 
- 
+
   async getQRCodeBase64(): Promise<string> {
     try {
       const headers = await this.authService.addTokenToHeader();
@@ -184,12 +184,12 @@ async joinParty(accessCode: string): Promise<void> {
     } catch (error) {
       console.error('Error fetching parties:', error);
     }
-  
+
 
 
   }
 
-  
+
 
 
   async createParty(newParty: Party) {
@@ -200,27 +200,27 @@ async joinParty(accessCode: string): Promise<void> {
         console.error(validationResult);
         return;
       }
-  
+
       const headers = await this.authService.addTokenToHeader();
-  
+
       const response = await axios.post(baseURL, newParty, { headers });
       console.log("response in PSS is:", response);
-  
-      const createdParty = response.data; 
-  
-    
+
+      const createdParty = response.data;
+
+
       this._lastParty.update(() => createdParty);
       console.log("Party in signal:", this._lastParty());
-  
-      
+
+
       this.setActivePartyId(createdParty.id); //susssssss
     } catch (error) {
       console.error('Error creating party:', error);
     }
   }
-  
 
- 
+
+
 
 
 
@@ -243,5 +243,3 @@ async joinParty(accessCode: string): Promise<void> {
 
 
 }
-
-

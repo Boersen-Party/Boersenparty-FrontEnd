@@ -4,7 +4,6 @@ import { Product } from '../../_model/product';
 import { CircularBuffer } from '../../_datastructure/CircularBuffer';
 import { ProductService } from '../../services/products.service';
 
-
 @Component({
   selector: 'app-monitor-stats',
   standalone: true,
@@ -21,10 +20,9 @@ export class MonitorStatsComponent {
       console.log("products before effect in SwipeableStatsGrid:", this.products);
       this.products = this.productService.products();
       console.log("Updated products in SwipeableStatsGrid:", this.products);
-      this.latestPriceBuffers = this.productService.latestPriceBuffers();      
+      this.latestPriceBuffers = this.productService.latestPriceBuffers();
   });
 }
-  
 
   // extrahiert von der map die timestamp und price werte und packt sie
   // in x- und y-arrays, die für die Chart.js benötigt werden
@@ -44,6 +42,11 @@ export class MonitorStatsComponent {
       x: data.map(entry => entry.timestamp || "Unknown"),
       y: data.map(entry => entry.price)
     };
+  }
+  // Fügt eine Überschrift für jedes Chart hinzu
+  getProductName(productId: number): string {
+    const product = this.products.find(p => p.id === productId);
+    return product ? product.name : "Unbekanntes Getränk";
   }
 }
 

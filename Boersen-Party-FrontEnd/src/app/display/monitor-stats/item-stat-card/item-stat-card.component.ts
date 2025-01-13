@@ -30,17 +30,67 @@ export class ItemStatCardComponent implements AfterViewInit, OnChanges {
 
   private initializeChart(): void {
     const { x, y } = this.chartData;
+
+    // Format the x labels to only show time
+    const formattedX = x.map(date => {
+      const utcDate = new Date(date + 'Z'); // 'Z' for UTC
+      return utcDate.toLocaleTimeString('de-DE', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false, // 24-hour format
+      });
+    });
+
     this.chartInstance = this.chartService.createLineChart(
       this.lineChartRef.nativeElement,
-      x,
-      y
+      formattedX,
+      y,
+      {
+        scales: {
+          y: {
+            ticks: {
+              callback: function(tickValue: string | number) {
+                const value = typeof tickValue === 'string' ? parseFloat(tickValue) : tickValue;
+                return value.toFixed(2); // Limit to 2 decimal places
+              }
+            }
+          }
+        },
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: function(context: any) {
+                let label = context.dataset.label || '';
+                if (label) {
+                  label += ': ';
+                }
+                if (context.parsed.y !== null) {
+                  label += context.parsed.y.toFixed(2); // Limit to 2 decimal places
+                }
+                return label;
+              }
+            }
+          }
+        }
+      }
     );
   }
 
   private updateChart(): void {
     if (this.chartInstance) {
       const { x, y } = this.chartData;
-      this.chartInstance.data.labels = x; // Update labels
+
+      // Format the x labels to only show time
+      const formattedX = x.map(date => {
+        const utcDate = new Date(date + 'Z'); // 'Z' for UTC
+        return utcDate.toLocaleTimeString('de-DE', {
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false, // 24-hour format
+        });
+      });
+
+      this.chartInstance.data.labels = formattedX; // Update labels
       this.chartInstance.data.datasets[0].data = y; // Update data
       this.chartInstance.update(); // Refresh the chart
     }

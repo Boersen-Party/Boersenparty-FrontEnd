@@ -1,0 +1,19 @@
+.display-grid {
+  margin: 1.5em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: minmax(100px, auto);
+  gap: 1em; /* Optional: add spacing between items */
+
+}
+
+.statistics-position{
+  grid-column: 1/4;
+  grid-row: 1;
+  color: white;
+
+}
+
+
+
+
