@@ -62,7 +62,7 @@ export class GeneralStatisticsComponent {
         labels: [], // Initially empty
         datasets: [
           {
-            label: 'Revenue',
+            label: 'Umsatz',
             data: [], // Initially empty
             backgroundColor: 'rgba(75, 192, 192, 0.5)',
             borderColor: 'rgba(75, 192, 192, 1)',
@@ -71,7 +71,7 @@ export class GeneralStatisticsComponent {
             categoryPercentage: 0.8, // Controls space between bars
           },
           {
-            label: 'Profit',
+            label: 'Gewinn',
             data: [], // Initially empty
             backgroundColor: 'rgba(153, 102, 255, 0.5)',
             borderColor: 'rgba(153, 102, 255, 1)',
@@ -159,7 +159,7 @@ export class GeneralStatisticsComponent {
         labels: [], // Initially empty
         datasets: [
           {
-            label: 'Total Orders',
+            label: 'Verarbeitete Bestellungen',
             data: [], // Initially empty
             backgroundColor: 'rgba(255, 159, 64, 0.5)',
             borderColor: 'rgba(255, 159, 64, 1)',

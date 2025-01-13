@@ -204,11 +204,13 @@ async joinParty(accessCode: string): Promise<void> {
       const headers = await this.authService.addTokenToHeader();
   
       const response = await axios.post(baseURL, newParty, { headers });
+      console.log("response in PSS is:", response);
   
       const createdParty = response.data; 
   
     
       this._lastParty.update(() => createdParty);
+      console.log("Party in signal:", this._lastParty());
   
       
       this.setActivePartyId(createdParty.id); //susssssss
