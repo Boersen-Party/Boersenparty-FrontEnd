@@ -131,11 +131,25 @@ private async fetchOrdersOfUser(uuid: string): Promise<void> {
       const response = await axios.post(URL, order);
 
       console.log('Reservation created:', response.data);
+
+      // Reset the draft order after successful creation
+      this.resetDraftOrder();
+
       return response.data;
     } catch (error) {
       console.error('Error creating reservation:', error);
       throw error;
     }
+  }
+
+  resetDraftOrder(): void {
+    this.draftOrder.set({
+      items: [],
+      totalPrice: 0,
+      paid: false,
+      belongs_to: '',
+    });
+    console.log('Draft order has been reset.');
   }
 
   

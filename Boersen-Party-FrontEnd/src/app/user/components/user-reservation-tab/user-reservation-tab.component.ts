@@ -19,7 +19,7 @@ export class UserReservationTabComponent {
   order: Order | undefined;
   orderItems: OrderItem[] = []; 
 
-  ordersBackend: Order[] = [];
+  //ordersBackend: Order[] = [];
 
   users_uuid: string = '';
   constructor(private reservationService: ReservationService) {
@@ -34,10 +34,12 @@ export class UserReservationTabComponent {
       }
     });
 
+    /*
     effect(() => {
       this.ordersBackend = this.reservationService.orders();
       console.log("backend orders updated: ", this.ordersBackend);
     });
+    */
     this.users_uuid = this.reservationService.getUserUUID();
   }
 
@@ -55,6 +57,9 @@ export class UserReservationTabComponent {
 
       this.reservationService.createReservation(newOrder);
       this.orderItems = [];
+      console.log('Reservation created and items cleared.');
+      this.order = undefined; 
+     
 
 
     } else {

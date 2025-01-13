@@ -8,5 +8,4 @@ export interface Product {
   pQuantity: number;
   imageURL?: string,
   productType:string,
-  liked?: boolean;
 }
