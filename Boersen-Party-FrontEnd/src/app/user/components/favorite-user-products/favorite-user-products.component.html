@@ -1,9 +1,9 @@
 <div class="title-box">
-    <span class="title">Lieblingsprodukte:</span>
+    <span class="title">Lieblingsprodukte</span>
   </div>
-  
+
   @for (product of likedProducts; track product.name) {
-    <div 
+    <div
       class="drink-box mb-4 p-3 flex items-center justify-between border rounded cursor-pointer"
       (click)="onProductClick(product)"
     >
@@ -15,18 +15,18 @@
         }
         <span class="drink-name font-semibold text-lg mr-4">{{ product.name }}</span>
       </div>
-      
+
       <div class="flex items-center">
         <span class="price font-medium text-xl mr-4">
-          {{ product.latestCalculatedPrice }} € 
+          {{ product.latestCalculatedPrice }} €
           <span class="text-sm text-gray-600">({{ product.pQuantity }} verfügbar)</span>
         </span>
-  
-        
+
+
       </div>
     </div>
   }
-  
+
   @if(selectedProduct) {
     <div class="fixed inset-0 flex justify-center items-center z-50">
       <div class="bg-box border border-gold p-6 rounded-lg w-96 max-w-full text-white">
@@ -34,20 +34,20 @@
           Möchtest du {{ selectedProduct.name }} zum Preis von {{ selectedProduct.latestCalculatedPrice }} € zur Bestellung hinzufügen?
         </h3>
         <label for="quantity" class="block font-medium mb-2">Bestellmenge:</label>
-        <input 
-          id="quantity" 
-          type="number" 
-          [(ngModel)]="orderQuantity" 
+        <input
+          id="quantity"
+          type="number"
+          [(ngModel)]="orderQuantity"
           class="w-full border rounded px-2 py-1 text-box"
         >
         <div class="flex justify-end mt-4">
-          <button 
+          <button
             class="bg-red text-white px-4 py-2 rounded mr-2"
             (click)="closePopup()"
           >
             Abbrechen
           </button>
-          <button 
+          <button
             class="bg-green text-white px-4 py-2 rounded"
             (click)="addToOrder()"
           >
@@ -57,4 +57,3 @@
       </div>
     </div>
   }
-  

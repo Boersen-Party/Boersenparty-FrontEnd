@@ -1,9 +1,9 @@
 <div class="title-box">
-  <span class="title">Produkten Übersicht:</span>
+  <span class="title">Produkten Übersicht</span>
 </div>
 
 @for (product of products; track product.name) {
-  <div 
+  <div
     class="drink-box mb-4 p-3 flex items-center justify-between border rounded cursor-pointer"
   >
     <div class="flex items-center">
@@ -14,14 +14,14 @@
       }
       <span class="drink-name font-semibold text-lg mr-4">{{ product.name }}</span>
     </div>
-    
+
     <div class="flex items-center">
       <span class="price font-medium text-xl mr-4">
-        {{ product.latestCalculatedPrice }} € 
+        {{ product.latestCalculatedPrice }} €
         <span class="text-sm text-gray-600">({{ product.pQuantity }} verfügbar)</span>
       </span>
 
-      <i 
+      <i
         class="fa fa-thumbtack cursor-pointer text-2xl"
         (click)="togglePin(product)"
       ></i>
