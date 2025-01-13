@@ -87,6 +87,9 @@ export class GeneralStatisticsComponent {
         scales: {
           y: {
             beginAtZero: true,
+            grid: {
+              color: 'rgba(230,230,230,0.1)', // Set the grid color
+            },
           },
           x: {
             grid: {
@@ -101,7 +104,7 @@ export class GeneralStatisticsComponent {
   private updateRevenueProfitChart(): void {
     // Generate the labels as time
     const timeLabels = this.partyStats.map((_, index) => this.formatTime(new Date()));
-  
+
     // Set the first and last labels to time
     const displayLabels = timeLabels.map((time, index) => {
       if (index === 0 || index === timeLabels.length - 1) {
@@ -109,20 +112,20 @@ export class GeneralStatisticsComponent {
       }
       return ''; // Hide intermediate labels
     });
-  
+
     // Update labels and datasets with new data for revenue and profit
     this.revenueProfitChart.data.labels = displayLabels;
     this.revenueProfitChart.data.datasets[0].data = this.revenue; // Revenue
     this.revenueProfitChart.data.datasets[1].data = this.profit; // Profit
-  
+
     // Call update to render the new data
     this.revenueProfitChart.update();
   }
-  
+
   private updateTotalOrdersChart(): void {
     // Generate the labels as time
     const timeLabels = this.partyStats.map((_, index) => this.formatTime(new Date()));
-  
+
     // Set the first and last labels to time
     const displayLabels = timeLabels.map((time, index) => {
       if (index === 0 || index === timeLabels.length - 1) {
@@ -130,26 +133,26 @@ export class GeneralStatisticsComponent {
       }
       return ''; // Hide intermediate labels
     });
-  
+
     // Update labels and dataset with new data for total orders
     this.totalOrdersChart.data.labels = displayLabels;
     this.totalOrdersChart.data.datasets[0].data = this.totalOrders;
-  
+
     // Call update to render the new data
     this.totalOrdersChart.update();
   }
-  
+
   private formatTime(date: Date): string {
     let hours: string | number = date.getHours();
     let minutes: string | number = date.getMinutes();
-  
+
     // Pad hours and minutes with leading zeros if needed
     if (hours < 10) hours = '0' + hours;
     if (minutes < 10) minutes = '0' + minutes;
-  
+
     return `${hours}:${minutes}`;
   }
-  
+
 
   private initTotalOrdersChart(): void {
     const canvas = this.totalOrdersCanvas.nativeElement;
@@ -184,6 +187,9 @@ export class GeneralStatisticsComponent {
               display: true,
               text: 'Verarbeitete Bestellungen', // Provide a more informative label for the y-axis
             },
+            grid  : {
+              color: 'rgba(230,230,230,0.1)', // Set the grid color
+            }
           },
           x: {
             grid: {
@@ -194,5 +200,5 @@ export class GeneralStatisticsComponent {
       },
     });
   }
-  
+
 }
