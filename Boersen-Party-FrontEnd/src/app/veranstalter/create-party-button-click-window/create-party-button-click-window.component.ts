@@ -14,11 +14,11 @@ import {InvalidPopupComponent} from '../../invalid-popup/invalid-popup.component
 })
 export class CreatePartyButtonClickWindowComponent implements OnInit{
 
-  parties: Party[] = [];
+  party : Party | null = null;
 
   constructor(private partyService: PartyServiceService) {
     effect(() => {
-      this.parties = this.partyService.parties();
+      this.party = this.partyService._lastParty();
       console.log("effect called in CreatePartyButtonClickWIndow");
     });
 

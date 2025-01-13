@@ -17,15 +17,5 @@ import { Party } from '../_model/party';
 })
 export class PersonalComponent {
 
-  //glaub PersonalComponent braucht Parties gar nicht
-  parties: Party[] = [];
-
-
-  constructor(private partyService: PartyServiceService) {
-    effect(() => {
-      this.parties = this.partyService.parties();
-      console.log("Updated parties in PersonalComponent:", this.parties);
-    });
-}
 
 }

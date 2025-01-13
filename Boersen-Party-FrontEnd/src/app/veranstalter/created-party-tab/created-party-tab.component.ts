@@ -12,12 +12,12 @@ import { BrowserModule } from '@angular/platform-browser';
   styleUrl: './created-party-tab.component.css'
 })
 export class CreatedPartyTabComponent {  
-  parties: Party[] = [];
+  party: Party | null = null;
 
 
   constructor(private partyService: PartyServiceService){
     effect(() => {
-      this.parties = this.partyService.parties();
+      this.party = this.partyService._lastParty();
     });
   }
 
