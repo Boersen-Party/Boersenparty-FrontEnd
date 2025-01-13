@@ -1,19 +1,30 @@
 <div class="event-box p-6 bg-[#10172A] text-white rounded-xl shadow-md">
-  <div class="title text-2xl font-bold text-center text-gold mb-8">
+  <div class="title text-2xl font-bold text-center mb-8">
     Events
   </div>
 
   @if(events.length > 0) {
     <div class="flex justify-between gap-6">
       @for(event of events; track event.id) {
-      <div
-        class="event-card bg-gradient-to-r from-[#1A243F] to-[#151D32] text-white border-2 border-gold rounded-lg p-6 flex flex-col items-center justify-center shadow-lg transform transition-transform hover:scale-105 cursor-pointer w-1/2"
-        (click)="triggerEvent(event.id ?? 0)">
-        <span class="text-xl font-semibold mb-2">{{ event.type }}</span>
-      </div>
+        <div
+          class="event-card bg-gradient-to-r from-[#1A243F] to-[#151D32] text-white border-2 rounded-lg p-6 flex flex-col items-center justify-center shadow-lg transform transition-transform hover:scale-105 cursor-pointer w-1/2"
+          (click)="triggerEvent(event.id ?? 0)">
+          <span class="text-xl font-semibold mb-2">{{ event.type }}</span>
+        </div>
       }
     </div>
   }
+
+  <div [class.hidden]="!showGif" class="mt-6 flex justify-center">
+    <iframe
+      src="https://giphy.com/embed/l1K9Dcy7ww0CW3JHq"
+      width="480"
+      height="406"
+      style="border: none;"
+      class="giphy-embed"
+      allowfullscreen>
+    </iframe>
+  </div>
 
   @if(events.length === 0) {
     <div class="text-center text-gray-400 mt-6">
