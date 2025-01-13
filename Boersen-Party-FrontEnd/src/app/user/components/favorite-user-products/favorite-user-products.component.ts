@@ -23,7 +23,6 @@ export class FavoriteUserProductsComponent {
   this.reservationService.initialize('_USER');
   effect(() => {
     this.likedProducts = this.productService.pinnedByUserProducts();
-    console.log("FAVORITE USER PRODUCTS COMPONENT: liked products:", this.likedProducts)
   });
  }
 
