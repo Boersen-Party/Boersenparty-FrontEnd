@@ -4,11 +4,12 @@ import { PartyServiceService } from '../services/party-service.service';
 import { ProductService } from '../services/products.service';
 import { Party } from '../_model/party';
 import { Product } from '../_model/product';
+import {MonitorStatsComponent} from './monitor-stats/monitor-stats.component';
 
 @Component({
   standalone: true,
   selector: 'app-display',
-  imports: [PartyHeaderComponent],
+  imports: [PartyHeaderComponent, MonitorStatsComponent],
   templateUrl: './display.component.html',
   styleUrl: './display.component.css'
 })
