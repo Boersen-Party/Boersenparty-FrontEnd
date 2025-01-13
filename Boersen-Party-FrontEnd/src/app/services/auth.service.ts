@@ -40,7 +40,6 @@ export class AuthService {
     return this.keycloak.getToken();
   }
 
-
   public getWorksFor(): string {
     const userDetails = this.keycloak.getKeycloakInstance().idTokenParsed;
     if (userDetails && userDetails['works_for']) {
@@ -49,8 +48,6 @@ export class AuthService {
       return "This user is not _PERSONAL";
     }
   }
-
-
 
   public async addTokenToHeader(): Promise<{ [header: string]: string }> {
     const token = await this.keycloak.getToken();
