@@ -1,0 +1,49 @@
+.title-box {
+    border: 1px solid #151D32;
+    border-radius: 0.3125rem;
+    padding: 0.9375rem;
+    background-color: #151D32;
+    box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .title{
+    font-size: 5vw;
+    font-weight: bold;
+    color: white;
+    font-family: "Inter", sans-serif;
+  }
+
+  .drink-box {
+    border: 1px solid #151D32;
+    border-radius: 0.3125rem;
+    padding: 0.9375rem;
+    background-color: #151D32; /* Background color */
+    box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1); /* Optional shadow */
+    display: flex; /* Use flexbox layout */
+    align-items: center; /* Center items vertically */
+  }
+
+  .price-container {
+    display: flex; /* Use flexbox layout for price and change */
+    flex-direction: column; /* Stack items vertically */
+  }
+
+  .drink-name {
+    font-size: 4vw; /* Adjust this value as needed */
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-weight: bold; /* Bold drink name */
+    margin-right: auto; /* Pushes the drink name to the left */
+  }
+
+  .price {
+    font-size: 4vw; /* Adjust this value as needed */
+    text-align: right;
+    color: white;
+    font-family: "Inter", sans-serif;
+    display: block; /* Display price on a new line */
+  }
+
+

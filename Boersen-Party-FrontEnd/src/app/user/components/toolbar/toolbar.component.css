@@ -1,0 +1,39 @@
+.navbar {
+  overflow: hidden;
+  background-color: #040404;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.nav-grid{
+  display:grid;
+  grid-auto-columns: 1fr;
+}
+
+.home{
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.fav{
+  grid-row: 1;
+  grid-column: 3;
+}
+
+.menu{
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.navbar a{
+  color: #f2f2f2;
+  text-align: center;
+  padding: 3vw;
+  font-size: 4.5vw;
+}
+
+.nav-grid a:hover {
+  background: #ddd;
+  color: black;
+}

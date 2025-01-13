@@ -1,0 +1,22 @@
+<div class="title-box">
+  <div class="title">Reservierungen</div>
+</div>
+
+<div class="reservation-box">
+  @if (ManagedOrders.length > 0) {
+    @for(order of ManagedOrders; track order.id) {
+      <div class="order-card" (click)="selectOrder(order)">
+        <div class="order-header">
+          <h3>Order belongs to: {{ order.belongs_to }}</h3>
+          <p>Total Price: {{ order.totalPrice  }}</p>
+          <p>Status: {{ order.paid ? 'Paid' : 'Not Paid' }}</p>
+        </div>
+        
+      </div>
+    }
+  } @else {
+    <div class="no-orders">
+      <p>No orders available.</p>
+    </div>
+  }
+</div>

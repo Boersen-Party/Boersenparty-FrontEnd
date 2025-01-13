@@ -4,6 +4,7 @@
 
 html {
   background-color: #0b1326;
+  font-family: "Inter", sans-serif;
 }
 
 .text {
@@ -15,21 +16,16 @@ html {
   grid-row: 1;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: minmax(100px, auto);
+  grid-template-rows: minmax(100px, max-content);
   gap: 1em; /* Optional: add spacing between items */
-  border: 1px solid red;
+
 }
 
 .main-grid {
-  margin-left: 1.5em;
-  margin-right: 1.5em;
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
+  margin: 1.5em;
+  margin-right: 5em;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: minmax(100px, auto);
   gap: 1em; /* Optional: add spacing between items */
-
-  border: 1px solid blue;
-
 }

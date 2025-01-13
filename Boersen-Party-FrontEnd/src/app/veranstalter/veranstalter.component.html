@@ -1,0 +1,37 @@
+<div class= "main-grid">
+  <div class="price-overiew-position">
+    <section>
+      <app-price-entry-tab [hideButton]="false"/>
+    </section>
+  </div>
+
+  <div class="second-grid">
+    <div class="event-button-position">
+      <section >
+        <app-event-trigger-window/>
+      </section>
+    </div>
+
+    <div class="logout-btn">
+      <section>
+        <app-logout-btn/>
+      </section>
+    </div>
+
+    <div class="create-party">
+  @if(partiesAlreadyPresent()){
+    <app-created-party-tab/>
+  }
+  @else{
+    <app-create-party-button-click-window/>
+  }
+    </div>
+
+    <div class="general-statistics">
+      <section>
+        <app-general-statistics/>
+      </section>
+    </div>
+
+  </div>
+</div>

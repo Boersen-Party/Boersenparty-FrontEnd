@@ -1,0 +1,30 @@
+<div class="title-box">
+  <span class="title">Product Overview</span>
+</div>
+
+@for (product of products; track product.name) {
+  <div
+    class="drink-box mb-4 p-3 flex items-center justify-between border rounded cursor-pointer"
+  >
+    <div class="flex items-center">
+      @if (product.imageURL) {
+        <div class="w-10 h-10 overflow-hidden mr-4">
+          <img [src]="product.imageURL" alt="{{ product.name }}" class="w-full h-full object-cover rounded">
+        </div>
+      }
+      <span class="drink-name font-semibold text-lg mr-4">{{ product.name }}</span>
+    </div>
+
+    <div class="flex items-center">
+      <span class="price font-medium text-xl mr-4">
+        {{ product.latestCalculatedPrice }} €
+        <span class="text-sm text-gray-600">({{ product.pQuantity }} verfügbar)</span>
+      </span>
+
+      <i
+        class="fa fa-thumbtack cursor-pointer text-2xl"
+        (click)="togglePin(product)"
+      ></i>
+    </div>
+  </div>
+}

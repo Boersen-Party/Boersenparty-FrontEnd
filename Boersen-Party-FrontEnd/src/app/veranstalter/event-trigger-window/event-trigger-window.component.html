@@ -1,0 +1,68 @@
+<div class="flex items-center justify-center">
+  <div class="bg-box rounded-box shadow-box p-6 w-full h-full relative">
+    <h1 class="text-white text-3xl font-medium text-center mb-5">
+      Events
+    </h1>
+
+    <div class="flex items-center bg-white px-4 py-2 rounded-md mb-4">
+      <h3 class="font-medium text-left mr-2">
+        Konfigurierte Events: <span class="ml-8">{{ events.length }}</span>
+      </h3>
+      <!--<span class="text-xl ml-auto">ℹ️</span> -->
+
+    </div>
+
+    @if(!hideInputButton){
+    <div class="flex justify-center mb-4">
+      <button
+        class="bg-gradient-to-r text-sm font-semibold uppercase text-white px-4 py-2 rounded-box focus:outline-none"
+        (click)="toggleCreateEventWindow()"
+      >
+        Event anlegen
+      </button>
+    </div>
+  }
+
+    @if(isSetEventWindowOpen) {
+      <div class="inset-x-0 bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-box border rounded-box shadow-box p-6 w-96">
+          <h2 class="text-white text-2xl font-medium text-center mb-4">Event Details</h2>
+
+          <form (ngSubmit)="createEvent()">
+            <div class="mb-4">
+              <label class="text-white block">Event Typ</label>
+              <select [(ngModel)]="eventType" name="eventType" class="w-full px-3 py-2 rounded-box bg-white">
+                <option value="Boersencrash">Börsencrash</option>
+                <option value="Happy Hour">Happy Hour</option>
+              </select>
+            </div>
+
+            <div class="mb-4">
+              <label class="text-white block">Eventdauer in Minuten</label>
+              <input
+                type="number"
+                [(ngModel)]="eventDuration"
+                name="eventDuration"
+                class="w-full px-3 py-2 rounded-box bg-white"
+                placeholder="Duration in minutes" />
+            </div>
+
+            <div class="flex justify-between">
+              <button
+                type="button"
+                class="text-sm font-semibold uppercase text-white px-4 py-2 rounded-md focus:outline-none"
+                (click)="toggleCreateEventWindow()">
+                Cancel
+              </button>
+              <button
+                type="submit"
+                class="text-sm font-semibold uppercase text-white px-4 py-2 rounded-md hover:bg-green-600 focus:outline-none">
+                Bestätigen
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    }
+  </div>
+</div>

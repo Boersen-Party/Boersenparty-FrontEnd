@@ -1,0 +1,39 @@
+<div class="title-box">
+  <span class="title text-xl font-bold">Subtotal</span>
+
+  @if(order()){
+    <div class="order-details border border-gray-300 rounded-lg p-4 mt-4">
+      <h3 class="text-lg font-semibold mb-2">Reservierungs Details</h3>
+      <p class="mb-1"><span class="font-medium">Gesamtbetrag:</span> {{ order()?.totalPrice }}</p>
+    <!--  <p class="mb-1"><span class="font-medium">Status:</span> {{ order()?.isPaid ? 'Paid' : 'Not Paid' }}</p> -->
+      <p class="mb-4"><span class="font-medium">User:</span> {{ order()?.belongs_to }}</p>
+    
+      <div class="order-items border-t border-gray-200 pt-4">
+        <h4 class="text-md font-semibold mb-2">Artikel:</h4>
+        <ul class="space-y-4">
+          @for(item of order()?.items; track item.productId){
+          <li class="border border-gray-300 rounded-lg p-3">
+            <p><span class="font-medium">Produktbezeichnung:</span> {{ item.productName }}</p>
+            <p><span class="font-medium">Einzelpreis:</span> {{ item.pricePerItem }}</p>
+            <p><span class="font-medium">Bestellmenge:</span> {{ item.quantity }}</p>
+            <p><span class="font-medium">Betrag:</span> {{ item.totalItemPrice }}</p>
+          </li>
+          }
+        </ul>
+      </div>
+      
+      <!-- Centered Button -->
+      <div class="mt-6 text-center">
+        <button (click)="processPayment()" class="bg-green hover:bg-gold text-white font-bold py-2 px-4 rounded-full inline-flex items-center">
+          💰 <span class="ml-2">Bezahlvorgang abschließen</span>
+        </button>
+      </div>
+    </div>
+  }
+
+  @if(!order()){
+    <div class="no-order-selected border border-gray-300 rounded-lg p-4 mt-4 bg-gray-50">
+      <p class="text-gray-500">Keine Bestellung selektiert.</p>
+    </div>
+  }
+</div>

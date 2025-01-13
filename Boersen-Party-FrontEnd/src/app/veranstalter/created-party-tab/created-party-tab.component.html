@@ -1,0 +1,27 @@
+
+<div class="w-full bg-box rounded-lg p-4">
+  <h2 class="text-white text-center text-xl font-bold mb-4">Aktive Parties:</h2>
+  <div class="flex justify-start space-x-6 text-xs">
+    <div class="flex-1">
+      <span class="text-white font-semibold">Party:</span>
+      <div class="mt-2">{{ party?.name }}</div>
+    </div>
+
+    <div class="flex-1">
+      <span class="text-white font-semibold">Endet am:</span>
+      <div class="mt-2">{{ party?.end_date }}</div>
+    </div>
+
+    <div class="flex-1">
+      <span class="text-white font-semibold">Partyteilnehmer:</span>
+      <div class="mt-2">0</div>
+    </div>
+  </div>
+
+  <div class="mt-6 p-6 text-white text-lg font-bold flex justify-center items-center">
+    <div>
+      <span class="block">Beitrittscode:</span>
+      <span class="block text-2xl">{{ party?.accessCode }}</span>
+    </div>
+  </div>
+</div>

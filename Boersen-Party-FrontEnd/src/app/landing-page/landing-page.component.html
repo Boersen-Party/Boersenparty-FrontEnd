@@ -1,0 +1,25 @@
+<div class="grid place-items-center h-screen bg-gray-100">
+  <div class="h-auto bg-box rounded-box shadow-box p-6">
+    <h2 class="text-2xl font-bold mb-4 text-white">
+      Join a Stock Party
+    </h2>
+
+    <form class="flex flex-col">
+      <input
+        type="text"  [(ngModel)]="accessCode"     name="accessCode"
+        class="remove-arrow text-gray-800 border-0 rounded-md p-2 mb-2 focus:outline-none focus:ring-1 transition ease-in-out duration-150"
+        placeholder="Party PIN"
+      />
+
+      <button type="button" (click)="joinParty()"
+        class="bg-gradient-to-r bg-blue text-white font-bold py-2 px-4 rounded-box mt-2 box-shadow transition ease-in-out duration-150">
+        Enter
+      </button>
+    </form>
+
+    <p class="pt-3 text-white text-center">Please use a mobile divice</p>
+  </div>
+
+
+</div>
+<!-- From Uiverse.io by antonymous -->
