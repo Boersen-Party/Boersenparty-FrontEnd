@@ -1,5 +1,4 @@
 import { Component, computed } from '@angular/core';
-import {CurrencyPipe, NgForOf} from '@angular/common';
 import { OrderSelectionService } from '../../services/order-selection.service';
 import { ReservationService } from '../../services/reservation.service';
 
@@ -10,7 +9,11 @@ import { ReservationService } from '../../services/reservation.service';
   styleUrl: './sub-total.component.css'
 })
   export class SubTotalComponent {
-    order = computed(() => this.orderSelectionService.selectedOrder());
+    order = computed(() => {
+      const selectedOrder = this.orderSelectionService.selectedOrder();
+      console.log('Selected Order in SubTotalComponent:', selectedOrder); // Debug log to see the selected order
+      return selectedOrder;
+    });
   
     constructor(private orderSelectionService: OrderSelectionService,
                 private reservationService: ReservationService) {}
@@ -33,7 +36,9 @@ import { ReservationService } from '../../services/reservation.service';
 
     resetOrder() {
       this.orderSelectionService.resetSelectedOrder();
+      console.log('Order reset in SubTotalComponent'); // Debug log
     }
+
   
   
   
