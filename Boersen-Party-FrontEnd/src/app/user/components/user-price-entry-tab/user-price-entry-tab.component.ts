@@ -17,8 +17,7 @@ import { LikedProductsService } from '../../../services/liked-products.service';
 })
 export class UserPriceEntryTabComponent {
   products: Product[] = []; // List of products to display
-  //selectedProduct: Product | null = null; // Currently selected product
-  //orderQuantity: number = 1; // Quantity for the selected product
+ 
 
   constructor(
     private productService: ProductService,
