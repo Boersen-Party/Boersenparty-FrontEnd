@@ -96,13 +96,18 @@ export class ChartService {
   // Helper function to format labels to display only the time
   private formatLabels(labels: string[]): string[] {
     return labels.map(dateString => {
-      const date = new Date(dateString); // Parse the date
-      console.log('Input:', dateString, '| Parsed Date:', date.toISOString(), '| Local Time:', date.toLocaleString('de-DE', { timeZone: 'Europe/Berlin' }));
+      const date = new Date(dateString); // Parse the date string
+      console.log(
+        'Input:', dateString,
+        '| Parsed Date (Device Time):', date.toISOString(),
+        '| Local Time (Device):', date.toLocaleString()
+      );
+
+      // Format the time using the device's local settings
       return new Intl.DateTimeFormat('de-DE', {
         hour: '2-digit',
         minute: '2-digit',
         hour12: false, // Use 24-hour format
-        timeZone: 'Europe/Berlin', // Force German timezone
       }).format(date);
     });
   }

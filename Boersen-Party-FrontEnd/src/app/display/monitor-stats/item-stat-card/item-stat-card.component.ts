@@ -32,9 +32,16 @@ export class ItemStatCardComponent implements AfterViewInit, OnChanges {
     const { x, y } = this.chartData;
 
     // Format the x labels to only show time
-    const formattedX = x.map(date =>
-      new Date(date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    );
+    const formattedX = x.map(date => {
+      // Erzwinge UTC-Interpretation
+      const utcDate = new Date(date + 'Z'); // 'Z' für UTC
+      // Konvertiere in lokale Zeit
+      return utcDate.toLocaleTimeString('de-DE', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false, // 24-Stunden-Format
+      });
+    });
 
     this.chartInstance = this.chartService.createLineChart(
       this.lineChartRef.nativeElement,
@@ -48,9 +55,16 @@ export class ItemStatCardComponent implements AfterViewInit, OnChanges {
       const { x, y } = this.chartData;
 
       // Format the x labels to only show time
-      const formattedX = x.map(date =>
-        new Date(date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-      );
+      const formattedX = x.map(date => {
+        // Erzwinge UTC-Interpretation
+        const utcDate = new Date(date + 'Z'); // 'Z' für UTC
+        // Konvertiere in lokale Zeit
+        return utcDate.toLocaleTimeString('de-DE', {
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false, // 24-Stunden-Format
+        });
+      });
 
       this.chartInstance.data.labels = formattedX; // Update labels
       this.chartInstance.data.datasets[0].data = y; // Update data

@@ -43,6 +43,11 @@ export class MonitorStatsComponent {
       y: data.map(entry => entry.price)
     };
   }
+  // Fügt eine Überschrift für jedes Chart hinzu
+  getProductName(productId: number): string {
+    const product = this.products.find(p => p.id === productId);
+    return product ? product.name : "Unbekanntes Getränk";
+  }
 }
 
 

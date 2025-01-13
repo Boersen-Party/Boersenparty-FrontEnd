@@ -1,11 +1,14 @@
-<div class="h-full w-full bg-box text-white flex-grow items-start justify-items p-4">
-  <div class="grid grid-rows-2 grid-cols-4 gap-4 w-full h-full">
-    @for (product of products; track product.id) {
+<div class="h-full w-full bg-box text-white flex-grow items-start justify-items p-4 border border-sky-500">
+  <div class="grid grid-cols-3 gap-2 w-full h-full border border-indigo-500"> <!-- Ändere grid auf 3 Spalten -->
 
-      <app-item-stat-card
-        [product]="product"
-        [chartData]="getChartData(product.id ?? 0)">     <!-- des kann stinken -->
-      </app-item-stat-card>
+    @for (product of products; track product.id) {
+      <div class="grid-item">
+        <h3>{{ getProductName(product.id ?? 0) }}</h3>
+        <app-item-stat-card
+          [product]="product"
+          [chartData]="getChartData(product.id ?? 0)">
+        </app-item-stat-card>
+      </div>
     }
   </div>
 </div>
