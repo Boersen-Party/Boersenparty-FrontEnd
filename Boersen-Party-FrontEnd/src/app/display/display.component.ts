@@ -19,11 +19,12 @@ export class DisplayComponent {
   // später überlegen welches objekt das party header eig braucht? ganzes party[] übergeben?
   partyName: string = '';
 
+
   constructor(private partyService: PartyServiceService) {
     effect(() => {
-      this.parties = this.partyService.parties();
-      console.log("Updated parties in DisplayComponent:", this.parties);
-      this.partyName = this.parties ? this.parties[0].name :  '<Keine aktive Party vorhanden>';
+      this.party = this.partyService._lastParty();
+      console.log("Updated parties in DisplayComponent:", this.party);
+      this.partyName = this.party ? this.party.name :  '<Keine aktive Party vorhanden>';
     });
 
   }

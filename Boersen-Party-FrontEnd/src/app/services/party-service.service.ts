@@ -15,9 +15,11 @@ import { PartyStats } from '../_model/partystats';
 })
 
 export class PartyServiceService {
-  timer = timer(0, 30000)
-  parties = signal<Party[]>([]);
-  partyStats = signal<PartyStats[]>([]);
+  timer = timer(0, 100000)
+  //parties = signal<Party[]>([]);
+  _lastParty = signal<Party | null>(null); // Signal for the last party
+
+  //partyStats = signal<PartyStats[]>([]);
   private _activePartyIdUser : number | null = null;
   private activePartyIdKey = 'activePartyId';
   private userUUIDKey = 'userUUID';
@@ -31,11 +33,11 @@ export class PartyServiceService {
     if (works_for !== "This user is not _PERSONAL") {
     this.setActivePartyIdUsingWorksFor(works_for);
     }
+
+    this.fetchPartiesOnce();
+
     
-    this.timer.subscribe(_ => {
-      this.fetchParties();
-      this.fetchPartyStats();
-    })
+    
   }
 
   
@@ -67,8 +69,8 @@ export class PartyServiceService {
 
   setActivePartyId(partyId: number): void {
     Cookies.set(this.activePartyIdKey, partyId.toString(), {
-      expires: 7, // Cookie expiration in days
-      path: '/',  // Ensure accessibility across the site
+      expires: 7,
+      path: '/',  
     });
   }
 
@@ -167,88 +169,56 @@ async joinParty(accessCode: string): Promise<void> {
 
 
 
-  async fetchParties() {
-    const headers = await this.authService.addTokenToHeader();
-
-    axios.get(baseURL, {
-      headers:headers,
-    })
-      .then(response => {
-        console.log(".then accessed!!, response =");
-        console.log(response);
-
-        const fetchedParties = response.data;
-        console.log("fetched parties is:");
-        console.log(fetchedParties);
-
-        try {
-          this.parties.set(fetchedParties);
-
-        } catch (error) {
-          console.error("Error while setting parties:", error);
-        }
-      })
-      .catch(error => {
-        console.error("Error fetching data:", error);
-      });
-
-
-  }
-
-  async fetchPartyStats(): Promise<void> {
-    const activePartyId = this.getActivePartyId();
-    if (!activePartyId) {
-      console.warn("No active party ID found. Skipping stats fetch.");
-      return;
-    }
-
+  async fetchPartiesOnce(): Promise<void> {
     try {
-      const URL = baseURL + '/' + activePartyId +  '/partystats';
-      
-      const response = await axios.get(URL);
-      console.log("response is:" , response.data);
-      const fetchedStats: PartyStats = response.data;
-      this.partyStats.update((stats) => [...stats, fetchedStats]);
-      console.log("Fetched PartyStats:", fetchedStats);
+      const headers = await this.authService.addTokenToHeader();
+      const response = await axios.get<Party[]>(baseURL, { headers });
 
-      this.partyStats.update((stats) => [...stats, fetchedStats]);
+      if (response.data.length > 0) {
+        const lastParty = response.data[response.data.length - 1];
+        this._lastParty.set(lastParty); // Update the signal with the last party
+        console.log('Last party set:', lastParty);
+      } else {
+        console.warn('No parties found in the response.');
+      }
     } catch (error) {
-      console.error("Error fetching party stats:", error);
+      console.error('Error fetching parties:', error);
     }
-  }
   
 
 
+  }
+
+  
 
 
   async createParty(newParty: Party) {
     try {
+      // Validate party details
       const validationResult = await this.validatePartyDetails(newParty);
-
       if (validationResult !== true) {
         console.error(validationResult);
         return;
       }
-
+  
       const headers = await this.authService.addTokenToHeader();
-      axios
-        .post(baseURL, newParty, { headers })
-        .then((response) => {
-          const createdParty = response.data;
-          this.parties.update((parties) => [...parties, createdParty]);
-          console.log('Party created:', createdParty);
-          console.log('Party created:', createdParty);
-          console.log('Party created:', createdParty);
-          console.log('Party created:', createdParty);
-          this.setActivePartyId(createdParty.id);
-        })
-        .catch((error) => {
-          console.error('Error adding party:', error);
-        });
+  
+      const response = await axios.post(baseURL, newParty, { headers });
+      console.log("response in PSS is:", response);
+  
+      const createdParty = response.data; 
+  
+    
+      this._lastParty.update(() => createdParty);
+      console.log("Party in signal:", this._lastParty());
+  
+      
+      this.setActivePartyId(createdParty.id); //susssssss
     } catch (error) {
-      console.error('Error resolving token or creating party:', error);
+      console.error('Error creating party:', error);
     }
   }
+  
 
  
 

@@ -107,3 +107,14 @@
     }
   }
 
+  .icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: fill 0.3s ease;
+  }
+
+  .icon.active {
+    fill: red; /* Farbe für geliktes Herz */
+  }
+

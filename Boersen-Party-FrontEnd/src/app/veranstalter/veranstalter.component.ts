@@ -17,7 +17,8 @@ import {InvalidPopupComponent} from '../invalid-popup/invalid-popup.component';
   styleUrl: './veranstalter.component.css'
 })
 export class VeranstalterComponent {
-  partiesAlreadyPresent = computed(() => this.partyService.parties().length > 0);
+  partiesAlreadyPresent = computed(() => !!this.partyService._lastParty());
+
 
   constructor(public partyService: PartyServiceService) {}
 }

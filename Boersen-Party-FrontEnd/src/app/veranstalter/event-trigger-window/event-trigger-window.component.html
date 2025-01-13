@@ -1,5 +1,5 @@
-<div class="flex items-center justify-center max-h-full">
-  <div class="bg-box border rounded-box shadow-box p-6 w-96 relative">
+<div class="flex items-center justify-center">
+  <div class="bg-box rounded-box shadow-box p-6 w-full h-full relative">
     <h1 class="text-white text-3xl font-medium text-center mb-5">
       Events
     </h1>
@@ -8,8 +8,8 @@
       <h3 class="font-medium text-left mr-2">
         Konfigurierte Events: <span class="ml-8">{{ events.length }}</span>
       </h3>
-      <span class="text-xl ml-auto">ℹ️</span>
-    
+      <!--<span class="text-xl ml-auto">ℹ️</span> -->
+
     </div>
 
     @if(!hideInputButton){
@@ -36,26 +36,26 @@
                 <option value="Happy Hour">Happy Hour</option>
               </select>
             </div>
-            
+
             <div class="mb-4">
               <label class="text-white block">Eventdauer in Minuten</label>
-              <input 
-                type="number" 
-                [(ngModel)]="eventDuration" 
-                name="eventDuration" 
-                class="w-full px-3 py-2 rounded-box bg-white" 
+              <input
+                type="number"
+                [(ngModel)]="eventDuration"
+                name="eventDuration"
+                class="w-full px-3 py-2 rounded-box bg-white"
                 placeholder="Duration in minutes" />
             </div>
-            
+
             <div class="flex justify-between">
-              <button 
-                type="button" 
-                class="text-sm font-semibold uppercase text-white px-4 py-2 rounded-md focus:outline-none" 
+              <button
+                type="button"
+                class="text-sm font-semibold uppercase text-white px-4 py-2 rounded-md focus:outline-none"
                 (click)="toggleCreateEventWindow()">
                 Cancel
               </button>
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 class="text-sm font-semibold uppercase text-white px-4 py-2 rounded-md hover:bg-green-600 focus:outline-none">
                 Bestätigen
               </button>

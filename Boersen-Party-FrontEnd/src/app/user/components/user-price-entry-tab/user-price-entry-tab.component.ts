@@ -11,13 +11,13 @@ import { ReservationService } from '../../../services/reservation.service';
   selector: 'app-user-price-entry-tab',
   imports: [CommonModule, FormsModule],
   templateUrl: './user-price-entry-tab.component.html',
-  styleUrl: './user-price-entry-tab.component.css',
-
+  styleUrls: ['./user-price-entry-tab.component.css'],
 })
 export class UserPriceEntryTabComponent {
-  products: Product[] = []; // List of products to display
-  selectedProduct: Product | null = null; // Currently selected product
-  orderQuantity: number = 1; // Quantity for the selected product
+  products: Product[] = [];
+  selectedProduct: Product | null = null;
+  orderQuantity: number = 1;
+  likedProducts: Record<number, boolean> = {};
 
   reservation: Order = {
     items: [],
@@ -28,24 +28,60 @@ export class UserPriceEntryTabComponent {
 
   constructor(
     private productService: ProductService,
-    private reservationService: ReservationService ) {
+    private reservationService: ReservationService
+  ) {
+    this.reservationService.initialize('_USER');
 
-      this.reservationService.initialize('_USER');
     effect(() => {
-      this.products = this.productService.products();
+      this.products = this.productService.products().map((product) => {
+        const liked = this.likedProducts[product.id ?? -1] || false;
+        return { ...product, liked };
+      });
+      this.updateProductOrder();
+    });
+
+    this.loadLikedStatus();
+  }
+
+  onHeartClick(event: Event, product: Product) {
+    event.stopPropagation();
+
+    const productId = product.id ?? -1;
+    this.likedProducts[productId] = !this.likedProducts[productId];
+    this.saveLikedStatus();
+
+    this.products = this.products.map((p) => {
+      if (p.id === product.id) {
+        return { ...p, liked: this.likedProducts[productId] };
+      }
+      return p;
+    });
+
+    this.updateProductOrder();
+  }
+
+  updateProductOrder() {
+    this.products.sort((a, b) => {
+      const aId = a.id ?? -1;
+      const bId = b.id ?? -1;
+
+      const aLiked = this.likedProducts[aId] || false;
+      const bLiked = this.likedProducts[bId] || false;
+
+      if (aLiked && !bLiked) return -1;
+      if (!aLiked && bLiked) return 1;
+      return 0;
     });
   }
 
-
-
   onProductClick(product: Product) {
-    this.selectedProduct = product;
-    console.log(`Product clicked: ${product.name}`);
+    const productId = product.id ?? -1;
+    if (!this.likedProducts[productId]) {
+      this.selectedProduct = product;
+    }
   }
 
-
   closePopup() {
-    console.log('Popup closed.');
     this.selectedProduct = null;
     this.orderQuantity = 1;
   }
@@ -53,18 +89,22 @@ export class UserPriceEntryTabComponent {
   addToOrder() {
     if (this.selectedProduct && this.orderQuantity > 0) {
       this.reservationService.addToReservation(this.selectedProduct, this.orderQuantity);
-      console.log(`Added ${this.orderQuantity} of ${this.selectedProduct.name} to the reservation.`);
       this.closePopup();
-    } else {
-      console.error('Invalid product or quantity');
     }
   }
 
-  onHeartClick(event: Event, product: Product): void {
-    event.stopPropagation();
-    // Remove the product from its current position
-    this.products = this.products.filter(p => p !== product);
-    // Add the product to the top of the list
-    this.products.unshift(product);
+  trackByProductName(index: number, product: Product): string {
+    return product.name;
+  }
+
+  loadLikedStatus() {
+    const storedLikedProducts = localStorage.getItem('likedProducts');
+    if (storedLikedProducts) {
+      this.likedProducts = JSON.parse(storedLikedProducts);
+    }
+  }
+
+  saveLikedStatus() {
+    localStorage.setItem('likedProducts', JSON.stringify(this.likedProducts));
   }
 }

@@ -4,6 +4,6 @@ export interface Party {
     start_date: string;
     end_date: string;
     hosted_by: string | null | undefined;
-    access_code?: string | null | undefined;  
+    accessCode?: string | null | undefined;  
 
   }
