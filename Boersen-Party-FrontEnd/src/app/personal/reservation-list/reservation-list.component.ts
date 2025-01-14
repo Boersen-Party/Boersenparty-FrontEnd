@@ -18,27 +18,26 @@ export class ReservationListComponent {
   console.log("CLICKINGCLICKINGCLICKING");
 }
 
-
   ManagedOrders: Order[] = [];
   selectedOrder?: Order;
 
 
   constructor(private reservationService: ReservationService, private orderSelectionService: OrderSelectionService) {
       this.reservationService.initialize('_PERSONAL');
-  
+
       effect(() => {
         this.ManagedOrders = this.reservationService.orders().filter(order => order.paid === false);
         console.log('PERSONALER orders updated (only unpaid): ', this.ManagedOrders);
 
       });
     }
-      
+
     selectOrder(order: Order): void {
-      console.log('Order selected:', order); // Debug log
-  
+      console.log('Order selected:', order);
+
       if (order.id) {
         this.orderSelectionService.setSelectedOrder(order);
-        console.log('Selected Order in service:', order); // Debug log
+        console.log('Selected Order in service:', order);
       } else {
         console.error('Order ID is missing:', order);
       }

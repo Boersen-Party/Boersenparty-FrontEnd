@@ -24,8 +24,6 @@ export class MonitorStatsComponent {
   });
 }
 
-  // extrahiert von der map die timestamp und price werte und packt sie
-  // in x- und y-arrays, die für die Chart.js benötigt werden
   getChartData(productId: number): { x: string[]; y: number[] } {
     if (productId === 0) {
       throw new Error("Invalid product ID: 0. This indicates a missing or uninitialized product ID for Chart Creation.");
@@ -35,15 +33,13 @@ export class MonitorStatsComponent {
     if (!buffer) {
       return { x: [], y: [] };
     }
+
     const data = buffer.toArray();
-    //potentially very large data
-    //console.log("Data for product", productId, ":", data);
     return {
       x: data.map(entry => entry.timestamp || "Unknown"),
       y: data.map(entry => entry.price)
     };
   }
-  // Fügt eine Überschrift für jedes Chart hinzu
   getProductName(productId: number): string {
     const product = this.products.find(p => p.id === productId);
     return product ? product.name : "Unbekanntes Getränk";

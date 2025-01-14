@@ -10,7 +10,6 @@ import { EventService } from '../../services/event.service';
   styleUrl: './event-button.component.css'
 })
 export class EventButtonComponent {
-//ironically probably swap name EventButtonComponent with EventTriggerWindow
   events: PartyEvent[] = [];
 
   constructor(private eventService: EventService) {

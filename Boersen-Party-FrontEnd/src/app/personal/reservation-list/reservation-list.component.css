@@ -1,55 +1,55 @@
 .title-box {
-  border: 1px solid #151D32; /* Border for the box */
-  border-radius: 0.3125rem; /* 5px equivalent */ /* Rounded corners */
-  padding: 0.9375rem; /* 15px equivalent */ /* Inner padding */
-  background-color: #151D32; /* Background color */
-  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1); /* Optional shadow */
-  text-align: center; /* Center the text within the box */
-  margin-bottom: 1.25rem; /* Optional spacing below the title */
+  border: 1px solid #151D32;
+  border-radius: 0.3125rem;
+  padding: 0.9375rem;
+  background-color: #151D32;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-bottom: 1.25rem;
 }
 
-.title{
-  font-size: 1.5vw; /* Scales with 5% of the viewport width */
-  font-weight: bold; /* Make the title bold */
+.title {
+  font-size: 1.5vw;
+  font-weight: bold;
   color: white;
   font-family: "Inter", sans-serif;
 }
 
 .reservation-box {
-  border: 1px solid #151D32; /* Border for the box */
-  border-radius: 0.3125rem; /* 5px equivalent */
-  padding: 0.9375rem; /* 15px equivalent */
-  background-color: #151D32; /* Background color */
-  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1); /* Optional shadow */
-  display: grid; /* Use grid layout */
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Two items per row */
-  gap: 1rem; /* Space between items */
+  border: 1px solid #151D32;
+  border-radius: 0.3125rem;
+  padding: 0.9375rem;
+  background-color: #151D32;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
 }
 
 .order-card {
-  border: 1px solid #151D32; /* Border for the box */
-  background-color: #151D32; /* Background color */
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2); /* Reduce shadow size for a compact look */
+  border: 1px solid #151D32;
+  background-color: #151D32;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   color: white;
   font-family: "Inter", sans-serif;
-  line-height: 1.5rem; /* Reduce line height */
-  padding: 0.5rem; /* Reduce padding inside the card */
-  font-size: 0.85rem; /* Smaller font size for text */
+  line-height: 1.5rem;
+  padding: 0.5rem;
+  font-size: 0.85rem;
 }
 
 h3 {
-  font-size: 1rem; /* Adjust font size */
+  font-size: 1rem;
   font-weight: bold;
 }
 
 p {
-  font-size: 0.9rem; /* Adjust font size */
+  font-size: 0.9rem;
 }
 
 .no-orders {
   font-size: 1rem;
   color: white;
-  text-align: center; /* Center the text */
-  grid-column: span 2; /* Make it span across the full width */
+  text-align: center;
+  grid-column: span 2;
 }

@@ -14,7 +14,7 @@ export class ItemStatCardComponent implements AfterViewInit, OnChanges {
   @Input() product!: Product;
   @Input() chartData!: { x: string[]; y: number[] };
 
-  private chartInstance: any; // Reference to the chart instance
+  private chartInstance: any;
 
   constructor(private chartService: ChartService) {}
 
@@ -31,13 +31,12 @@ export class ItemStatCardComponent implements AfterViewInit, OnChanges {
   private initializeChart(): void {
     const { x, y } = this.chartData;
 
-    // Format the x labels to only show time
     const formattedX = x.map(date => {
       const utcDate = new Date(date + 'Z'); // 'Z' for UTC
       return utcDate.toLocaleTimeString('de-DE', {
         hour: '2-digit',
         minute: '2-digit',
-        hour12: false, // 24-hour format
+        hour12: false,
       });
     });
 
@@ -51,7 +50,7 @@ export class ItemStatCardComponent implements AfterViewInit, OnChanges {
             ticks: {
               callback: function(tickValue: string | number) {
                 const value = typeof tickValue === 'string' ? parseFloat(tickValue) : tickValue;
-                return value.toFixed(2); // Limit to 2 decimal places
+                return value.toFixed(2);
               }
             }
           }
@@ -65,7 +64,7 @@ export class ItemStatCardComponent implements AfterViewInit, OnChanges {
                   label += ': ';
                 }
                 if (context.parsed.y !== null) {
-                  label += context.parsed.y.toFixed(2); // Limit to 2 decimal places
+                  label += context.parsed.y.toFixed(2);
                 }
                 return label;
               }
@@ -80,19 +79,18 @@ export class ItemStatCardComponent implements AfterViewInit, OnChanges {
     if (this.chartInstance) {
       const { x, y } = this.chartData;
 
-      // Format the x labels to only show time
       const formattedX = x.map(date => {
-        const utcDate = new Date(date + 'Z'); // 'Z' for UTC
+        const utcDate = new Date(date + 'Z');
         return utcDate.toLocaleTimeString('de-DE', {
           hour: '2-digit',
           minute: '2-digit',
-          hour12: false, // 24-hour format
+          hour12: false,
         });
       });
 
-      this.chartInstance.data.labels = formattedX; // Update labels
-      this.chartInstance.data.datasets[0].data = y; // Update data
-      this.chartInstance.update(); // Refresh the chart
+      this.chartInstance.data.labels = formattedX;
+      this.chartInstance.data.datasets[0].data = y;
+      this.chartInstance.update();
     }
   }
 }

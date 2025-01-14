@@ -13,7 +13,7 @@ export class AccessDeniedComponent {
   constructor(private keycloakService: KeycloakService) {}
 
   logout(): void {
-    const redirectUri = environment.baseUrl; // This dynamically adjusts based on environment.ts
+    const redirectUri = environment.baseUrl;
     this.keycloakService.logout(redirectUri);
   }
 }

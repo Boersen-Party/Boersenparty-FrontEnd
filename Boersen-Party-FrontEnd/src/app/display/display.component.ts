@@ -15,11 +15,7 @@ import {MonitorStatsComponent} from './monitor-stats/monitor-stats.component';
 })
 export class DisplayComponent {
   party: Party | null = null;
-  //products: Product[] = [];
-  // später überlegen welches objekt das party header eig braucht? ganzes party[] übergeben?
   partyName: string = '';
-
-
 
   constructor(private partyService: PartyServiceService) {
     effect(() => {

@@ -8,8 +8,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrl: './invalid-popup.component.css'
 })
 export class InvalidPopupComponent {
-  @Input() message: string = ''; // Message displayed in the popup
-  @Output() closePopup = new EventEmitter<void>(); // Event emitter for closing the popup
+  @Input() message: string = '';
+  @Output() closePopup = new EventEmitter<void>();
 
   close() {
     this.closePopup.emit();
