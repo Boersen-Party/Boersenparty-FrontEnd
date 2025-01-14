@@ -5,5 +5,5 @@ export const environment = {
   apiUrl: "/api",
   keycloak: keycloakConfig,
   //baseUrl: 'http://localhost:4200/',
-  baseUrl: 'https://dev.stock-party.live/'
+  baseUrl: 'https://stock-party.live/'
 };
