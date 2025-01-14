@@ -11,7 +11,7 @@ import { FavoriteUserProductsComponent } from './components/favorite-user-produc
 @Component({
   standalone: true,
   selector: 'app-user',
-  imports: [GerneralStatisticsUserComponent, FavoriteUserProductsComponent, FavoriteItemHomeComponent, ToolbarComponent, RouterOutlet, PriceOverviewComponent, UserPriceEntryTabComponent, UserReservationTabComponent],
+  imports: [GerneralStatisticsUserComponent, FavoriteUserProductsComponent, ToolbarComponent, RouterOutlet, UserReservationTabComponent],
   templateUrl: `./user.component.html`,
   styleUrls: ['./user.component.css']
 })

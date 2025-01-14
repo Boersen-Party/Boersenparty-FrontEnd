@@ -18,8 +18,6 @@ export class PartyChartService {
     })
    }
 
-  
-
    async fetchPartyStats(): Promise<void> {
     const activePartyId = this.partyService.getActivePartyId();
     if (!activePartyId) {
@@ -48,5 +46,5 @@ export class PartyChartService {
       console.error('Error fetching party stats:', error);
     }
   }
-  
+
 }

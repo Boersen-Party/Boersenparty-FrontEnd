@@ -11,7 +11,7 @@ import { baseURL } from '../_config/config';
   providedIn: 'root',
 })
 export class ReservationService {
-  
+
   timer = timer(0, 3000);
   UserOfService: string = '';
   draftOrder = signal<Order>({
@@ -19,11 +19,11 @@ export class ReservationService {
     totalPrice: 0,
     paid: false,
     belongs_to: '',
-  });  
+  });
 
   orders = signal<Order[]>([]);
 
-  
+
   constructor(private partyService: PartyServiceService) {}
 
   initialize(usedBy: string): void {
@@ -54,18 +54,18 @@ export class ReservationService {
       const partyId = this.partyService.getActivePartyId();
       const URL = `${baseURL}/${partyId}/guests/orders/${orderId}`;
       const response = await axios.post(URL);
-  
+
       console.log('Payment processed successfully:', response.data);
     } catch (error) {
       console.error('Error processing payment:', error);
       throw error;
     }
   }
-  
 
 
 
-  
+
+
 private async fetchAllOrders(): Promise<void> {
   try {
     const partyId = this.partyService.getActivePartyId();
@@ -78,7 +78,6 @@ private async fetchAllOrders(): Promise<void> {
   }
 }
 
-// Fetch orders for a specific user '_USER'
 private async fetchOrdersOfUser(uuid: string): Promise<void> {
   try {
     console.log("fetching with uuid:" + uuid);
@@ -90,22 +89,19 @@ private async fetchOrdersOfUser(uuid: string): Promise<void> {
     console.error('Error fetching user orders:', error);
   }
 }
- 
-  
+
+
   addToReservation(product: Product, quantity: number): void {
     const currentReservation = this.draftOrder();
-    
-    // Find the existing item in the reservation
+
     const existingItem = currentReservation.items.find(
       (item) => item.productId === product.id
     );
-  
-    // If the item exists, update its quantity and total item price
+
     if (existingItem) {
-      existingItem.quantity = quantity;  // Set the new quantity instead of adding
+      existingItem.quantity = quantity;
       existingItem.totalItemPrice = existingItem.quantity * product.latestCalculatedPrice;
     } else {
-      // If the item doesn't exist, add it as a new item
       currentReservation.items.push({
         productId: product.id!,
         productName: product.name,
@@ -114,11 +110,9 @@ private async fetchOrdersOfUser(uuid: string): Promise<void> {
         totalItemPrice: quantity * product.latestCalculatedPrice,
       });
     }
-  
-    // Recalculate the total price after updating the items
+
     currentReservation.totalPrice = this.calculateTotalPrice(currentReservation.items);
-  
-    // Update the reservation with the new data
+
     this.draftOrder.set({ ...currentReservation });
   }
 
@@ -132,7 +126,6 @@ private async fetchOrdersOfUser(uuid: string): Promise<void> {
 
       console.log('Reservation created:', response.data);
 
-      // Reset the draft order after successful creation
       this.resetDraftOrder();
 
       return response.data;
@@ -152,9 +145,9 @@ private async fetchOrdersOfUser(uuid: string): Promise<void> {
     console.log('Draft order has been reset.');
   }
 
-  
 
-  
+
+
 
   public calculateTotalPrice(items: OrderItem[]): number {
     return items.reduce((sum, item) => sum + item.totalItemPrice, 0);

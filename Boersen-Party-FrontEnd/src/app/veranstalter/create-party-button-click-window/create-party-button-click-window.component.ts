@@ -32,14 +32,12 @@ export class CreatePartyButtonClickWindowComponent implements OnInit{
   start_date: string = '';
   end_date: string = '';
 
-  // State for the popup
-  popupMessage: string = ''; // Error message for the popup
-  showPopup: boolean = false; // Controls popup visibility
+  popupMessage: string = '';
+  showPopup: boolean = false;
 
   onSubmit() {
-    // Validate input fields before creating the party
     if (!this.validateInputs()) {
-      return; // Stop submission if validation fails
+      return;
     }
 
     console.log("on submit is called");
@@ -55,10 +53,6 @@ export class CreatePartyButtonClickWindowComponent implements OnInit{
     });
   }
 
-  /*
-  sets the date Placeholders : start is today() and end is today() + 1 day
-  datatype: datetime-local
-  */
   startDatePlaceholder: string = '';
   endDatePlaceholder: string = '';
 
@@ -73,28 +67,23 @@ export class CreatePartyButtonClickWindowComponent implements OnInit{
     }
 
     if (message) {
-      this.popupMessage = message; // Set the error message for the popup
-      this.showPopup = true; // Show the popup
-      return false; // Validation failed
+      this.popupMessage = message;
+      this.showPopup = true;
+      return false;
     }
 
-    return true; // Validation passed
+    return true;
   }
 
   setPlaceholders() {
 
     const today = new Date();
-    //local timezone is 1h behind Germany
-    // extra 5 minutes for the user because start_date cannot be in the future
     today.setMinutes(today.getMinutes() - today.getTimezoneOffset() + 5);
     const dayLater = new Date(today);
     dayLater.setDate(today.getDate() + 1);
-    // Format the dates to `yyyy-MM-ddTHH:mm` for `datetime-local`
     this.start_date = today.toISOString().slice(0, 16);
     this.end_date = dayLater.toISOString().slice(0, 16);
   }
-
-  // Close the popup
   closePopup(): void {
     this.showPopup = false;
   }

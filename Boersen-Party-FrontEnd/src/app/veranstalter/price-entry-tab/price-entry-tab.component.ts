@@ -12,32 +12,30 @@ import { ProductService } from '../../services/products.service';
 })
 
 export class PriceEntryTabComponent {
-  @Input() hideButton: boolean = false; // in personal view, the create product button is hidden
+  @Input() hideButton: boolean = false;
   products: Product[] = [];
   showAddDrinkWindow: boolean = false;
   showEditDrinkWindowForAdjustment: boolean = false;
   selectedProductId: number = 0;
-  
+
 
    constructor(private productService: ProductService) {
-  
-  
+
+
       effect(() => {
         this.products = this.productService.products();
-        //console.log("effect called in PriceEntryTabComponent!");
       });
-  
+
     }
-  
+
     DeleteProduct(productId: number): void {
       if (productId === 0) {
         throw new Error("PriceEntryTab: Invalid product ID: 0. This indicates a missing or uninitialized product.");
       }
-        this.productService.deleteProduct(productId); 
-        //maybe have to filter the product from the local list, idk
+        this.productService.deleteProduct(productId);
     }
-  
-  
+
+
   onClickForAdjust(productId: number): void {
     if (productId === 0) {
       throw new Error("PriceEntryTab- onClickForAdjust: Invalid product ID: 0. This indicates a missing or uninitialized product.");
@@ -46,7 +44,7 @@ export class PriceEntryTabComponent {
     this.showEditDrinkWindowForAdjustment = !this.showEditDrinkWindowForAdjustment;
 
   }
-  
+
 
   onClick() {
     console.log("Button clicked!");

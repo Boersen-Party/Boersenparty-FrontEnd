@@ -16,8 +16,7 @@ import { ReservationService } from '../../../services/reservation.service';
 export class FavoriteUserProductsComponent {
   likedProducts: Product[] = [];
   orderQuantity: number = 1;
-  selectedProduct: Product | null = null; 
-
+  selectedProduct: Product | null = null;
 
  constructor (private productService: ProductService, private reservationService: ReservationService){
   this.reservationService.initialize('_USER');
@@ -25,7 +24,6 @@ export class FavoriteUserProductsComponent {
     this.likedProducts = this.productService.pinnedByUserProducts();
   });
  }
-
 
  onProductClick(product: Product) {
   this.selectedProduct = product;
@@ -35,19 +33,19 @@ export class FavoriteUserProductsComponent {
 closePopup() {
   console.log('Popup closed.');
   this.selectedProduct = null;
-  this.orderQuantity = 1; 
+  this.orderQuantity = 1;
 }
 
 addToOrder() {
   if (this.selectedProduct && this.orderQuantity > 0) {
     this.reservationService.addToReservation(this.selectedProduct, this.orderQuantity);
     console.log(`Added ${this.orderQuantity} of ${this.selectedProduct.name} to the reservation.`);
-    this.closePopup(); 
+    this.closePopup();
   } else {
     console.error('Invalid product or quantity');
   }
 }
 
 
-    
+
 }

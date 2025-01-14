@@ -3,23 +3,18 @@ import { CommonModule } from '@angular/common';
 import { Order, OrderItem } from '../../../_model/reservation';
 import { ReservationService } from '../../../services/reservation.service';
 
-
 @Component({
   standalone:true,
   selector: 'app-user-reservation-tab',
   imports: [CommonModule],
   templateUrl: './user-reservation-tab.component.html',
   styleUrl: './user-reservation-tab.component.css',
- 
- 
 })
 export class UserReservationTabComponent {
 
   isExpanded = false;
   order: Order | undefined;
-  orderItems: OrderItem[] = []; 
-
-  //ordersBackend: Order[] = [];
+  orderItems: OrderItem[] = [];
 
   users_uuid: string = '';
   constructor(private reservationService: ReservationService) {
@@ -28,18 +23,12 @@ export class UserReservationTabComponent {
       const reservation = this.reservationService.draftOrder();
       this.order = reservation;
       if (reservation) {
-        this.orderItems = reservation.items; // Extract items from the reservation
+        this.orderItems = reservation.items;
       } else {
-        this.orderItems = []; // Reset if no reservation exists
+        this.orderItems = [];
       }
     });
 
-    /*
-    effect(() => {
-      this.ordersBackend = this.reservationService.orders();
-      console.log("backend orders updated: ", this.ordersBackend);
-    });
-    */
     this.users_uuid = this.reservationService.getUserUUID();
   }
 
@@ -52,22 +41,18 @@ export class UserReservationTabComponent {
       const newOrder: Order = {
         items: this.orderItems,
         totalPrice: this.reservationService.calculateTotalPrice(this.orderItems),
-        paid: false, 
+        paid: false,
       };
 
       this.reservationService.createReservation(newOrder);
       this.orderItems = [];
       console.log('Reservation created and items cleared.');
-      this.order = undefined; 
-     
+      this.order = undefined;
+
 
 
     } else {
       console.log('No items in reservation to create.');
     }
   }
-
-
-
-
 }

@@ -18,10 +18,9 @@ console.log('Routes:', routes);
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(withFetch()), // HTTP client
-    provideRouter(routes, withComponentInputBinding()), // Routes
+    provideHttpClient(withFetch()),
+    provideRouter(routes, withComponentInputBinding()),
 
-    // Keycloak initialization using APP_INITIALIZER
     {
       provide: APP_INITIALIZER,
       useFactory: initializer,
@@ -29,7 +28,6 @@ export const appConfig: ApplicationConfig = {
       multi: true,
     },
 
-    // Register services
     KeycloakService,
     AuthService,
     AuthGuard,

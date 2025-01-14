@@ -10,19 +10,16 @@ export class LikedProductsService {
 
   constructor() {}
 
-  // Get pinned product IDs from cookie
   getPinnedProductIds(): number[] {
-    const pinnedProducts = Cookies.get(this.pinnedProductCookieName); 
+    const pinnedProducts = Cookies.get(this.pinnedProductCookieName);
     return pinnedProducts ? JSON.parse(pinnedProducts) : []; // Parse the cookie value if it exists
   }
 
-  // Check if a product is pinned
   isProductPinned(productId: number): boolean {
     const pinnedProductIds = this.getPinnedProductIds();
     return pinnedProductIds.includes(productId);
   }
 
-  // Add a pinned product to the cookie
   addPinnedProduct(productId: number): void {
     const pinnedProductIds = this.getPinnedProductIds();
     if (!pinnedProductIds.includes(productId)) {
@@ -31,7 +28,6 @@ export class LikedProductsService {
     }
   }
 
-  // Remove a pinned product from the cookie
   removePinnedProduct(productId: number): void {
     let pinnedProductIds = this.getPinnedProductIds();
     pinnedProductIds = pinnedProductIds.filter(id => id !== productId); // Remove product ID

@@ -19,7 +19,6 @@ export class GerneralStatisticsUserComponent {
 
   constructor(private productService: ProductService) {
     effect(() => {
-      // Update buffers and product data
       const newBuffers = this.productService.latestPriceBuffers();
       this.productData.clear();
 
@@ -37,17 +36,13 @@ export class GerneralStatisticsUserComponent {
         this.productData.set(productId, { timestamps, prices });
       });
 
-      // Calculate the overall average price
       this.calculateOverallAveragePrice();
 
-      // Add the average price to the history array with the current timestamp
       const now = new Date().toISOString().slice(0, 16); // Current timestamp in ISO format (YYYY-MM-DDTHH:mm)
       this.averagePriceHistory.push({ timestamp: now, average: this.overallAveragePrice });
 
-      // Plot the data using Chart.js
       this.plotAveragePrice();
 
-      // Debugging log
       console.log('Product Data:', this.productData);
       console.log('Overall Average Price History:', this.averagePriceHistory);
     });
@@ -58,8 +53,8 @@ export class GerneralStatisticsUserComponent {
     let totalCount = 0;
 
     this.productData.forEach(({ prices }) => {
-      totalSum += prices.reduce((sum, price) => sum + price, 0); 
-      totalCount += prices.length; 
+      totalSum += prices.reduce((sum, price) => sum + price, 0);
+      totalCount += prices.length;
     });
 
     this.overallAveragePrice = totalCount > 0 ? totalSum / totalCount : 0;
@@ -69,27 +64,27 @@ export class GerneralStatisticsUserComponent {
     if (this.chart) {
       this.chart.destroy();
     }
-  
+
     const ctx = document.getElementById('averagePriceChart') as HTMLCanvasElement;
-  
+
     const lastTimestamp = this.averagePriceHistory.length > 0
       ? this.averagePriceHistory[this.averagePriceHistory.length - 1].timestamp
       : '';
-  
-    const labels = this.averagePriceHistory.map(() => lastTimestamp); 
-  
+
+    const labels = this.averagePriceHistory.map(() => lastTimestamp);
+
     this.chart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: labels, 
+        labels: labels,
         datasets: [
           {
             label: 'Overall Average Drink Price',
-            data: this.averagePriceHistory.map(entry => entry.average), 
+            data: this.averagePriceHistory.map(entry => entry.average),
             backgroundColor: 'rgba(75, 192, 192, 0.2)',
             borderColor: 'rgba(75, 192, 192, 1)',
             borderWidth: 1,
-            tension: 0.4, 
+            tension: 0.4,
           },
         ],
       },
@@ -123,6 +118,5 @@ export class GerneralStatisticsUserComponent {
       },
     });
   }
-  
 }
-  
+

@@ -14,20 +14,20 @@ import { FormsModule } from '@angular/forms';
 export class EventTriggerWindowComponent {
   events: PartyEvent[] = [];
   isSetEventWindowOpen = false;
-  hideInputButton: boolean = false; //when the 2 events are configured, the button should be hidden
+  hideInputButton: boolean = false;
 
   //for the creation
   eventType: string = '';
   eventDuration: number | null = null;
 
   constructor(private eventService: EventService) {
-    
+
         effect(() => {
           this.events = this.eventService.events();
           console.log("effect called in EVENTTRIGGERWINDOW!");
           this.updateHideInputButton()
         });
-    
+
       }
 
   toggleCreateEventWindow() {
@@ -39,7 +39,7 @@ export class EventTriggerWindowComponent {
         console.error("Event type or duration is missing!");
         return;
       }
-  
+
       const newEvent: PartyEvent = {
         type: this.eventType,
         duration: this.eventDuration

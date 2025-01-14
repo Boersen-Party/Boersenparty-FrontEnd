@@ -11,10 +11,10 @@ import axios from 'axios';
   providedIn: 'root'
 })
 export class EventService {
-  
+
   timer = timer(0, 5000);
   events = signal<PartyEvent[]>([]);
-   
+
   constructor(private authService: AuthService, private partyService: PartyServiceService) {
       this.timer.subscribe(() => {
        this.fetchEvents();
@@ -39,8 +39,6 @@ export class EventService {
     })
       .then(response => {
         const fetchedEvents = response.data;
-        //console.log("fetched events are:");
-        //console.log(fetchedEvents);
         try {
           this.events.set(fetchedEvents);
         } catch (error) {
@@ -86,20 +84,18 @@ export class EventService {
     try {
       const headers = await this.authService.addTokenToHeader();
       const partyId = this.partyService.getActivePartyId();
-  
+
       if (partyId === null) {
         console.error('Cannot trigger event: No active Party ID.');
         return;
       }
-  
+
       const url = `${baseURL}/${partyId}/events/${eventId}`;
       console.log("Triggering event with URL:", url);
-  
+
       axios.put(url, {}, { headers })
         .then(response => {
           console.log("Event triggered successfully:", response.data);
-          // Optionally, you can refresh the events list here if needed
-          //this.fetchEvents();
         })
         .catch(error => {
           console.error("Error triggering event:", error);

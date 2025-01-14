@@ -29,8 +29,7 @@ export class GeneralStatisticsComponent {
       const fetchedStatsArray = this.partyChartService.partyStats();
       console.log('Fetched Stats Array (STATISTIC COMPONENT) is:', fetchedStatsArray);
 
-      // Unpack data into separate arrays
-      this.partyStats = fetchedStatsArray.slice(-5); // Keep only the last 10 entries or as required
+      this.partyStats = fetchedStatsArray.slice(-5);
       this.revenue = this.partyStats.map((stats) => stats.revenue);
       this.profit = this.partyStats.map((stats) => stats.profit);
       this.totalOrders = this.partyStats.map((stats) => stats.totalOrders);
@@ -39,7 +38,6 @@ export class GeneralStatisticsComponent {
       console.log('Profit:', this.profit);
       console.log('Total Orders:', this.totalOrders);
 
-      // Initialize or update charts
       if (!this.revenueProfitChart) {
         this.initRevenueProfitChart();
       } else {
@@ -59,20 +57,20 @@ export class GeneralStatisticsComponent {
     this.revenueProfitChart = new Chart(canvas, {
       type: 'bar',
       data: {
-        labels: [], // Initially empty
+        labels: [],
         datasets: [
           {
             label: 'Umsatz',
-            data: [], // Initially empty
+            data: [],
             backgroundColor: 'rgba(75, 192, 192, 0.5)',
             borderColor: 'rgba(75, 192, 192, 1)',
             borderWidth: 1,
-            barPercentage: 0.4, // Adjust width of the bars
-            categoryPercentage: 0.8, // Controls space between bars
+            barPercentage: 0.4,
+            categoryPercentage: 0.8,
           },
           {
             label: 'Gewinn',
-            data: [], // Initially empty
+            data: [],
             backgroundColor: 'rgba(153, 102, 255, 0.5)',
             borderColor: 'rgba(153, 102, 255, 1)',
             borderWidth: 1,
@@ -88,12 +86,12 @@ export class GeneralStatisticsComponent {
           y: {
             beginAtZero: true,
             grid: {
-              color: 'rgba(230,230,230,0.1)', // Set the grid color
+              color: 'rgba(230,230,230,0.1)',
             },
           },
           x: {
             grid: {
-              display: false, // Hides the grid lines on the x-axis
+              display: false,
             },
           },
         },
@@ -102,43 +100,35 @@ export class GeneralStatisticsComponent {
   }
 
   private updateRevenueProfitChart(): void {
-    // Generate the labels as time
     const timeLabels = this.partyStats.map((_, index) => this.formatTime(new Date()));
 
-    // Set the first and last labels to time
     const displayLabels = timeLabels.map((time, index) => {
       if (index === 0 || index === timeLabels.length - 1) {
         return time;
       }
-      return ''; // Hide intermediate labels
+      return '';
     });
 
-    // Update labels and datasets with new data for revenue and profit
     this.revenueProfitChart.data.labels = displayLabels;
-    this.revenueProfitChart.data.datasets[0].data = this.revenue; // Revenue
-    this.revenueProfitChart.data.datasets[1].data = this.profit; // Profit
+    this.revenueProfitChart.data.datasets[0].data = this.revenue;
+    this.revenueProfitChart.data.datasets[1].data = this.profit;
 
-    // Call update to render the new data
     this.revenueProfitChart.update();
   }
 
   private updateTotalOrdersChart(): void {
-    // Generate the labels as time
     const timeLabels = this.partyStats.map((_, index) => this.formatTime(new Date()));
 
-    // Set the first and last labels to time
     const displayLabels = timeLabels.map((time, index) => {
       if (index === 0 || index === timeLabels.length - 1) {
         return time;
       }
-      return ''; // Hide intermediate labels
+      return '';
     });
 
-    // Update labels and dataset with new data for total orders
     this.totalOrdersChart.data.labels = displayLabels;
     this.totalOrdersChart.data.datasets[0].data = this.totalOrders;
 
-    // Call update to render the new data
     this.totalOrdersChart.update();
   }
 
@@ -146,29 +136,27 @@ export class GeneralStatisticsComponent {
     let hours: string | number = date.getHours();
     let minutes: string | number = date.getMinutes();
 
-    // Pad hours and minutes with leading zeros if needed
     if (hours < 10) hours = '0' + hours;
     if (minutes < 10) minutes = '0' + minutes;
 
     return `${hours}:${minutes}`;
   }
 
-
   private initTotalOrdersChart(): void {
     const canvas = this.totalOrdersCanvas.nativeElement;
     this.totalOrdersChart = new Chart(canvas, {
       type: 'bar',
       data: {
-        labels: [], // Initially empty
+        labels: [],
         datasets: [
           {
             label: 'Verarbeitete Bestellungen',
-            data: [], // Initially empty
+            data: [],
             backgroundColor: 'rgba(255, 159, 64, 0.5)',
             borderColor: 'rgba(255, 159, 64, 1)',
             borderWidth: 1,
-            barPercentage: 0.2, // Set to 0.2 to make bars thinner
-            categoryPercentage: 1, // Adjust categoryPercentage if necessary for spacing
+            barPercentage: 0.2,
+            categoryPercentage: 1,
           },
         ],
       },
@@ -177,28 +165,27 @@ export class GeneralStatisticsComponent {
         maintainAspectRatio: false,
         scales: {
           y: {
-            beginAtZero: false, // Start from a value higher than 0
-            min: 1, // Set minimum value for y-axis (adjust based on your data)
+            beginAtZero: false,
+            min: 1,
             ticks: {
-              stepSize: 10, // Controls the distance between tick marks (adjust as needed)
-              callback: (value) => `${value}`, // Optional: format the ticks to display in a more readable way
+              stepSize: 10,
+              callback: (value) => `${value}`,
             },
             title: {
               display: true,
-              text: 'Verarbeitete Bestellungen', // Provide a more informative label for the y-axis
+              text: 'Verarbeitete Bestellungen',
             },
-            grid  : {
-              color: 'rgba(230,230,230,0.1)', // Set the grid color
+            grid: {
+              color: 'rgba(230,230,230,0.1)',
             }
           },
           x: {
             grid: {
-              display: false, // Hides the grid lines on the x-axis
+              display: false,
             },
           },
         },
       },
     });
   }
-
 }

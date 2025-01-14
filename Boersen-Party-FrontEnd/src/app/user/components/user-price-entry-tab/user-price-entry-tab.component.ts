@@ -13,22 +13,19 @@ import { LikedProductsService } from '../../../services/liked-products.service';
   imports: [CommonModule, FormsModule],
   templateUrl: './user-price-entry-tab.component.html',
   styleUrl: './user-price-entry-tab.component.css',
-  
+
 })
 export class UserPriceEntryTabComponent {
-  products: Product[] = []; // List of products to display
- 
+  products: Product[] = [];
 
   constructor(
     private productService: ProductService,
     private likedProductsService:LikedProductsService ) {
-    
+
     effect(() => {
       this.products = this.productService.products();
     });
   }
-
- 
 
   togglePin(product: Product) {
     console.log('Pin icon clicked for product:', product.name);
@@ -42,9 +39,4 @@ export class UserPriceEntryTabComponent {
       this.likedProductsService.addPinnedProduct(productId);
     }
   }
-  
-
-
-
-
 }

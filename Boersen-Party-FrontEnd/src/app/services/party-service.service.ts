@@ -7,8 +7,6 @@ import { AuthService } from './auth.service';
 import { KeycloakProfile } from 'keycloak-js';
 import { Router } from '@angular/router';
 import Cookies from 'js-cookie';
-import { PartyStats } from '../_model/partystats';
-
 
 @Injectable({
   providedIn: 'root'
@@ -16,19 +14,15 @@ import { PartyStats } from '../_model/partystats';
 
 export class PartyServiceService {
   timer = timer(0, 100000)
-  //parties = signal<Party[]>([]);
-  _lastParty = signal<Party | null>(null); // Signal for the last party
+  _lastParty = signal<Party | null>(null);
 
-  //partyStats = signal<PartyStats[]>([]);
   private _activePartyIdUser : number | null = null;
   private activePartyIdKey = 'activePartyId';
   private userUUIDKey = 'userUUID';
 
 
   constructor(private authService: AuthService, private router: Router) {
-    //check if i'm a personaler, then set fetch active_party_id using 'works_for' from keycloak
     const works_for = this.authService.getWorksFor();
-    //this means that the user is a personaler
     console.log("works_for is:", works_for);
     if (works_for !== "This user is not _PERSONAL") {
       this.setActivePartyIdUsingWorksFor(works_for);
@@ -50,7 +44,7 @@ export class PartyServiceService {
         const partyId = response.data;
 
         if (partyId) {
-          this.setActivePartyId(partyId); // Store the received party ID as the active ID
+          this.setActivePartyId(partyId);
           console.log(`PERSONALER partyId is: ${partyId}`);
         } else {
           console.warn(`No active party ID found for worksFor: ${worksFor}`);

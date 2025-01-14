@@ -10,7 +10,7 @@
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: minmax(5px, auto);
-  gap: 1em; /* Optional: add spacing between items */
+  gap: 1em;
 }
 
 .trending-item-1{
