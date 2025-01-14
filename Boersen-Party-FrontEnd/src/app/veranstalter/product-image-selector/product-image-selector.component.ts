@@ -23,7 +23,6 @@ export class ProductImageSelectorComponent {
     'https://cdn-icons-png.flaticon.com/128/5787/5787016.png',
     'https://cdn-icons-png.flaticon.com/128/590/590717.png',
     'https://cdn-icons-png.flaticon.com/128/7511/7511906.png',
-    'https://cdn-icons-png.flaticon.com/128/7511/7511906.png',
     'https://cdn-icons-png.flaticon.com/128/3174/3174535.png',
     'https://cdn-icons-png.flaticon.com/128/920/920564.png',
     'https://cdn-icons-png.flaticon.com/128/3329/3329302.png',
